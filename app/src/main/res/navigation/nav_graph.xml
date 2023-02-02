@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.foodplanner.splashScreen.View.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" />
+    <fragment
+        android:id="@+id/authentication"
+        android:name="com.example.foodplanner.authentication.View.AuthenticationFragment"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authentication" />
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.foodplanner.homeFragment.View.HomeFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/searchScreen"
+        android:name="com.example.foodplanner.search.View.SearchFragment"
+        android:label="fragment_search_screen"
+        tools:layout="@layout/fragment_search_screen" />
+    <fragment
+        android:id="@+id/calenderScreen"
+        android:name="com.example.foodplanner.calender.View.CalenderFragment"
+        android:label="fragment_calender_screen"
+        tools:layout="@layout/fragment_calender_screen" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.foodplanner.favorite.View.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/searcByhIngridientFragment"
+        android:name="com.example.foodplanner.searchByIngredient.View.SearcByhIngridientFragment"
+        android:label="fragment_searc_byh_ingridient"
+        tools:layout="@layout/fragment_searc_byh_ingridient" />
+    <fragment
+        android:id="@+id/searchByCategoryFragment"
+        android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"
+        android:label="fragment_search_by_category"
+        tools:layout="@layout/fragment_search_by_category" />
+    <fragment
+        android:id="@+id/searchByCountryFragment"
+        android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
+        android:label="fragment_search_by_country"
+        tools:layout="@layout/fragment_search_by_country" />
+</navigation>
