@@ -9,7 +9,11 @@
         android:id="@+id/splashScreen"
         android:name="com.example.foodplanner.splashScreen.View.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" />
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_authentication"
+            app:destination="@id/authentication" />
+    </fragment>
     <fragment
         android:id="@+id/authentication"
         android:name="com.example.foodplanner.authentication.View.AuthenticationFragment"
