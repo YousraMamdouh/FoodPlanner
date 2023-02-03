@@ -2,4 +2,7 @@
     <string name="app_name">FoodPlanner</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorite_items">"Favorites "</string>
+    <string name="remove_item">Remove</string>
+    <string name="remove_meal" />
 </resources>
