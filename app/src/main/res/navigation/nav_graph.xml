@@ -43,7 +43,7 @@
         android:id="@+id/searcByhIngridientFragment"
         android:name="com.example.foodplanner.searchByIngredient.View.SearcByhIngridientFragment"
         android:label="fragment_searc_byh_ingridient"
-        tools:layout="@layout/fragment_searc_byh_ingridient" />
+        tools:layout="@layout/fragment_searc_byh_ingredient" />
     <fragment
         android:id="@+id/searchByCategoryFragment"
         android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"

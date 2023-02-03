@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="418dp"
+        android:layout_width="409dp"
         android:layout_height="103dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/download"
@@ -48,7 +48,7 @@
         android:id="@+id/textView6"
         android:layout_width="323dp"
         android:layout_height="20dp"
-        android:text="@string/categories"
+        android:text="@string/Search_Ingredients"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/searchView2"
         app:layout_constraintEnd_toEndOf="parent"
