@@ -54,4 +54,9 @@
         android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
         android:label="fragment_search_by_country"
         tools:layout="@layout/fragment_search_by_country" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodplanner.login.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
