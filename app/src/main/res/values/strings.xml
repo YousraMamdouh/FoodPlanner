@@ -14,5 +14,13 @@
     <string name="login_txt">Login</string>
     <string name="login">Login</string>
     <string name="log_in_txt">Login</string>
+
     <string name="Welcome_txt">WELCOME</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message">you can sign up with the following options:</string>
+    <string name="signUp">Sign Up</string>
+    <string name="name">Name</string>
+
 </resources>

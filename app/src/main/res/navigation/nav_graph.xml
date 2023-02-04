@@ -18,7 +18,14 @@
         android:id="@+id/authentication"
         android:name="com.example.foodplanner.authentication.View.AuthenticationFragment"
         android:label="fragment_authentication"
-        tools:layout="@layout/fragment_authentication" />
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_authentication_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_authentication_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.foodplanner.homeFragment.View.HomeFragment"
@@ -54,4 +61,14 @@
         android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
         android:label="fragment_search_by_country"
         tools:layout="@layout/fragment_search_by_country" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodplanner.login.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.foodplanner.signUp.view.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
 </navigation>
