@@ -4,20 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splashScreen.View.SplashScreenFragment" >
+    tools:context=".splashScreen.View.SplashScreenFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/chefAnimation"
-        android:layout_width="400dp"
+        android:layout_width="263dp"
 
-        android:layout_height="400dp"
+        android:layout_height="248dp"
+        android:layout_marginBottom="32dp"
         android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/chef" />
+        app:lottie_rawRes="@raw/plate" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="368dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
