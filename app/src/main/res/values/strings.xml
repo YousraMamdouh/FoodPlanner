@@ -7,4 +7,8 @@
     <string name="Email_hit">Enter Email</string>
     <string name="password_hint">Enter Password</string>
     <string name="btn_login">"Login "</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message">you can sign up using these options</string>
 </resources>
