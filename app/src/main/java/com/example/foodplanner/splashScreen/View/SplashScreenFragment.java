@@ -72,7 +72,7 @@ public class SplashScreenFragment extends Fragment {
             public void run() {
                 Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_authentication);
             }
-        },5000);
+        },3000);
         return view;
     }
 }
