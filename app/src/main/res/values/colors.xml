@@ -11,4 +11,5 @@
     <color name="darkGreen">#125b50</color>
     <color name="lightGreen">#12b5b0</color>
     <color name="darkYellow">#f8b400</color>
+    <color name="lightGrey"> #e0e0d1</color>
 </resources>
