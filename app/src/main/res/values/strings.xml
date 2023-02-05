@@ -39,6 +39,7 @@
     <string name="favoriteIngredient">search your favorite ingredient</string>
     <string name="favoriteCategory">search your favorite Category</string>
     <string name="favorites">Favorites</string>
+    <string name="recipe">Recipe :</string>
 
 
 </resources>
