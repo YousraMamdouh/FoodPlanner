@@ -22,5 +22,13 @@
     <string name="message">you can sign up with the following options:</string>
     <string name="signUp">Sign Up</string>
     <string name="name">Name</string>
+    <string name="search_title">Search specific meal</string>
+    <string name="cuisine">Cuisine</string>
+    <string name="category">Category</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="favoriteCuisine">search your favorite cuisine</string>
+    <string name="favoriteIngredient">search your favorite ingredient</string>
+    <string name="favoriteCategory">search your favorite Category</string>
+    <string name="favorites">Favorites</string>
 
 </resources>
