@@ -22,5 +22,9 @@
     <string name="message">you can sign up with the following options:</string>
     <string name="signUp">Sign Up</string>
     <string name="name">Name</string>
+    <string name="daily_insp_txt">Daily Inspiration</string>
+    <string name="you_might_like_txt">You Might Like</string>
+    <string name="name_img" />
+    <string name="img_name" />
 
 </resources>
