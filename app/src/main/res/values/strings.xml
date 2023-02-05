@@ -26,5 +26,8 @@
     <string name="you_might_like_txt">You Might Like</string>
     <string name="name_img" />
     <string name="img_name" />
+    <string name="acc_setting">Account Settings</string>
+    <string name="acc_sett_txt">Account Settings</string>
+    <string name="logout_txt">Logout</string>
 
 </resources>
