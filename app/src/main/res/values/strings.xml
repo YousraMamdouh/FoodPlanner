@@ -26,6 +26,11 @@
     <string name="you_might_like_txt">You Might Like</string>
     <string name="name_img" />
     <string name="img_name" />
+
+    <string name="acc_setting">Account Settings</string>
+    <string name="acc_sett_txt">Account Settings</string>
+    <string name="logout_txt">Logout</string>
+
     <string name="search_title">Search specific meal</string>
     <string name="cuisine">Cuisine</string>
     <string name="category">Category</string>
@@ -34,5 +39,6 @@
     <string name="favoriteIngredient">search your favorite ingredient</string>
     <string name="favoriteCategory">search your favorite Category</string>
     <string name="favorites">Favorites</string>
+
 
 </resources>
