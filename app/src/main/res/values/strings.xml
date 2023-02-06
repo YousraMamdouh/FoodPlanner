@@ -40,6 +40,7 @@
     <string name="favoriteCategory">search your favorite Category</string>
     <string name="favorites">Favorites</string>
     <string name="recipe">Recipe :</string>
+    <string name="get_start">get start</string>
 
 
 </resources>
