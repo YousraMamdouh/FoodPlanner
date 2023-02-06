@@ -53,4 +53,6 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 // add dependency of material design
     implementation 'com.google.android.material:material:1.8.0'
+   //  add dependency of on boarding
+    implementation 'com.ramotion.paperonboarding:paper-onboarding:1.1.3'
 }
