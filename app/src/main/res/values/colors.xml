@@ -13,4 +13,13 @@
     <color name="darkYellow">#f8b400</color>
     <color name="lightGrey"> #e0e0d1</color>
     <color name="lightYellow">#fff5cc</color>
+
+
+
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#FE724C</color>
+    <color name="white2">#4DFFFFFF</color>
+    <color name="gray2">#33C4C4C4</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#61FD00</color>
 </resources>

@@ -2,23 +2,26 @@ package com.example.foodplanner.homeFragment.View;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.foodplanner.AccountFragment;
 import com.example.foodplanner.R;
+import com.example.foodplanner.calender.View.CalenderFragment;
+import com.example.foodplanner.favorite.View.FavoriteFragment;
+import com.example.foodplanner.search.View.SearchFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    BottomNavigationView navigationView;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -30,14 +33,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeScreen.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -60,7 +56,46 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
+      navigationView =  view.findViewById(R.id.bottom_navigation);
+      navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+          @Override
+          public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+              Fragment fragment = null;
+              switch (item.getItemId()) {
+//                  case R.id.nav_home:
+//                      fragment = new HomeFragment();
+//                      Navigation.findNavController(view).navigate(R.id.);
+//                      break;
+
+                  case R.id.nav_search:
+                      fragment = new SearchFragment();
+                      Navigation.findNavController(view).navigate(R.id.action_homeScreen_to_searchScreen);
+                      break;
+
+                  case R.id.nav_calendar:
+                      fragment = new CalenderFragment();
+                      Navigation.findNavController(view).navigate(R.id.action_homeScreen_to_calenderScreen);
+                      break;
+
+                  case R.id.nav_fav:
+                      fragment = new FavoriteFragment();
+                      Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeScreen);
+                      break;
+
+
+                  case R.id.nav_account:
+                      fragment = new AccountFragment();
+                      Navigation.findNavController(view).navigate(R.id.action_homeScreen_to_accountFragment);
+                      break;
+
+              }
+
+
+              return true;
+          }
+      });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        return view;
     }
 }

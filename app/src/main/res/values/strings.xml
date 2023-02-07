@@ -41,6 +41,12 @@
     <string name="favorites">Favorites</string>
     <string name="recipe">Recipe :</string>
     <string name="get_start">get start</string>
+    <string name="slider">slider</string>
+
+    <string name="description1">Explore Recipes</string>
+    <string name="description2"> Get Personalised Recommendations</string>
+    <string name="description3">Plan Your Meals</string>
+
 
 
 </resources>
