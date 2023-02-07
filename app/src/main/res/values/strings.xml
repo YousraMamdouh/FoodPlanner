@@ -2,4 +2,45 @@
     <string name="app_name">FoodPlanner</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Name">Name</string>
+    <string name="name_hint">"Enter Your Name "</string>
+    <string name="Email_hit">Enter Email</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="btn_login">"Login "</string>
+    <string name="DailyInspiration_txt">Daily Inspiration</string>
+    <string name="youmight_txt">You Might Like</string>
+    <string name="Sign_up_txt">Signup</string>
+    <string name="lgin" />
+    <string name="login_txt">Login</string>
+    <string name="login">Login</string>
+    <string name="log_in_txt">Login</string>
+
+    <string name="Welcome_txt">WELCOME</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message">you can sign up with the following options:</string>
+    <string name="signUp">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="daily_insp_txt">Daily Inspiration</string>
+    <string name="you_might_like_txt">You Might Like</string>
+    <string name="name_img" />
+    <string name="img_name" />
+
+    <string name="acc_setting">Account Settings</string>
+    <string name="acc_sett_txt">Account Settings</string>
+    <string name="logout_txt">Logout</string>
+
+    <string name="search_title">Search specific meal</string>
+    <string name="cuisine">Cuisine</string>
+    <string name="category">Category</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="favoriteCuisine">search your favorite cuisine</string>
+    <string name="favoriteIngredient">search your favorite ingredient</string>
+    <string name="favoriteCategory">search your favorite Category</string>
+    <string name="favorites">Favorites</string>
+    <string name="recipe">Recipe :</string>
+    <string name="get_start">get start</string>
+
+
 </resources>

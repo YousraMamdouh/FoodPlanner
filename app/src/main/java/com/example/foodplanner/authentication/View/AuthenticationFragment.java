@@ -2,7 +2,9 @@ package com.example.foodplanner.authentication.View;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,8 @@ import com.example.foodplanner.R;
  * create an instance of this fragment.
  */
 public class AuthenticationFragment extends Fragment {
-
+CardView signUpView;
+CardView loginView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +64,24 @@ public class AuthenticationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_authentication, container, false);
+
+        View view=inflater.inflate(R.layout.fragment_authentication, container, false);
+        signUpView=view.findViewById(R.id.signupButton);
+        loginView=view.findViewById(R.id.loginButton);
+
+        loginView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_authentication_to_loginFragment);
+            }
+        });
+
+        signUpView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_authentication_to_signUpFragment);
+            }
+        });
+        return view;
     }
 }

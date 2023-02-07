@@ -3,11 +3,14 @@ package com.example.foodplanner.splashScreen.View;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.foodplanner.R;
 
 /**
@@ -16,6 +19,7 @@ import com.example.foodplanner.R;
  * create an instance of this fragment.
  */
 public class SplashScreenFragment extends Fragment {
+    LottieAnimationView chefAnimation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +65,14 @@ public class SplashScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash_screen, container, false);
+        View view=inflater.inflate(R.layout.fragment_splash_screen, container, false);
+        chefAnimation=view.findViewById(R.id.chefAnimation);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_authentication);
+            }
+        },3000);
+        return view;
     }
 }

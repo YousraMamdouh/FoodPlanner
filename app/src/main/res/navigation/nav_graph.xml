@@ -9,12 +9,23 @@
         android:id="@+id/splashScreen"
         android:name="com.example.foodplanner.splashScreen.View.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" />
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_authentication"
+            app:destination="@id/authentication" />
+    </fragment>
     <fragment
         android:id="@+id/authentication"
         android:name="com.example.foodplanner.authentication.View.AuthenticationFragment"
         android:label="fragment_authentication"
-        tools:layout="@layout/fragment_authentication" />
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_authentication_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_authentication_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.foodplanner.homeFragment.View.HomeFragment"
@@ -37,9 +48,9 @@
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/searcByhIngridientFragment"
-        android:name="com.example.foodplanner.searchByIngredient.View.SearcByhIngridientFragment"
+        android:name="com.example.foodplanner.searchByIngredient.View.SearchByIngridientFragment"
         android:label="fragment_searc_byh_ingridient"
-        tools:layout="@layout/fragment_searc_byh_ingridient" />
+        tools:layout="@layout/fragment_search_by_ingridient" />
     <fragment
         android:id="@+id/searchByCategoryFragment"
         android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"
@@ -50,4 +61,24 @@
         android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
         android:label="fragment_search_by_country"
         tools:layout="@layout/fragment_search_by_country" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodplanner.login.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.foodplanner.signUp.view.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.foodplanner.userDetails.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/mealDetailsFragment"
+        android:name="com.example.foodplanner.MealDetailsFragment"
+        android:label="fragment_meal_details"
+        tools:layout="@layout/fragment_meal_details" />
 </navigation>
