@@ -10,9 +10,6 @@ import java.io.Serializable;
 public class MealsDetails implements Serializable {
 
     @NonNull
-
-
-
 @PrimaryKey
     private String idMeal;
     private String strMeal;
