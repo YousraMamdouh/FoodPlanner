@@ -87,6 +87,9 @@ navController.addOnDestinationChangedListener(new NavController.OnDestinationCha
             case R.id.favoriteFragment:
             case R.id.calenderScreen:
             case R.id.accountFragment:
+            case R.id.searcByhIngridientFragment:
+            case R.id.searchByCategoryFragment:
+            case R.id.searchByCountryFragment:
 
                 bottomNavigationView.setVisibility(View.VISIBLE);
               //  drawerButton.setVisibility(View.VISIBLE);
