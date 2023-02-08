@@ -42,7 +42,7 @@
           android:layout_marginTop="4dp"
           android:backgroundTint="@color/darkGreen"
           app:cardCornerRadius="70dp"
-          app:cardElevation="10dp"
+
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintStart_toStartOf="parent"
@@ -52,16 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="146dp">
 
-                  <TextView
-                      android:id="@+id/textView4"
-                      android:layout_width="186dp"
-                      android:layout_height="52dp"
-                      android:layout_marginStart="16dp"
-                      android:layout_marginTop="76dp"
-                      android:text="@string/Welcome_txt"
-                      android:textSize="20sp"
-                      app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
       </androidx.cardview.widget.CardView>
 
