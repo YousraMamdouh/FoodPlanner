@@ -3,10 +3,12 @@ package com.example.foodplanner.signUp.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.foodplanner.R;
 
@@ -16,6 +18,7 @@ import com.example.foodplanner.R;
  * create an instance of this fragment.
  */
 public class SignUpFragment extends Fragment {
+    Button signUpButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +64,16 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+        View view=inflater.inflate(R.layout.fragment_sign_up, container, false);
+        signUpButton=view.findViewById(R.id.signUpPageButton);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_homeScreen);
+
+            }
+        });
+
+        return view;
     }
 }

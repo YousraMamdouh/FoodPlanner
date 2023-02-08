@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textView9"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button4" />
+                app:layout_constraintTop_toBottomOf="@+id/cuisineButton" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -79,36 +79,36 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/cuisineButton"
+                android:layout_width="72dp"
+                android:layout_height="51dp"
                 android:background="@drawable/country"
-                app:layout_constraintBottom_toBottomOf="@+id/button5"
-                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintBottom_toBottomOf="@+id/categoryButton"
+                app:layout_constraintEnd_toStartOf="@+id/categoryButton"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button5" />
+                app:layout_constraintTop_toTopOf="@+id/categoryButton" />
 
             <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/categoryButton"
+                android:layout_width="69dp"
+                android:layout_height="51dp"
                 android:background="@drawable/category"
-                app:layout_constraintBottom_toBottomOf="@+id/button6"
-                app:layout_constraintEnd_toStartOf="@+id/button6"
+                app:layout_constraintBottom_toBottomOf="@+id/ingredientsButton"
+                app:layout_constraintEnd_toStartOf="@+id/ingredientsButton"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button4"
-                app:layout_constraintTop_toTopOf="@+id/button6" />
+                app:layout_constraintStart_toEndOf="@+id/cuisineButton"
+                app:layout_constraintTop_toTopOf="@+id/ingredientsButton" />
 
             <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/ingredientsButton"
+                android:layout_width="71dp"
+                android:layout_height="51dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/ingridient"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button5"
+                app:layout_constraintStart_toEndOf="@+id/categoryButton"
                 app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

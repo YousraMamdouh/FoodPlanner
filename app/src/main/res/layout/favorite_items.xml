@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameView" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/signUpPageButton"
             android:layout_width="51dp"
             android:layout_height="35dp"
             android:background="@drawable/baseline_delete_outline_24"
