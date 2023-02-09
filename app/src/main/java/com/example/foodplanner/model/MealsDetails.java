@@ -11,7 +11,7 @@ public class MealsDetails implements Serializable {
 
     @NonNull
 @PrimaryKey
-    private String idMeal;
+    private String idMeal ;
     private String strMeal;
     private String strDrinkAlternate;
     private String strCategoryl;

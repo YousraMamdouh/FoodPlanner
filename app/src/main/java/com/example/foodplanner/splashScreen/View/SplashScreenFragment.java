@@ -74,6 +74,7 @@ public class SplashScreenFragment extends Fragment {
             @Override
             public void run() {
                 Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_authentication);
+
             }
         },3000);
         return view;
