@@ -42,5 +42,9 @@
     <string name="recipe">Recipe :</string>
     <string name="get_start">get start</string>
 
+    <string name="description1"> Food Will Be Having a Taste</string>
+    <string name="description2"> Full Of Flavor</string>
+    <string name="description3">Let\'s Do It Together</string>
+
 
 </resources>

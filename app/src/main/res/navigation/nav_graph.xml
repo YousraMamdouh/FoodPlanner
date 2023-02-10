@@ -11,8 +11,8 @@
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_splashScreen_to_authentication"
-            app:destination="@id/authentication" />
+            android:id="@+id/action_splashScreen_to_blankFragmentOnBoarding"
+            app:destination="@id/blankFragmentOnBoarding" />
     </fragment>
     <fragment
         android:id="@+id/authentication"
@@ -117,4 +117,13 @@
         android:name="com.example.foodplanner.searchForMealFragment"
         android:label="fragment_search_for_meal"
         tools:layout="@layout/fragment_search_for_meal" />
+    <fragment
+        android:id="@+id/blankFragmentOnBoarding"
+        android:name="com.example.foodplanner.onBoarding.view.OnBoarding"
+        android:label="fragment_blank_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_blankFragmentOnBoarding_to_authentication"
+            app:destination="@id/authentication" />
+    </fragment>
 </navigation>
