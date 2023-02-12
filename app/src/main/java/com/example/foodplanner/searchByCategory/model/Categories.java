@@ -1,6 +1,6 @@
 package com.example.foodplanner.searchByCategory.model;
 
-public class CategoryItems {
+public class Categories {
     private String idCategory;
     private String strCategory;
 

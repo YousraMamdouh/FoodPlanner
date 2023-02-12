@@ -14,28 +14,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
-import com.example.foodplanner.searchByCategory.model.CategoryItems;
+import com.example.foodplanner.searchByCategory.model.Categories;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder>{
 
     private static final String Tag="Category Adapter";
-    private List<CategoryItems> categoryItemsList;
+    private List<Categories> categoriesList;
     private Context context;
 
-    public void setCategoryItemsList(List<CategoryItems> categoryItemsList) {
-        this.categoryItemsList = categoryItemsList;
+    public void setCategoryItemsList(List<Categories> categoriesList) {
+        this.categoriesList = categoriesList;
     }
 
 
    // private OnFavoriteClickListener listener;
 
 
-    public CategoryAdapter(Context context, List<CategoryItems> mealList)
+    public CategoryAdapter(Context context, List<Categories> mealList)
     {
         this.context=context;
-        this.categoryItemsList =mealList;
+        this.categoriesList =mealList;
         System.out.println("adapter created");
       //  System.out.println("The first item category "+categoryItemsList.get(0).getStrCategory());
 
@@ -58,7 +58,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int position) {
-        CategoryItems currentProduct = categoryItemsList.get(position);
+        Categories currentProduct = categoriesList.get(position);
         holder.categoryName.setText(currentProduct.getStrCategory());
         System.out.println("I'm heere can you see me: "+currentProduct.getIdCategory());
         Glide.with(context).load(currentProduct.getStrCategoryThumb())
@@ -69,7 +69,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return categoryItemsList.size();
+        return categoriesList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -78,8 +78,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         ImageView categoryImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryName=itemView.findViewById(R.id.categoryName);
-            categoryImage=itemView.findViewById(R.id.categoryImage);
+            categoryName=itemView.findViewById(R.id.nameView);
+            categoryImage=itemView.findViewById(R.id.imageView);
         }
     }
 }

@@ -1,20 +1,20 @@
-package com.example.foodplanner.searchByCategory.presenter;
+package com.example.foodplanner.searchByCountry.presenter;
 
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
+import com.example.foodplanner.searchByCountry.View.CountriesViewInterface;
 import com.example.foodplanner.searchByCountry.model.Countries;
 
 import java.util.List;
 
-public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegate {
+public class CountriesPresenter implements CountriesPresenterInterface, NetworkDelegate {
 
-    private CategoriesViewInterface viewInterface;
+    private CountriesViewInterface viewInterface;
     private RepositoryInterface repo;
 
-    public CategoriesPresenter(CategoriesViewInterface viewInterface, RepositoryInterface repo) {
+    public CountriesPresenter(CountriesViewInterface viewInterface, RepositoryInterface repo) {
         this.viewInterface=viewInterface;
         this.repo = repo;
     }
@@ -27,10 +27,10 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
     public void onFailureAllMeals(String errorMsg) {}
 
     @Override
-    public void onSuccessAllCategories(List<Categories> categoryItems) {
-       viewInterface.showCategories(categoryItems);
-        System.out.println("Data retrieved successfully");
+    public void onSuccessAllCategories(List<Categories> categories) {
+
     }
+
 
     @Override
     public void onFailureAllCategories(String errorMsg) {
@@ -40,17 +40,21 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
     @Override
     public void onSuccessAllCountries(List<Countries> countries) {
-
+        viewInterface.showCountries(countries);
+        System.out.println("Countries retrieved successfully");
     }
 
     @Override
     public void onFailureAllCountries(String errorMsg) {
+        System.out.println("Can't retrieve countries ");
 
     }
 
 
+
+
     @Override
-    public void getCategories() {
-        repo.enqueueCall(this);
+    public void getCountries() {
+repo.enqueueCall(this);
     }
 }

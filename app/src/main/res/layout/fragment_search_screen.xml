@@ -11,15 +11,17 @@
         android:id="@+id/mainCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" >
+        app:layout_constraintTop_toTopOf="@+id/guideline2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
 
             <SearchView
                 android:id="@+id/searchView"
@@ -71,12 +73,14 @@
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView3"
-                android:layout_width="349dp"
-                android:layout_height="441dp"
+                android:id="@+id/allMealsRecyclerView"
+                android:layout_width="405dp"
+                android:layout_height="527dp"
+                android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
             <Button
                 android:id="@+id/cuisineButton"
@@ -99,6 +103,13 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/cuisineButton"
                 app:layout_constraintTop_toTopOf="@+id/ingredientsButton" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="182dp" />
 
             <Button
                 android:id="@+id/ingredientsButton"
@@ -126,21 +137,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="695dp" />
+        app:layout_constraintGuide_begin="788dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="31dp" />
+        app:layout_constraintGuide_begin="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="28dp" />
+        app:layout_constraintGuide_end="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -152,9 +163,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
         android:background="@color/darkGreen"
         android:backgroundTint="@color/darkGreen"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
@@ -177,4 +188,5 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

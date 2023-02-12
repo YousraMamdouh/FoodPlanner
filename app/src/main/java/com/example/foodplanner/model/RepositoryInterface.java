@@ -1,8 +1,7 @@
 package com.example.foodplanner.model;
 
-import com.example.foodplanner.search.presentor.RemoteSourceForAllMeals;
-import com.example.foodplanner.searchByCategory.presenter.RemoteSourceForAllCategories;
+import com.example.foodplanner.network.RemoteSource;
 
-public interface RepositoryInterface extends RemoteSourceForAllCategories, RemoteSourceForAllMeals {
+public interface RepositoryInterface extends  RemoteSource {
 
 }

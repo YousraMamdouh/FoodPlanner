@@ -4,7 +4,7 @@ import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 
-public interface allMealsViewInterface {
+public interface AllMealsViewInterface {
 
     void showMeals(List<MealsDetails> mealsDetails);
 }

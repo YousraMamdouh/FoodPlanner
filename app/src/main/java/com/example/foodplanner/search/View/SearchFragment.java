@@ -1,26 +1,40 @@
 package com.example.foodplanner.search.View;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.example.foodplanner.R;
+import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.API_Client;
+import com.example.foodplanner.search.presentor.AllMealsPresenter;
+import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements AllMealsViewInterface {
 Button cuisineButton;
 Button categoryButton;
 Button ingredientButton;
+RecyclerView allMealsRecyclerView;
+AllMealsAdapter allMealsAdapter;
+StaggeredGridLayoutManager layoutManager;
+AllMealsPresenterInterface allMealsPresenterInterface;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -70,7 +84,14 @@ Button ingredientButton;
        cuisineButton=view.findViewById(R.id.cuisineButton);
        categoryButton=view.findViewById(R.id.categoryButton);
        ingredientButton=view.findViewById(R.id.ingredientsButton);
-
+       allMealsRecyclerView=view.findViewById(R.id.allMealsRecyclerView);
+    //   layoutManager=new LinearLayoutManager(getActivity());
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>());
+       allMealsPresenterInterface=new AllMealsPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+       allMealsRecyclerView.setLayoutManager(layoutManager);
+       allMealsRecyclerView.setAdapter(allMealsAdapter);
+       allMealsPresenterInterface.getMeals();
        cuisineButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -95,5 +116,11 @@ Button ingredientButton;
             }
         });
        return view;
+    }
+
+    @Override
+    public void showMeals(List<MealsDetails> mealsDetails) {
+        allMealsAdapter.setAllMealsItemList(mealsDetails);
+        allMealsAdapter.notifyDataSetChanged();
     }
 }

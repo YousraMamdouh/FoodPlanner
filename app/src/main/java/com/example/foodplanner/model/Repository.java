@@ -2,43 +2,36 @@ package com.example.foodplanner.model;
 
 import android.content.Context;
 
-import com.example.foodplanner.search.presentor.NetworkDelegateForAllMeals;
-import com.example.foodplanner.search.presentor.RemoteSourceForAllMeals;
-import com.example.foodplanner.searchByCategory.presenter.NetworkDelegateForAllCategories;
-import com.example.foodplanner.searchByCategory.presenter.RemoteSourceForAllCategories;
+import com.example.foodplanner.network.NetworkDelegate;
+import com.example.foodplanner.network.RemoteSource;
 
 public class Repository implements RepositoryInterface{
 
     private Context context;
-    private RemoteSourceForAllCategories remoteSourceForAllCategories;
-    private RemoteSourceForAllMeals remoteSourceForAllMeals;
+    private RemoteSource remoteSource;
     private static Repository repository=null;
 
 
-    private Repository(RemoteSourceForAllCategories remoteSourceForAllCategories, Context context)
+    private Repository(RemoteSource remoteSource,  Context context)
     {
         this.context=context;
-        this.remoteSourceForAllCategories = remoteSourceForAllCategories;
+        this.remoteSource = remoteSource;
       //  this.localSource=localSource;
 
     }
 
-    public static Repository getInstance(RemoteSourceForAllCategories remoteSourceForAllCategories, Context context){
+    public static Repository getInstance(RemoteSource remoteSource, Context context){
 
         if(repository==null)
         {
-            repository=new Repository(remoteSourceForAllCategories,context);
+            repository=new Repository(remoteSource,context);
         }
         return repository;
     }
 
-    @Override
-    public void enqueueCallCategories(NetworkDelegateForAllCategories networkDelegateForAllCategories) {
-        remoteSourceForAllCategories.enqueueCallCategories(networkDelegateForAllCategories);
-    }
 
     @Override
-    public void enqueueCallMeals(NetworkDelegateForAllMeals networkDelegateForAllMeals) {
-        remoteSourceForAllMeals.enqueueCallMeals(networkDelegateForAllMeals);
+    public void enqueueCall(NetworkDelegate networkDelegate) {
+        remoteSource.enqueueCall(networkDelegate);
     }
 }

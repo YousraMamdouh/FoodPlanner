@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.searchByCategory.model.CategoryItems;
+import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCategory.presenter.CategoriesPresenter;
 import com.example.foodplanner.searchByCategory.presenter.CategoriesPresenterInterface;
 
@@ -90,7 +90,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
     }
 
     @Override
-    public void showCategories(List<CategoryItems> categoryItems) {
+    public void showCategories(List<Categories> categoryItems) {
 categoryAdapter.setCategoryItemsList(categoryItems);
 categoryAdapter.notifyDataSetChanged();
     }

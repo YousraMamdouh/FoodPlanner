@@ -1,0 +1,22 @@
+package com.example.foodplanner.network;
+
+import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.searchByCategory.model.Categories;
+import com.example.foodplanner.searchByCountry.model.Countries;
+
+import java.util.List;
+
+public interface NetworkDelegate {
+
+    //Meals
+    void onSuccessAllMeals(List<MealsDetails> mealsDetails);
+    void onFailureAllMeals(String errorMsg);
+
+    //Categories
+    void onSuccessAllCategories(List<Categories> categories);
+    void onFailureAllCategories(String errorMsg);
+    //Countries
+    void onSuccessAllCountries(List<Countries> countries);
+    void onFailureAllCountries(String errorMsg);
+
+}
