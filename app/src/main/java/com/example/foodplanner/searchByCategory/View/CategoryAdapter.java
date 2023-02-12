@@ -23,6 +23,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     private static final String Tag="Category Adapter";
     private Context context;
+
+    public void setCategoryItemsList(List<CategoryItems> categoryItemsList) {
+        this.categoryItemsList = categoryItemsList;
+    }
+
     private List<CategoryItems> categoryItemsList;
    // private OnFavoriteClickListener listener;
 
@@ -31,6 +36,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     {
         this.context=context;
         this.categoryItemsList =mealList;
+        System.out.println("adapter created");
+      //  System.out.println("The first item category "+categoryItemsList.get(0).getStrCategory());
 
     }
 
@@ -53,6 +60,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int position) {
         CategoryItems currentProduct = categoryItemsList.get(position);
         holder.categoryName.setText(currentProduct.getStrCategory());
+        //Log.i(Tag,"the category: "+currentProduct.getStrCategory());
+        System.out.println("I'm heere can you see me: "+currentProduct.getIdCategory());
         Glide.with(context).load(currentProduct.getStrCategoryThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.categoryImage);

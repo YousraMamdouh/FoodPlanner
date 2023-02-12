@@ -93,6 +93,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
 
     @Override
     public void showCategories(List<CategoryItems> categoryItems) {
-
+categoryAdapter.setCategoryItemsList(categoryItems);
+categoryAdapter.notifyDataSetChanged();
     }
 }

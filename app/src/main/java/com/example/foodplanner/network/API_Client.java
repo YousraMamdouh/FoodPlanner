@@ -37,12 +37,18 @@ public class API_Client implements RemoteSource{
                 .build();
         api_interface = retrofit.create(API_Interface.class);
         Observable<RootCategories> observable = api_interface.getAllMealsCategories();
-
+        System.out.println("Api");
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessResult(item.getCategoryItems());
+            System.out.println("My items: "+item.getCategoryItems());
+           System.out.println("My items' size: "+item.getCategoryItems().size());
         }, error -> {
+            System.out.println("An error occurs while accessing the API");
         }, () -> {
+            System.out.println("Mission completed successfully");
         });
+
+
 
     }
 }

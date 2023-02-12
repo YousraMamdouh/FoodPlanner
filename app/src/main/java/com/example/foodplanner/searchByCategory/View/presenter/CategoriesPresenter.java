@@ -9,11 +9,11 @@ import java.util.List;
 
 public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegate {
 
-    private CategoriesViewInterface categoriesPresenterInterface;
+    private CategoriesViewInterface viewInterface;
     private RepositoryInterface repo;
 
-    public CategoriesPresenter(CategoriesViewInterface categoriesViewInterface, RepositoryInterface repo) {
-        this.categoriesPresenterInterface = categoriesPresenterInterface;
+    public CategoriesPresenter(CategoriesViewInterface viewInterface, RepositoryInterface repo) {
+        this.viewInterface=viewInterface;
         this.repo = repo;
     }
 
@@ -21,7 +21,8 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
     @Override
     public void onSuccessResult(List<CategoryItems> categoryItems) {
-       categoriesPresenterInterface.showCategories(categoryItems);
+       viewInterface.showCategories(categoryItems);
+        System.out.println("Data retrieved successfully");
     }
 
     @Override
