@@ -1,6 +1,6 @@
-package com.example.foodplanner.searchByCategory.View.presenter;
+package com.example.foodplanner.searchByCategory.presenter.presenter;
 
-import com.example.foodplanner.model.CategoryItems;
+import com.example.foodplanner.searchByCategory.model.CategoryItems;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;

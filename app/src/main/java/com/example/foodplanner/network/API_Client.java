@@ -1,7 +1,6 @@
 package com.example.foodplanner.network;
 
-import com.example.foodplanner.model.RootCategories;
-import com.example.foodplanner.model.RootMeals;
+import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,6 +37,7 @@ public class API_Client implements RemoteSource{
         api_interface = retrofit.create(API_Interface.class);
         Observable<RootCategories> observable = api_interface.getAllMealsCategories();
         System.out.println("Api");
+
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessResult(item.getCategoryItems());
             System.out.println("My items: "+item.getCategoryItems());
@@ -47,6 +47,7 @@ public class API_Client implements RemoteSource{
         }, () -> {
             System.out.println("Mission completed successfully");
         });
+
 
 
 

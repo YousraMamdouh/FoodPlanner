@@ -1,7 +1,6 @@
 package com.example.foodplanner.network;
 
-import com.example.foodplanner.model.CategoryItems;
-import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.searchByCategory.model.CategoryItems;
 
 
 import java.util.List;

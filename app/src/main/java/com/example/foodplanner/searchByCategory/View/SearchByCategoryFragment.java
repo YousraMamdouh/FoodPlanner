@@ -10,13 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
-import com.example.foodplanner.model.CategoryItems;
+import com.example.foodplanner.searchByCategory.model.CategoryItems;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.searchByCategory.View.presenter.CategoriesPresenter;
-import com.example.foodplanner.searchByCategory.View.presenter.CategoriesPresenterInterface;
+import com.example.foodplanner.searchByCategory.presenter.presenter.CategoriesPresenter;
+import com.example.foodplanner.searchByCategory.presenter.presenter.CategoriesPresenterInterface;
 
 import java.util.ArrayList;
 import java.util.List;
