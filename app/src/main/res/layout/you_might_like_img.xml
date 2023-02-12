@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/mealImage"
                 android:layout_width="206dp"
                 android:layout_height="125dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
                 android:background="@drawable/favourite"
                 android:backgroundTint="@color/darkGreen"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
             <TextView
                 android:id="@+id/img_name"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="40dp"
                 android:text="@string/img_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -1,13 +1,12 @@
-package com.example.foodplanner.searchByCategory.presenter.presenter;
+package com.example.foodplanner.searchByCategory.presenter;
 
 import com.example.foodplanner.searchByCategory.model.CategoryItems;
 import com.example.foodplanner.model.RepositoryInterface;
-import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;
 
 import java.util.List;
 
-public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegate {
+public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegateForAllCategories {
 
     private CategoriesViewInterface viewInterface;
     private RepositoryInterface repo;
@@ -20,20 +19,20 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
 
     @Override
-    public void onSuccessResult(List<CategoryItems> categoryItems) {
+    public void onSuccessAllCategories(List<CategoryItems> categoryItems) {
        viewInterface.showCategories(categoryItems);
         System.out.println("Data retrieved successfully");
     }
 
     @Override
-    public void onFailureResult(String errorMsg) {
-        System.out.println("Failed to get data ");
+    public void onFailureAllCategories(String errorMsg) {
+        System.out.println("Failed to get categories ");
 
     }
 
 
     @Override
     public void getCategories() {
-        repo.enqueueCall(this);
+        repo.enqueueCallCategories(this);
     }
 }

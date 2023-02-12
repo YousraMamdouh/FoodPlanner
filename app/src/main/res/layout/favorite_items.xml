@@ -14,36 +14,28 @@
         android:layout_width="243dp"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="124dp"
-            android:layout_margin="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+
 
         <TextView
-            android:id="@+id/nameView"
+            android:id="@+id/mealCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/nameView2"
-            app:layout_constraintEnd_toEndOf="@+id/nameView2"
+            app:layout_constraintBottom_toTopOf="@+id/counteryName"
+            app:layout_constraintEnd_toEndOf="@+id/counteryName"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/nameView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintStart_toStartOf="@+id/counteryName"
+            app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
         <TextView
-            android:id="@+id/nameView2"
+            android:id="@+id/counteryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameView" />
+            app:layout_constraintTop_toBottomOf="@+id/mealCountry" />
 
         <Button
             android:id="@+id/signUpPageButton"
@@ -51,7 +43,7 @@
             android:layout_height="35dp"
             android:background="@drawable/baseline_delete_outline_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
