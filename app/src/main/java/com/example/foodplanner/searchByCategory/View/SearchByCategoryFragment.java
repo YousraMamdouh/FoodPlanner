@@ -3,20 +3,36 @@ package com.example.foodplanner.searchByCategory.View;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
+import com.example.foodplanner.model.CategoryItems;
+import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.API_Client;
+import com.example.foodplanner.searchByCategory.View.presenter.CategoriesPresenter;
+import com.example.foodplanner.searchByCategory.View.presenter.CategoriesPresenterInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SearchByCategoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchByCategoryFragment extends Fragment {
+public class SearchByCategoryFragment extends Fragment implements CategoriesViewInterface {
 
+
+    RecyclerView categoryRecyclerView;
+    CategoryAdapter categoryAdapter;
+    LinearLayoutManager layoutManager;
+    CategoriesPresenterInterface categoriesPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +77,22 @@ public class SearchByCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_by_category, container, false);
+        View view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
+        categoryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
+        layoutManager=new LinearLayoutManager(getActivity());
+        categoryAdapter= new CategoryAdapter(getActivity(),new ArrayList<>());
+        categoriesPresenterInterface= new CategoriesPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+        categoryRecyclerView.setLayoutManager(layoutManager);
+        categoryRecyclerView.setAdapter(categoryAdapter);
+        categoriesPresenterInterface.getCategories();
+
+
+
+        return view;
+    }
+
+    @Override
+    public void showCategories(List<CategoryItems> categoryItems) {
+
     }
 }
