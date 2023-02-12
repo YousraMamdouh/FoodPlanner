@@ -38,6 +38,7 @@
             </SearchView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ingredientRecyclerView"
                 android:layout_width="352dp"
                 android:layout_height="561dp"
                 app:layout_constraintBottom_toBottomOf="parent"

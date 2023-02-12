@@ -1,21 +1,21 @@
-package com.example.foodplanner.searchByCategory.presenter;
+package com.example.foodplanner.searchByIngredient.presenter;
 
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
+import com.example.foodplanner.searchByIngredient.View.IngredientsViewInterface;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
 
-public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegate {
+public class IngredientsPresenter implements IngredientsPresenterInterface, NetworkDelegate {
 
-    private CategoriesViewInterface viewInterface;
+    private IngredientsViewInterface viewInterface;
     private RepositoryInterface repo;
 
-    public CategoriesPresenter(CategoriesViewInterface viewInterface, RepositoryInterface repo) {
+    public IngredientsPresenter(IngredientsViewInterface viewInterface, RepositoryInterface repo) {
         this.viewInterface=viewInterface;
         this.repo = repo;
     }
@@ -28,40 +28,35 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
     public void onFailureAllMeals(String errorMsg) {}
 
     @Override
-    public void onSuccessAllCategories(List<Categories> categoryItems) {
-       viewInterface.showCategories(categoryItems);
-        System.out.println("Data retrieved successfully");
-    }
+    public void onSuccessAllCategories(List<Categories> categories) {}
+
 
     @Override
-    public void onFailureAllCategories(String errorMsg) {
-        System.out.println("Failed to get categories ");
-
-    }
+    public void onFailureAllCategories(String errorMsg) {}
 
     @Override
-    public void onSuccessAllCountries(List<Countries> countries) {
-
-    }
+    public void onSuccessAllCountries(List<Countries> countries) {}
 
     @Override
-    public void onFailureAllCountries(String errorMsg) {
-
-    }
+    public void onFailureAllCountries(String errorMsg) {}
 
     @Override
     public void onSuccessAllIngredients(List<Ingredients> ingredients) {
+        viewInterface.showIngredients(ingredients);
+        System.out.println("Ingredients retrieved successfully");
 
     }
 
     @Override
     public void onFailureAllIngredients(String errorMsg) {
-
+        System.out.println("Failed to get Ingredients");
     }
 
 
+
     @Override
-    public void getCategories() {
+    public void getIngredients() {
         repo.enqueueCall(this);
+
     }
 }

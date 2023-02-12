@@ -3,6 +3,7 @@ package com.example.foodplanner.network;
 import com.example.foodplanner.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
+import com.example.foodplanner.searchByIngredient.model.RootIngredients;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -75,6 +76,17 @@ public class API_Client implements  RemoteSource {
             System.out.println(item.getCountries());
         }, error -> {
             System.out.println("An error occurs while accessing the all countries  API");
+        }, () -> {
+            System.out.println("Mission completed successfully");
+        });
+
+        Observable<RootIngredients> ingredientsObservable=api_interface.getAllIngredients();
+        ingredientsObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+            networkDelegate.onSuccessAllIngredients(item.getIngredients());
+            System.out.println("Ingredients are here");
+            System.out.println(item.getIngredients());
+        }, error -> {
+            System.out.println("An error occurs while accessing the all Ingredients  API");
         }, () -> {
             System.out.println("Mission completed successfully");
         });

@@ -6,6 +6,7 @@ import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.search.View.AllMealsViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
+import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
 
@@ -45,6 +46,16 @@ public class AllMealsPresenter implements AllMealsPresenterInterface, NetworkDel
 
     @Override
     public void onFailureAllCountries(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessAllIngredients(List<Ingredients> ingredients) {
+
+    }
+
+    @Override
+    public void onFailureAllIngredients(String errorMsg) {
 
     }
 
