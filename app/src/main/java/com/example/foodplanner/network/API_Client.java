@@ -32,8 +32,6 @@ public class API_Client implements  RemoteSource {
 
 
 
-
-
     @Override
     public void enqueueCall(NetworkDelegate networkDelegate) {
         Gson gson = new GsonBuilder().create();
@@ -91,6 +89,8 @@ public class API_Client implements  RemoteSource {
             System.out.println("Mission completed successfully");
         });
 
+
+      //  Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCountry();
 
     }
 }
