@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchByCategory.model.Categories;
@@ -83,7 +84,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
       //  layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL);
 
         categoryAdapter= new CategoryAdapter(getActivity(),new ArrayList<>());
-        categoriesPresenterInterface= new CategoriesPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+        categoriesPresenterInterface= new CategoriesPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         categoryRecyclerView.setLayoutManager(layoutManager);
         categoryRecyclerView.setAdapter(categoryAdapter);
         categoriesPresenterInterface.getCategories();

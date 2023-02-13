@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.searchByCountry.View.CountriesAdapter;
-import com.example.foodplanner.searchByCountry.presenter.CountriesPresenter;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 import com.example.foodplanner.searchByIngredient.presenter.IngredientsPresenter;
 import com.example.foodplanner.searchByIngredient.presenter.IngredientsPresenterInterface;
@@ -80,7 +79,7 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
         ingredientRecyclerView=view.findViewById(R.id.ingredientRecyclerView);
         layoutManager=new LinearLayoutManager(getActivity());
         ingredientsAdapter=new IngredientsAdapter(getActivity(),new ArrayList<>());
-        ingredientsPresenterInterface= new IngredientsPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+        ingredientsPresenterInterface= new IngredientsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         ingredientRecyclerView.setLayoutManager(layoutManager);
         ingredientRecyclerView.setAdapter(ingredientsAdapter);
         ingredientsPresenterInterface.getIngredients();

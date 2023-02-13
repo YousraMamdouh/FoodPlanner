@@ -79,7 +79,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryName=itemView.findViewById(R.id.nameView);
-            categoryImage=itemView.findViewById(R.id.imageView);
+            categoryImage=itemView.findViewById(R.id.favMealImage);
         }
     }
 }

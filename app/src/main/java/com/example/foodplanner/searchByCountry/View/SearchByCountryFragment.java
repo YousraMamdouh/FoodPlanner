@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchByCountry.model.Countries;
@@ -78,7 +79,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
         countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
         layoutManager=new LinearLayoutManager(getActivity());
         countriesAdapter=new CountriesAdapter(getActivity(), new ArrayList<>());
-        countriesPresenterInterface= new CountriesPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+        countriesPresenterInterface= new CountriesPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        countryRecyclerView.setLayoutManager(layoutManager);
        countryRecyclerView.setAdapter(countriesAdapter);
        countriesPresenterInterface.getCountries();

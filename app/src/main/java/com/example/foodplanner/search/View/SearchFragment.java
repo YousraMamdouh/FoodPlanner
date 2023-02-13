@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
@@ -26,7 +28,7 @@ import java.util.List;
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment implements AllMealsViewInterface {
+public class SearchFragment extends Fragment implements AllMealsViewInterface , AddToFavoriteClickListener{
 Button cuisineButton;
 Button categoryButton;
 Button ingredientButton;
@@ -87,8 +89,8 @@ AllMealsPresenterInterface allMealsPresenterInterface;
        allMealsRecyclerView=view.findViewById(R.id.allMealsRecyclerView);
     //   layoutManager=new LinearLayoutManager(getActivity());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
-       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>());
-       allMealsPresenterInterface=new AllMealsPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>(),this);
+       allMealsPresenterInterface=new AllMealsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        allMealsRecyclerView.setLayoutManager(layoutManager);
        allMealsRecyclerView.setAdapter(allMealsAdapter);
        allMealsPresenterInterface.getMeals();
@@ -122,5 +124,16 @@ AllMealsPresenterInterface allMealsPresenterInterface;
     public void showMeals(List<MealsDetails> mealsDetails) {
         allMealsAdapter.setAllMealsItemList(mealsDetails);
         allMealsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void addMealToFavorites(MealsDetails mealsDetails) {
+allMealsPresenterInterface.addToFavorites(mealsDetails);
+    }
+
+    @Override
+    public void onClick(MealsDetails currentMeal) {
+        Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
+addMealToFavorites(currentMeal);
     }
 }

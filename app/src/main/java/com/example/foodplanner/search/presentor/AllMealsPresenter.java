@@ -64,4 +64,9 @@ public class AllMealsPresenter implements AllMealsPresenterInterface, NetworkDel
         repo.enqueueCall(this);
 
     }
+
+    @Override
+    public void addToFavorites(MealsDetails mealsDetails) {
+        repo.addToFavorites(mealsDetails);
+    }
 }
