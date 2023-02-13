@@ -77,7 +77,11 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
         categoryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
+
+
         layoutManager=new LinearLayoutManager(getActivity());
+      //  layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL);
+
         categoryAdapter= new CategoryAdapter(getActivity(),new ArrayList<>());
         categoriesPresenterInterface= new CategoriesPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
         categoryRecyclerView.setLayoutManager(layoutManager);

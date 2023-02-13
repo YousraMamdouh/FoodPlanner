@@ -1,4 +1,4 @@
-package com.example.foodplanner.favorite.View;
+package com.example.foodplanner.favorite.view;
 
 import android.os.Bundle;
 

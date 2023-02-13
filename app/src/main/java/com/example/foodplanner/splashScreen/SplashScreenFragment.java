@@ -1,4 +1,4 @@
-package com.example.foodplanner.splashScreen.View;
+package com.example.foodplanner.splashScreen;
 
 import android.os.Bundle;
 
@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.foodplanner.R;

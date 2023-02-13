@@ -13,15 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.foodplanner.authentication.View.AuthenticationFragment;
-import com.example.foodplanner.calender.View.CalenderFragment;
-import com.example.foodplanner.favorite.View.FavoriteFragment;
-import com.example.foodplanner.homeFragment.View.HomeFragment;
-import com.example.foodplanner.search.View.SearchFragment;
-import com.example.foodplanner.splashScreen.View.SplashScreenFragment;
-import com.example.foodplanner.userDetails.AccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;

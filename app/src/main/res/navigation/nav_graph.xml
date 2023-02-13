@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.example.foodplanner.splashScreen.View.SplashScreenFragment"
+        android:name="com.example.foodplanner.splashScreen.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
@@ -66,7 +66,7 @@
         tools:layout="@layout/fragment_calender_screen" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.foodplanner.favorite.View.FavoriteFragment"
+        android:name="com.example.foodplanner.favorite.view.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment

@@ -86,7 +86,7 @@ AllMealsPresenterInterface allMealsPresenterInterface;
        ingredientButton=view.findViewById(R.id.ingredientsButton);
        allMealsRecyclerView=view.findViewById(R.id.allMealsRecyclerView);
     //   layoutManager=new LinearLayoutManager(getActivity());
-        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
        allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>());
        allMealsPresenterInterface=new AllMealsPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
        allMealsRecyclerView.setLayoutManager(layoutManager);

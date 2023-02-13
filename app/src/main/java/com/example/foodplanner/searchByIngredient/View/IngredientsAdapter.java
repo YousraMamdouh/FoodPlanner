@@ -5,11 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
@@ -53,9 +55,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         Ingredients current = ingredientsList.get(position);
         holder.ingredientName.setText(current.getStrIngredient());
     //    System.out.println("I'm heere can you see me: "+ current.getIdCategory());
-//        Glide.with(context).load(current.getStrCategoryThumb())
-//                .apply(new RequestOptions()
-//                        .override(150,150)).into(holder.categoryImage);
+       // Glide.with(context).load(current.getStrCategoryThumb()).apply(new RequestOptions().override(150,150)).into(holder.categoryImage);
+        Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position).getStrIngredient()));
+
         Log.i(Tag,"onBindViewHolder");
     }
 
@@ -67,11 +69,11 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView ingredientName;
-      //  ImageView categoryImage;
+      ImageView ingredientImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             ingredientName =itemView.findViewById(R.id.nameView);
-          //  categoryImage=itemView.findViewById(R.id.categoryImage);
+          ingredientImage=itemView.findViewById(R.id.imageView);
         }
     }
 }
