@@ -39,6 +39,7 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
     {
         this.context=context;
         this.allMealsList = allMealsList;
+        this.addToFavoriteClickListener=listener;
     }
 
     @NonNull

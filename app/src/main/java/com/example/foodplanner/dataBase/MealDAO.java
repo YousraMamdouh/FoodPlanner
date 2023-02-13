@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.foodplanner.model.MealsDetails;
@@ -15,8 +16,9 @@ public interface MealDAO {
 
     @Query("SELECT * FROM MealDetails")
     LiveData<List<MealsDetails>> getAllMeals();
-    @Insert
-   void insertMeal(MealsDetails mealsDetails);
+    @Insert(onConflict = OnConflictStrategy.IGNORE) //law el element mawgood abl keda may7tohosh fl database
+
+    void insertMeal(MealsDetails mealsDetails);
     @Delete
   void  deleteMeal(MealsDetails mealsDetails);
 }

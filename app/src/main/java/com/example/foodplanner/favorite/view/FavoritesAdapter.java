@@ -26,18 +26,14 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
     private Context context;
     private OnDeleteClickListener onDeleteClickListener;
 
-//    public void setAllMealsItemList(List<MealsDetails> allMealsList) {
-//        this.favoriteMealsList =allMealsList;
-//    }
 
-
-   // private OnFavoriteClickListener listener;
 
 
     public FavoritesAdapter(Context context, List<MealsDetails> favoriteMealsList,OnDeleteClickListener listener)
     {
         this.context=context;
         this.favoriteMealsList = favoriteMealsList;
+        this.onDeleteClickListener=listener;
     }
 
     @NonNull
@@ -57,18 +53,18 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        MealsDetails currentMeal = favoriteMealsList.get(position);
-        holder.mealName.setText(currentMeal.getStrMeal());
+        MealsDetails currentProduct = favoriteMealsList.get(position);
+        holder.mealName.setText(currentProduct.getStrMeal());
         //Log.i(Tag,"the category: "+currentProduct.getStrCategory());
        // System.out.println("My name is : "+currentProduct.getIdMeal());
-       holder.mealCountry.setText(currentMeal.getStrArea());
-        Glide.with(context).load(currentMeal.getStrMealThumb())
+       holder.mealCountry.setText(currentProduct.getStrArea());
+        Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              onDeleteClickListener.onClick(currentMeal);
+              onDeleteClickListener.onClick(currentProduct);
             }
         });
         Log.i(Tag,"onBindViewHolder");
@@ -79,6 +75,10 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         return favoriteMealsList.size();
     }
 
+    public void setList(List<MealsDetails> mealsDetails) {
+        this.favoriteMealsList=mealsDetails;
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView mealName;
@@ -87,7 +87,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         Button deleteButton;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            mealImage=itemView.findViewById(R.id.favMealImage);
+            mealImage=itemView.findViewById(R.id.favImageView);
             mealName=itemView.findViewById(R.id.favMealName);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             deleteButton=itemView.findViewById(R.id.favButton);

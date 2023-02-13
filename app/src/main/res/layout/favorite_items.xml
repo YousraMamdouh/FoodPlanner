@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="280dp"
     android:layout_margin="20dp"
     android:elevation="6dp"
@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="243dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
@@ -45,7 +45,6 @@
             app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/favMealImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
@@ -53,7 +52,14 @@
             app:layout_constraintBottom_toTopOf="@+id/favMealName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/favImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:srcCompat="@tools:sample/avatars" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline16"
