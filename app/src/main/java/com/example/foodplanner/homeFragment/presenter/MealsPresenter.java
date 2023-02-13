@@ -1,41 +1,54 @@
-package com.example.foodplanner.searchByCategory.presenter;
+package com.example.foodplanner.homeFragment.presenter;
 
+import com.example.foodplanner.homeFragment.View.HomeMealsViewInterface;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
-import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;
-import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.network.NetworkDelegate;
+import com.example.foodplanner.search.View.AllMealsViewInterface;
+import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
 
-public class CategoriesPresenter implements CategoriesPresenterInterface, NetworkDelegate {
+public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate {
 
-    private CategoriesViewInterface viewInterface;
+    private HomeMealsViewInterface viewInterface;
     private RepositoryInterface repo;
 
-    public CategoriesPresenter(CategoriesViewInterface viewInterface, RepositoryInterface repo) {
+    public MealsPresenter(HomeMealsViewInterface viewInterface, RepositoryInterface repo) {
         this.viewInterface=viewInterface;
         this.repo = repo;
     }
 
+    @Override
+    public void getMeals() {
+        repo.enqueueCall(this);
+    }
 
     @Override
-    public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {}
+    public void getDailyInspiration() {
+        repo.enqueueCall(this);
+    }
 
     @Override
-    public void onFailureAllMeals(String errorMsg) {}
+    public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {
+        viewInterface.showMeals(mealsDetails);
+        System.out.println("presenter meals");
+    }
 
     @Override
-    public void onSuccessAllCategories(List<Categories> categoryItems) {
-       viewInterface.showCategories(categoryItems);
-        System.out.println("Data retrieved successfully");
+    public void onFailureAllMeals(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessAllCategories(List<Categories> categories) {
+
     }
 
     @Override
     public void onFailureAllCategories(String errorMsg) {
-        System.out.println("Failed to get categories ");
 
     }
 
@@ -61,17 +74,12 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
     @Override
     public void onSuccessDailyInspiration(MealsDetails meal) {
-
+        System.out.println("presenter inspiration");
+        viewInterface.showDailyInspiration(meal);
     }
 
     @Override
     public void onFailureDailyInspiration(String errorMsg) {
 
-    }
-
-
-    @Override
-    public void getCategories() {
-        repo.enqueueCall(this);
     }
 }

@@ -1,11 +1,15 @@
 package com.example.foodplanner.network;
 
+
+
+import com.example.foodplanner.model.DailyInspirationRoot;
 import com.example.foodplanner.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
 import com.example.foodplanner.searchByIngredient.model.RootIngredients;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -91,6 +95,14 @@ public class API_Client implements  RemoteSource {
             System.out.println("Mission completed successfully");
         });
 
+        Observable<DailyInspirationRoot> dailyInspiration=api_interface.getRandomMeal();
+        dailyInspiration.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+            networkDelegate.onSuccessDailyInspiration(item.getMeal());
+        }, error -> {
+            networkDelegate.onFailureDailyInspiration(error.getMessage());
+        }, () -> {
+            System.out.println("Mission completed successfully");
+        });
 
     }
 }

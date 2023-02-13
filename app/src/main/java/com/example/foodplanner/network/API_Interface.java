@@ -1,6 +1,7 @@
 package com.example.foodplanner.network;
 
 
+import com.example.foodplanner.model.DailyInspirationRoot;
 import com.example.foodplanner.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
@@ -23,6 +24,7 @@ Observable<RootCategories> getAllMealsCategories();
 @GET("list.php?i=list")
     Observable<RootIngredients> getAllIngredients();
 
-
+@GET("random.php")
+Observable<DailyInspirationRoot> getRandomMeal();
 
 }

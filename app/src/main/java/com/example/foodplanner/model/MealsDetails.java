@@ -15,17 +15,14 @@ public class MealsDetails implements Serializable {
     private String strMeal;
     private String strDrinkAlternate;
     private String strCategoryl;
-
-  public MealsDetails( String strMeal, String strArea, String strMealThumb, String strInstructions,
-  String strYoutube ){
-
+    public MealsDetails(){}
+    public MealsDetails(String strMeal, String strArea, String strMealThumb, String strInstructions,
+  String strYoutube ) {
       this.strMeal = strMeal;
       this.strArea = strArea;
       this.strMealThumb = strMealThumb;
       this.strInstructions = strInstructions;
       this.strYoutube= strYoutube;
-
-
   }
 
     private String strArea;

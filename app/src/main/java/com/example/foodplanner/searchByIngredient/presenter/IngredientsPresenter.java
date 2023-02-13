@@ -52,11 +52,19 @@ public class IngredientsPresenter implements IngredientsPresenterInterface, Netw
         System.out.println("Failed to get Ingredients");
     }
 
+    @Override
+    public void onSuccessDailyInspiration(MealsDetails meal) {
+
+    }
+
+    @Override
+    public void onFailureDailyInspiration(String errorMsg) {
+
+    }
 
 
     @Override
     public void getIngredients() {
         repo.enqueueCall(this);
-
     }
 }

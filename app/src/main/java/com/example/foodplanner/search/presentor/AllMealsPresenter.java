@@ -60,6 +60,16 @@ public class AllMealsPresenter implements AllMealsPresenterInterface, NetworkDel
     }
 
     @Override
+    public void onSuccessDailyInspiration(MealsDetails meal) {
+
+    }
+
+    @Override
+    public void onFailureDailyInspiration(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
         repo.enqueueCall(this);
 
