@@ -73,6 +73,11 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     }
 
     @Override
+    public void onSuccessDailyInspiration(List<MealsDetails> meal) {
+
+    }
+
+
     public void onSuccessDailyInspiration(MealsDetails meal) {
         System.out.println("presenter inspiration");
         viewInterface.showDailyInspiration(meal);

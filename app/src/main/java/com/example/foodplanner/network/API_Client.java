@@ -98,10 +98,14 @@ public class API_Client implements  RemoteSource {
         Observable<DailyInspirationRoot> dailyInspiration=api_interface.getRandomMeal();
         dailyInspiration.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessDailyInspiration(item.getMeal());
+            System.out.println("iuuu"+ item.getMeal().get(0).getIdMeal());
+
         }, error -> {
             networkDelegate.onFailureDailyInspiration(error.getMessage());
+            System.out.println("failed to get daily inspiration");
         }, () -> {
             System.out.println("Mission completed successfully");
+
         });
 
     }

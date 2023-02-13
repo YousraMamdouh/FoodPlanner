@@ -25,6 +25,6 @@ public interface NetworkDelegate {
     void onSuccessAllIngredients(List<Ingredients> ingredients);
     void onFailureAllIngredients(String errorMsg);
 
-    void onSuccessDailyInspiration(MealsDetails meal);
+    void onSuccessDailyInspiration(List<MealsDetails> meal);
     void onFailureDailyInspiration(String errorMsg);
 }

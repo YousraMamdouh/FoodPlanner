@@ -53,9 +53,10 @@ public class IngredientsPresenter implements IngredientsPresenterInterface, Netw
     }
 
     @Override
-    public void onSuccessDailyInspiration(MealsDetails meal) {
+    public void onSuccessDailyInspiration(List<MealsDetails> meal) {
 
     }
+
 
     @Override
     public void onFailureDailyInspiration(String errorMsg) {

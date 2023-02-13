@@ -60,9 +60,10 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
     }
 
     @Override
-    public void onSuccessDailyInspiration(MealsDetails meal) {
+    public void onSuccessDailyInspiration(List<MealsDetails> meal) {
 
     }
+
 
     @Override
     public void onFailureDailyInspiration(String errorMsg) {

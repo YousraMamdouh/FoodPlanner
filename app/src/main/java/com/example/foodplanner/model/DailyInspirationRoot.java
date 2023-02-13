@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DailyInspirationRoot {
-    private MealsDetails meal=new MealsDetails();
-    public MealsDetails getMeal() {
-        return meal;
+    private List<MealsDetails>  meals=new ArrayList<>();
+    public List<MealsDetails> getMeal() {
+        return meals;
     }
 }

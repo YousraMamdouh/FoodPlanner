@@ -105,6 +105,9 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
         System.out.println(mealsDetails);
         System.out.println("kkkkkkkkkkkk");
         mealsAdapter.youMightLikeList = mealsDetails;
+        Glide.with(getContext()).load(mealsDetails.getStrCategoryThumb())
+                .apply(new RequestOptions()
+                        .override(150,150)).into(holder.categoryImage);
         mealsAdapter.notifyDataSetChanged();
     }
 
