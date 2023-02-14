@@ -25,7 +25,7 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
     private List<MealsDetails> allMealsList;
     private Context context;
 
-    private AddToFavoriteClickListener addToFavoriteClickListener;
+    private AddToFavorites addToFavorites;
 
     public void setCategoryItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
@@ -35,11 +35,11 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
    // private OnFavoriteClickListener listener;
 
 
-    public SpecificCategoryAdapter(Context context, List<MealsDetails> allMealsList, AddToFavoriteClickListener listener)
+    public SpecificCategoryAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorites listener)
     {
         this.context=context;
         this.allMealsList = allMealsList;
-        this.addToFavoriteClickListener=listener;
+        this.addToFavorites =listener;
     }
 
     @NonNull
@@ -68,7 +68,7 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToFavoriteClickListener.onClick(currentProduct);
+                addToFavorites.onClick(currentProduct);
             }
         });
         Log.i(Tag,"onBindViewHolder");

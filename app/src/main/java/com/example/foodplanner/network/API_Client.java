@@ -95,6 +95,7 @@ public class API_Client implements  RemoteSource {
 
     @Override
     public void enqueueCallSpecificCategory(NetworkDelegate networkDelegate, String str) {
+        System.out.println("gowa el call");
         Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
 mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
     networkDelegate.onSuccessSpecificCategory(item.getAllMeals());

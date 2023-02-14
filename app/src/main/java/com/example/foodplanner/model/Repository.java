@@ -40,10 +40,12 @@ public class Repository implements RepositoryInterface{
     @Override
     public void enqueueCall(NetworkDelegate networkDelegate) {
         remoteSource.enqueueCall(networkDelegate);
+
     }
 
     @Override
     public void enqueueCallSpecificCategory(NetworkDelegate networkDelegate, String str) {
+        remoteSource.enqueueCallSpecificCategory(networkDelegate,str);
 
     }
 

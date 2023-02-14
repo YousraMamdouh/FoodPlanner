@@ -57,7 +57,7 @@
             app:destination="@id/searchByCountryFragment" />
         <action
             android:id="@+id/action_searchScreen_to_searchByCategoryFragment"
-            app:destination="@id/searchByCategoryFragment" />
+            app:destination="@id/searchByCategory" />
     </fragment>
     <fragment
         android:id="@+id/calenderScreen"
@@ -75,7 +75,7 @@
         android:label="fragment_searc_byh_ingridient"
         tools:layout="@layout/fragment_search_by_ingridient" />
     <fragment
-        android:id="@+id/searchByCategoryFragment"
+        android:id="@+id/searchByCategory"
         android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"
         android:label="fragment_search_by_category"
         tools:layout="@layout/fragment_search_by_category" >
@@ -132,7 +132,11 @@
     </fragment>
     <fragment
         android:id="@+id/searchSpecificCategory"
-        android:name="com.example.foodplanner.searchSpecificCategory.view.SpecificCategory"
+        android:name="com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryFragment"
         android:label="fragment_search_specific_category"
-        tools:layout="@layout/fragment_search_specific_category" />
+        tools:layout="@layout/fragment_search_specific_category" >
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+    </fragment>
 </navigation>

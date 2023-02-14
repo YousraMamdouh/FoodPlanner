@@ -3,7 +3,6 @@ package com.example.foodplanner.searchSpecificCategory.presenter;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
@@ -11,7 +10,7 @@ import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryViewI
 
 import java.util.List;
 
-public class SpecificCategoryPresenter implements AllMealsPresenterInterface, NetworkDelegate {
+public class SpecificCategoryPresenter implements SpecificCategoryPresenterInterface, NetworkDelegate {
 
     private SpecificCategoryViewInterface viewInterface;
     private RepositoryInterface repo;
@@ -61,7 +60,8 @@ public class SpecificCategoryPresenter implements AllMealsPresenterInterface, Ne
 
     @Override
     public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
-viewInterface.showMeals(mealsDetails);
+        viewInterface.showMeals(mealsDetails);
+        System.out.println("Data retrieved successfully");
     }
 
     @Override
@@ -71,6 +71,7 @@ viewInterface.showMeals(mealsDetails);
 
     @Override
     public void getMeals() {
+        System.out.println("bnady 3aleh");
         repo.enqueueCallSpecificCategory(this,category);
 
     }
