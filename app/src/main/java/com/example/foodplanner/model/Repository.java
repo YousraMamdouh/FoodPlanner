@@ -43,6 +43,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public void enqueueCallSpecificCategory(NetworkDelegate networkDelegate, String str) {
+
+    }
+
+    @Override
     public LiveData<List<MealsDetails>> getAllStoredMeals() {
         return localSource.getAllStoredMeals();
     }

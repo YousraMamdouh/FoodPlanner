@@ -78,7 +78,11 @@
         android:id="@+id/searchByCategoryFragment"
         android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"
         android:label="fragment_search_by_category"
-        tools:layout="@layout/fragment_search_by_category" />
+        tools:layout="@layout/fragment_search_by_category" >
+        <action
+            android:id="@+id/action_searchByCategoryFragment_to_searchSpecificCategory"
+            app:destination="@id/searchSpecificCategory" />
+    </fragment>
     <fragment
         android:id="@+id/searchByCountryFragment"
         android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
@@ -126,4 +130,9 @@
             android:id="@+id/action_blankFragmentOnBoarding_to_authentication"
             app:destination="@id/authentication" />
     </fragment>
+    <fragment
+        android:id="@+id/searchSpecificCategory"
+        android:name="com.example.foodplanner.searchSpecificCategory.view.SpecificCategory"
+        android:label="fragment_search_specific_category"
+        tools:layout="@layout/fragment_search_specific_category" />
 </navigation>

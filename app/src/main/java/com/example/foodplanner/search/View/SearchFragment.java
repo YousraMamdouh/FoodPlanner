@@ -17,7 +17,7 @@ import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.search.presentor.AllMealsPresenter;
+import com.example.foodplanner.search.presentor.allMealsPresenter;
 import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ AllMealsPresenterInterface allMealsPresenterInterface;
     //   layoutManager=new LinearLayoutManager(getActivity());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
        allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>(),this);
-       allMealsPresenterInterface=new AllMealsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
+       allMealsPresenterInterface=new allMealsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        allMealsRecyclerView.setLayoutManager(layoutManager);
        allMealsRecyclerView.setAdapter(allMealsAdapter);
        allMealsPresenterInterface.getMeals();

@@ -1,36 +1,36 @@
-package com.example.foodplanner.search.presentor;
+package com.example.foodplanner.searchSpecificCategory.presenter;
 
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.search.View.AllMealsViewInterface;
+import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
+import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryViewInterface;
 
 import java.util.List;
 
-public class AllMealsPresenter implements AllMealsPresenterInterface, NetworkDelegate {
+public class SpecificCategoryPresenter implements AllMealsPresenterInterface, NetworkDelegate {
 
-    private AllMealsViewInterface viewInterface;
+    private SpecificCategoryViewInterface viewInterface;
     private RepositoryInterface repo;
+    private String category;
 
-    public AllMealsPresenter(AllMealsViewInterface viewInterface, RepositoryInterface repo) {
+    public SpecificCategoryPresenter(SpecificCategoryViewInterface viewInterface, RepositoryInterface repo,String category) {
         this.viewInterface=viewInterface;
         this.repo = repo;
+        this.category=category;
     }
 
 
 
     @Override
     public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {
-        viewInterface.showMeals(mealsDetails);
-
     }
 
     @Override
     public void onFailureAllMeals(String errorMsg) {
-        System.out.println("Failed to get Meals ");
     }
 
     @Override
@@ -60,8 +60,18 @@ public class AllMealsPresenter implements AllMealsPresenterInterface, NetworkDel
     }
 
     @Override
+    public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
+viewInterface.showMeals(mealsDetails);
+    }
+
+    @Override
+    public void onFailureSpecificCategory(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
-        repo.enqueueCall(this);
+        repo.enqueueCallSpecificCategory(this,category);
 
     }
 
