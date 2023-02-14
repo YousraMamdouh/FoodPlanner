@@ -10,6 +10,7 @@ import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
+import java.util.Random;
 
 public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate {
 
@@ -24,6 +25,7 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     @Override
     public void getMeals() {
         repo.enqueueCall(this);
+        System.out.println("enqueue for inspiration");
     }
 
     @Override
@@ -74,17 +76,25 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
 
     @Override
     public void onSuccessDailyInspiration(List<MealsDetails> meal) {
-
-    }
-
-
-    public void onSuccessDailyInspiration(MealsDetails meal) {
         System.out.println("presenter inspiration");
-        viewInterface.showDailyInspiration(meal);
+
+     int randomNo=getRandomNumber(meal);
+        viewInterface.showDailyInspiration(meal.get(meal.indexOf(randomNo)));
+
     }
+
+
 
     @Override
     public void onFailureDailyInspiration(String errorMsg) {
 
     }
+
+    public int getRandomNumber(List<MealsDetails> meal){
+
+        Random random = new Random();
+        int randomNumber = random.nextInt(0 - meal.size() );
+        return  randomNumber;
+    }
+
 }
