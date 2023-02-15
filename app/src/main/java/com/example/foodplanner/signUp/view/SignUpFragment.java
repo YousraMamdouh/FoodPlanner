@@ -2,17 +2,13 @@ package com.example.foodplanner.signUp.view;
 
 import static android.app.ProgressDialog.show;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.viewpager.widget.PagerAdapter;
 
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +18,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.authentication.View.AuthenticationFragment;
-import com.example.foodplanner.userDetails.AccountFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -93,7 +87,7 @@ public class SignUpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        signUpButton = view.findViewById(R.id.btnSignup);
+        signUpButton = view.findViewById(R.id.favButton);
         name = view.findViewById(R.id.nameSignuptxt);
         Email = view.findViewById(R.id.emailSigntxt);
         password = view.findViewById(R.id.passwordSignup);

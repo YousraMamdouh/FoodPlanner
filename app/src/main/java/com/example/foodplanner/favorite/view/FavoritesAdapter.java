@@ -90,7 +90,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
             mealImage=itemView.findViewById(R.id.favImageView);
             mealName=itemView.findViewById(R.id.favMealName);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
-            deleteButton=itemView.findViewById(R.id.btnSignup);
+            deleteButton=itemView.findViewById(R.id.favButton);
 
         }
     }

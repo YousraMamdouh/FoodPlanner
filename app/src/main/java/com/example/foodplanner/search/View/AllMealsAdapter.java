@@ -90,7 +90,7 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
             mealImage=itemView.findViewById(R.id.mealImageView);
             mealName=itemView.findViewById(R.id.favMealName);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
-            favButton=itemView.findViewById(R.id.btnSignup);
+            favButton=itemView.findViewById(R.id.favButton);
 
         }
     }
