@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.foodplanner.R;
 
@@ -20,6 +21,8 @@ import com.example.foodplanner.R;
 public class AuthenticationFragment extends Fragment {
 CardView signUpView;
 CardView loginView;
+
+Button skip;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -68,6 +71,14 @@ CardView loginView;
         View view=inflater.inflate(R.layout.fragment_authentication, container, false);
         signUpView=view.findViewById(R.id.signupButton);
         loginView=view.findViewById(R.id.loginButton);
+        skip = view.findViewById(R.id.skipBtn);
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_authentication_to_homeScreen);
+            }
+        });
 
         loginView.setOnClickListener(new View.OnClickListener() {
             @Override
