@@ -56,7 +56,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         holder.ingredientName.setText(current.getStrIngredient());
     //    System.out.println("I'm heere can you see me: "+ current.getIdCategory());
        // Glide.with(context).load(current.getStrCategoryThumb()).apply(new RequestOptions().override(150,150)).into(holder.categoryImage);
-        Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position).getStrIngredient()));
+        Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position).getStrIngredient()))
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(holder.ingredientImage);
 
         Log.i(Tag,"onBindViewHolder");
     }

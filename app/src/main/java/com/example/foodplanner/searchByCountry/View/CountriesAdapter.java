@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,11 +58,9 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Countries current = countriesList.get(position);
         holder.countryName.setText(current.getStrArea());
-        System.out.println("Bosyely wna bkalemek "+current.getStrArea());
-    //    System.out.println("I'm heere can you see me: "+ current.getIdCategory());
 //        Glide.with(context).load(current.getStrCategoryThumb())
 //                .apply(new RequestOptions()
-//                        .override(150,150)).into(holder.categoryImage);
+//                        .override(150,150)).into(holder.countryImage);
         Log.i(Tag,"onBindViewHolder");
     }
 
@@ -73,11 +72,12 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView countryName;
+        ImageView countryImage;
       //  ImageView categoryImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             countryName=itemView.findViewById(R.id.nameView);
-          //  categoryImage=itemView.findViewById(R.id.categoryImage);
+            countryImage=itemView.findViewById(R.id.favImageView);
         }
     }
 }

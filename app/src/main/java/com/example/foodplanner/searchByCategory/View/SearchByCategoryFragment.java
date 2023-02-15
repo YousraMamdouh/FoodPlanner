@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
+import com.example.foodplanner.searchByCategory.View.SearchByCategoryFragmentDirections.ActionSearchByCategoryFragmentToSearchSpecificCategory;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCategory.presenter.CategoriesPresenter;
 import com.example.foodplanner.searchByCategory.presenter.CategoriesPresenterInterface;
@@ -25,12 +27,14 @@ import java.util.List;
  * Use the {@link SearchByCategoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchByCategoryFragment extends Fragment implements CategoriesViewInterface {
+public class SearchByCategoryFragment extends Fragment implements CategoriesViewInterface ,GetMealsClickListener{
 
 
     RecyclerView categoryRecyclerView;
     CategoryAdapter categoryAdapter;
     LinearLayoutManager layoutManager;
+    View view;
+   // GetMealsClickListener listener;
     CategoriesPresenterInterface categoriesPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,14 +80,14 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
+         view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
         categoryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
 
 
         layoutManager=new LinearLayoutManager(getActivity());
       //  layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL);
 
-        categoryAdapter= new CategoryAdapter(getActivity(),new ArrayList<>());
+        categoryAdapter= new CategoryAdapter(getActivity(),new ArrayList<>(),this);
         categoriesPresenterInterface= new CategoriesPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         categoryRecyclerView.setLayoutManager(layoutManager);
         categoryRecyclerView.setAdapter(categoryAdapter);
@@ -98,5 +102,13 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
     public void showCategories(List<Categories> categoryItems) {
 categoryAdapter.setCategoryItemsList(categoryItems);
 categoryAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public void getMealsOfClickedCategory(String categoryName) {
+      ActionSearchByCategoryFragmentToSearchSpecificCategory action=
+              SearchByCategoryFragmentDirections.actionSearchByCategoryFragmentToSearchSpecificCategory(categoryName);
+        Navigation.findNavController(view).navigate(action);
     }
 }

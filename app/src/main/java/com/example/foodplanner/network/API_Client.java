@@ -32,8 +32,6 @@ public class API_Client implements  RemoteSource {
 
 
 
-
-
     @Override
     public void enqueueCall(NetworkDelegate networkDelegate) {
         Gson gson = new GsonBuilder().create();
@@ -92,5 +90,21 @@ public class API_Client implements  RemoteSource {
         });
 
 
+
+    }
+
+    @Override
+    public void enqueueCallSpecificCategory(NetworkDelegate networkDelegate, String str) {
+        System.out.println("gowa el call");
+        Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
+mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+    networkDelegate.onSuccessSpecificCategory(item.getAllMeals());
+    System.out.println("Specific meal");
+    System.out.println(item.getAllMeals());
+}, error -> {
+    System.out.println("An error occurs while accessing specific category");
+}, () -> {
+    System.out.println("Mission completed successfully");
+});
     }
 }

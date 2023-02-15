@@ -80,7 +80,7 @@ navController.addOnDestinationChangedListener(new NavController.OnDestinationCha
             case R.id.calenderScreen:
             case R.id.accountFragment:
             case R.id.searcByhIngridientFragment:
-            case R.id.searchByCategoryFragment:
+            case R.id.searchByCategory:
             case R.id.searchByCountryFragment:
 
                 bottomNavigationView.setVisibility(View.VISIBLE);
