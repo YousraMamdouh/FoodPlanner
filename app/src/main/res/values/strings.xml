@@ -46,6 +46,7 @@
     <string name="description2"> Full Of Flavor</string>
     <string name="description3">Let\'s Do It Together</string>
     <string name="logoutbtn">Logout</string>
+    <string name="forgottxt">Forgot Password? Recover</string>
 
 
 </resources>
