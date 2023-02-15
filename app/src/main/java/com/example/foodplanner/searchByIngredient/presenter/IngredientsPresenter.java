@@ -62,6 +62,16 @@ public class IngredientsPresenter implements IngredientsPresenterInterface, Netw
 
     }
 
+    @Override
+    public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+        
+    }
+
+    @Override
+    public void onFailureMeal(String errorMsg) {
+
+    }
+
 
     @Override
     public void getIngredients() {

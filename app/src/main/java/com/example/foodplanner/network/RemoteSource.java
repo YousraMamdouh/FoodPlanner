@@ -2,7 +2,8 @@ package com.example.foodplanner.network;
 
 public interface RemoteSource {
     void enqueueCall(NetworkDelegate networkDelegate);
-    void enqueueCallSpecificCategory(NetworkDelegate networkDelegate,String str);
+    void enqueueCallSpecificCategory(NetworkDelegate networkDelegate,String categoryName);
+    void enqueueCallMeal(NetworkDelegate networkDelegate,String mealName);
 
 
 

@@ -27,4 +27,8 @@ public interface NetworkDelegate {
 //Specific Category
     void onSuccessSpecificCategory(List<MealsDetails> mealsDetails);
     void onFailureSpecificCategory(String errorMsg);
+
+    //Meals
+    void onSuccessMeal(List<MealsDetails> mealsDetails);
+    void onFailureMeal(String errorMsg);
 }

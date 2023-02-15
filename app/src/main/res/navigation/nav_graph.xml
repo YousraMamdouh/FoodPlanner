@@ -113,7 +113,7 @@
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/mealDetailsFragment"
-        android:name="com.example.foodplanner.mealDetails.MealDetailsFragment"
+        android:name="com.example.foodplanner.mealDetails.view.MealDetailsFragment"
         android:label="fragment_meal_details"
         tools:layout="@layout/fragment_meal_details" />
     <fragment
