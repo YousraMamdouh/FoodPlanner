@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_authentication_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_authentication_to_homeScreen"
+            app:destination="@id/homeScreen" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
