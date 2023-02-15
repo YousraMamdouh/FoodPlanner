@@ -15,6 +15,7 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     private MealViewInterface viewInterface;
     private RepositoryInterface repo;
     private String mealName;
+ private MealsDetails mealObject;
 
 
     public MealPresenter(MealViewInterface viewInterface, RepositoryInterface repo, String mealName) {
@@ -71,8 +72,9 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
 
     @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
-       // viewInterface.showMeal(mealsDetails.get(0).);
+      mealObject=mealsDetails.get(0);
         System.out.println("kolo tamam ");
+        viewInterface.showMealDetails(mealObject);
 //       mealObject=mealsDetails.get(0);
 //
 //

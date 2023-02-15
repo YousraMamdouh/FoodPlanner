@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.mealDetails.presenter.MealPresenter;
@@ -40,9 +42,11 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
    ImageView mealImage;
    TextView mealName;
    TextView recipeView;
+   TextView mealCountry;
    VideoView videoView;
    Button addToFavButton;
    View view;
+   MealsDetails mealObject;
 
 
 
@@ -97,12 +101,15 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
        recipeView=view.findViewById(R.id.recipeView);
        recyclerView=view.findViewById(R.id.myRecyclerView);
        addToFavButton=view.findViewById(R.id.addToFavButton);
+       mealCountry=view.findViewById(R.id.myCountry);
        layoutManager=new LinearLayoutManager(getActivity());
        adapter=new MealAdapter(getActivity(),new ArrayList<>());
        mealPresenterInterface=new MealPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),MealDetailsFragmentArgs.fromBundle(getArguments()).getMealName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         mealPresenterInterface.getMeal();
+
+
        return  view;
     }
 
@@ -122,7 +129,21 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void showMealDetails(MealsDetails mealsDetails) {
+       mealObject=mealsDetails;
+        mealName.setText(mealObject.getStrMeal());
+        recipeView.setText(mealObject.getStrInstructions());
+        mealCountry.setText(mealObject.getStrArea());
+//        videoView.setVideoURI(Uri.parse(mealObject.getStrYoutube()));
+//        videoView.setFocusable(true);
+//        videoView.start();
 
+        Glide.with(getActivity()).load(mealObject.getStrMealThumb())
+                .apply(new RequestOptions()
+                        .override(150,150)).into(mealImage);
+
+    }
 
 
     @Override
