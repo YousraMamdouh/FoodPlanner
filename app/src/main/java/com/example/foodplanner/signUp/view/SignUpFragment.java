@@ -1,16 +1,35 @@
 package com.example.foodplanner.signUp.view;
 
+import static android.app.ProgressDialog.show;
+
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.viewpager.widget.PagerAdapter;
 
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.userDetails.AccountFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +38,14 @@ import com.example.foodplanner.R;
  */
 public class SignUpFragment extends Fragment {
     Button signUpButton;
+    EditText name;
+    EditText Email;
+    EditText password;
+    EditText password2;
+
+    ProgressDialog progressDialog;
+    private FirebaseAuth mAuth;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,20 +87,95 @@ public class SignUpFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_sign_up, container, false);
-        signUpButton=view.findViewById(R.id.favButton);
+        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        signUpButton = view.findViewById(R.id.btnSignup);
+        name = view.findViewById(R.id.nameSignuptxt);
+        Email = view.findViewById(R.id.emailSigntxt);
+        password = view.findViewById(R.id.passwordSignup);
+        password2 = view.findViewById(R.id.passwordSignup2);
+
+
+        // In your sign-in activity's onCreate method, get the shared instance of the FirebaseAuth object:
+        mAuth = FirebaseAuth.getInstance();
+
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Registering User...");
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_homeScreen);
+                // email and password input
+                String email = Email.getText().toString().trim();
+                String Password = password.getText().toString().trim();
+                String confirmPassword = password2.getText().toString().trim();
+                String userName = name.getText().toString().trim();
+
+                // validate
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    // set error focus
+                    Email.setError("Invalid Email");
+                    Email.setFocusable(true);
+                } else if (Password.length() < 6 ) {
+                    password.setError("Password length at least 6 characters ");
+                    password.setFocusable(true);
+                } else if ( !Password.equals(confirmPassword)) {
+                    password2.setError("Password not match");
+                    password2.setFocusable(true);
+                }else if ( userName.isEmpty()) {
+                    name.setError("you have to add your name");
+                    name.setFocusable(true);
+                }
+
+                else {
+                    registerUser(email, String.valueOf(password)); // register user
+                }
+
+
 
             }
         });
 
         return view;
     }
+
+    private void registerUser(String email, String password) {
+        progressDialog.show();
+
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+
+                            progressDialog.dismiss();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(getContext(), "Registered "+user.getEmail(), Toast.LENGTH_SHORT).show();
+                            navigateToHome();
+
+                        }else {
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(), "Fail to sign up", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        }
+});
+
+ }
+ public void navigateToHome(){
+     Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_homeScreen);
+
+ }
+
 }
