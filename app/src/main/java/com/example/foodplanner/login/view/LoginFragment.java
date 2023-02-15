@@ -22,7 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +40,8 @@ public class LoginFragment extends Fragment {
     EditText emailLog;
     EditText txtPassword;
     TextView recoverPassTv;
+    GoogleSignInClient mGoogleSingInInClient;
+    private static final int RC_SIGN_IN = 100;
 
 
 
@@ -111,7 +115,7 @@ GoogleSignInOptions gso = new  GoogleSignInOptions.Builder(GoogleSignInOptions.D
         @Override
         public void onClick(View v) {
             // begin google login process
-            Intent signInIntent = mGooglrSingnInClient.getSignInIntent();
+            Intent signInIntent = mGoogleSingInInClient.getSignInIntent();
             startActivityForResult(signInIntent,RC_SIGN_IN);
 
         }
