@@ -15,12 +15,12 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     private MealViewInterface viewInterface;
     private RepositoryInterface repo;
     private String mealName;
-    private MealsDetails mealObject;
 
-    public MealPresenter(MealViewInterface viewInterface, RepositoryInterface repo, MealsDetails mealObject) {
+
+    public MealPresenter(MealViewInterface viewInterface, RepositoryInterface repo, String mealName) {
         this.viewInterface = viewInterface;
         this.repo = repo;
-        this.mealObject=mealObject;
+        this.mealName=mealName;
     }
 
 
@@ -72,11 +72,11 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
        // viewInterface.showMeal(mealsDetails.get(0).);
-
-       mealObject=mealsDetails.get(0);
-
-
-        System.out.println("tamam "+mealObject.getStrMeal());
+        System.out.println("kolo tamam ");
+//       mealObject=mealsDetails.get(0);
+//
+//
+//        System.out.println("tamam "+mealObject.getStrMeal());
     //    System.out.println("ana esmy:"+ mealObject.getStrArea()+"W sorty "+mealObject.getStrMealThumb());
     }
 

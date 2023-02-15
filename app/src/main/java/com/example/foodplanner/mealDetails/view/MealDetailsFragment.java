@@ -43,7 +43,7 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
    VideoView videoView;
    Button addToFavButton;
    View view;
-   MealsDetails mealObject;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,7 +99,7 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
        addToFavButton=view.findViewById(R.id.addToFavButton);
        layoutManager=new LinearLayoutManager(getActivity());
        adapter=new MealAdapter(getActivity(),new ArrayList<>());
-       mealPresenterInterface=new MealPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),mealObject);
+       mealPresenterInterface=new MealPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),MealDetailsFragmentArgs.fromBundle(getArguments()).getMealName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         mealPresenterInterface.getMeal();

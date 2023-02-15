@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -17,6 +18,8 @@ import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenter;
 import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenterInterface;
+import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryFragmentDirections.ActionSearchSpecificCategoryToMealDetailsFragment;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,7 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
    SpecificCategoryAdapter adapter;
     StaggeredGridLayoutManager layoutManager;
     SpecificCategoryPresenterInterface specificCategoryPresenterInterface;
+    View view;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -78,7 +82,7 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_search_specific_category, container, false);
+       view= inflater.inflate(R.layout.fragment_search_specific_category, container, false);
        recyclerView=view.findViewById(R.id.categoryRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         adapter=new SpecificCategoryAdapter(getActivity(),new ArrayList<>(),this,this);
@@ -113,6 +117,8 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
 
     @Override
     public void getMeal(String mealName) {
+ActionSearchSpecificCategoryToMealDetailsFragment action = SpecificCategoryFragmentDirections.actionSearchSpecificCategoryToMealDetailsFragment(mealName);
+        Navigation.findNavController(view).navigate(action);
 
     }
 }
