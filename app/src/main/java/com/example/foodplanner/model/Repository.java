@@ -50,6 +50,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public void enqueueCallMeal(NetworkDelegate networkDelegate, String mealName) {
+        remoteSource.enqueueCallMeal(networkDelegate,mealName);
+    }
+
+    @Override
     public LiveData<List<MealsDetails>> getAllStoredMeals() {
         return localSource.getAllStoredMeals();
     }

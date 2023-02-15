@@ -70,6 +70,16 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
     }
 
     @Override
+    public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureMeal(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
         repo.enqueueCall(this);
 

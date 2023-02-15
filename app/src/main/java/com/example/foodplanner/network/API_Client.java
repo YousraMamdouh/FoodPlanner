@@ -110,14 +110,14 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
 
     @Override
     public void enqueueCallMeal(NetworkDelegate networkDelegate, String mealName) {
-        System.out.println("getting meal");
         Observable<RootMeals> mealObservable=api_interface.getMeal(mealName);
+        System.out.println("el meal eli 3awzaha:"+ mealName);
        mealObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessMeal(item.getAllMeals());
-            System.out.println("Specific meal");
+            System.out.println("mstanya "+item.getAllMeals().get(0).getStrMeal());
             System.out.println(item.getAllMeals());
         }, error -> {
-            System.out.println("An error occurs while accessing specific category");
+            System.out.println("An error ");
         }, () -> {
             System.out.println("Mission completed successfully");
         });

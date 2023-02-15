@@ -81,8 +81,8 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void getMeals() {
-        System.out.println("bnady 3aleh");
         repo.enqueueCallSpecificCategory(this, categoryName);
+
 
     }
 

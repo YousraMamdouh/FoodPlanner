@@ -71,8 +71,8 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.getMeal(allMealsList.get(position).getStrMeal());
-                System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+                listener.sendMealName(allMealsList.get(position).getStrMeal());
+              //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
             }
         });
         holder.favButton.setOnClickListener(new View.OnClickListener() {
