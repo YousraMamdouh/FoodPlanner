@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +27,7 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
     private Context context;
 
     private AddToFavorites addToFavorites;
+    private OnMealClickedListener listener;
 
     public void setCategoryItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
@@ -35,11 +37,12 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
    // private OnFavoriteClickListener listener;
 
 
-    public SpecificCategoryAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorites listener)
+    public SpecificCategoryAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorites listener,OnMealClickedListener mealListener)
     {
         this.context=context;
         this.allMealsList = allMealsList;
         this.addToFavorites =listener;
+        this.listener=mealListener;
     }
 
     @NonNull
@@ -65,6 +68,13 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.getMeal(allMealsList.get(position).getStrMeal());
+                System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+            }
+        });
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +95,14 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
         TextView mealCountry;
         ImageView mealImage;
         Button favButton;
+        ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImageView);
             mealName=itemView.findViewById(R.id.favMealName);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.favButton);
+            layout=itemView.findViewById(R.id.layout);
 
         }
     }

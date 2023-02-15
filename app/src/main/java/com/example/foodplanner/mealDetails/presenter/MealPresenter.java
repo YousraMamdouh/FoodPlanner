@@ -1,25 +1,25 @@
-package com.example.foodplanner.searchSpecificCategory.presenter;
+package com.example.foodplanner.mealDetails.presenter;
 
+import com.example.foodplanner.mealDetails.view.MealViewInterface;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
-import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryViewInterface;
 
 import java.util.List;
 
-public class SpecificCategoryPresenter implements SpecificCategoryPresenterInterface, NetworkDelegate {
+public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
 
-    private SpecificCategoryViewInterface viewInterface;
+    private MealViewInterface viewInterface;
     private RepositoryInterface repo;
-    private String categoryName;
+    private String mealName;
 
-    public SpecificCategoryPresenter(SpecificCategoryViewInterface viewInterface, RepositoryInterface repo,String categoryName) {
-        this.viewInterface=viewInterface;
+    public MealPresenter(MealViewInterface viewInterface, RepositoryInterface repo, String mealName) {
+        this.viewInterface = viewInterface;
         this.repo = repo;
-        this.categoryName = categoryName;
+        this.mealName = mealName;
     }
 
 
@@ -60,8 +60,7 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
-        viewInterface.showMeals(mealsDetails);
-        System.out.println("Data retrieved successfully");
+
     }
 
     @Override
@@ -71,7 +70,8 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
-
+        viewInterface.showMeal(mealsDetails);
+        System.out.println("Data retrieved successfully");
     }
 
     @Override
@@ -80,9 +80,9 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
     }
 
     @Override
-    public void getMeals() {
-        System.out.println("bnady 3aleh");
-        repo.enqueueCallSpecificCategory(this, categoryName);
+    public void getMeal() {
+        System.out.println("bnady 3la el meaaaal");
+        repo.enqueueCallMeal(this,mealName);
 
     }
 

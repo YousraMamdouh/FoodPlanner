@@ -1,21 +1,29 @@
-package com.example.foodplanner.mealDetails;
+package com.example.foodplanner.mealDetails.view;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.foodplanner.R;
+import com.example.foodplanner.mealDetails.presenter.MealPresenterInterface;
+import com.example.foodplanner.model.MealsDetails;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MealDetailsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MealDetailsFragment extends Fragment {
+public class MealDetailsFragment extends Fragment implements AddToFavorites{
+
+    RecyclerView recyclerView;
+    MealAdapter adapter;
+   LinearLayoutManager layoutManager;
+   MealPresenterInterface mealPresenterInterface;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +70,10 @@ public class MealDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_meal_details, container, false);
+    }
+
+    @Override
+    public void onClick(MealsDetails currentMeal) {
+
     }
 }

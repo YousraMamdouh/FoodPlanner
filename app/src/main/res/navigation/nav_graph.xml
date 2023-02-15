@@ -113,9 +113,13 @@
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/mealDetailsFragment"
-        android:name="com.example.foodplanner.mealDetails.MealDetailsFragment"
+        android:name="com.example.foodplanner.mealDetails.view.MealDetailsFragment"
         android:label="fragment_meal_details"
-        tools:layout="@layout/fragment_meal_details" />
+        tools:layout="@layout/fragment_meal_details" >
+        <argument
+            android:name="mealName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/searchForMealFragment"
         android:name="com.example.foodplanner.searchForMealFragment"
@@ -138,5 +142,8 @@
         <argument
             android:name="categoryName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_searchSpecificCategory_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
     </fragment>
 </navigation>
