@@ -14,12 +14,12 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     private SpecificCategoryViewInterface viewInterface;
     private RepositoryInterface repo;
-    private String category;
+    private String categoryName;
 
-    public SpecificCategoryPresenter(SpecificCategoryViewInterface viewInterface, RepositoryInterface repo,String category) {
+    public SpecificCategoryPresenter(SpecificCategoryViewInterface viewInterface, RepositoryInterface repo,String categoryName) {
         this.viewInterface=viewInterface;
         this.repo = repo;
-        this.category=category;
+        this.categoryName = categoryName;
     }
 
 
@@ -70,19 +70,27 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
     }
 
     @Override
+
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
 
     }
 
     @Override
+
     public void onFailureSpecificIngredient(String errorMsg) {
+
+    public void onFailureMeal(String errorMsg) {
+
 
     }
 
     @Override
     public void getMeals() {
-        System.out.println("bnady 3aleh");
-        repo.enqueueCallSpecificCategory(this,category);
+        repo.enqueueCallSpecificCategory(this, categoryName);
+
 
     }
 

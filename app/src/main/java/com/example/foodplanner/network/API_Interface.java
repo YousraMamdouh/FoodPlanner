@@ -33,6 +33,9 @@ Observable<RootCategories> getAllMealsCategories();
     @GET("filter.php")
     Observable<RootMeals> getMealsOfSelectedIngredient(@Query("i") String selectedIngredient);
 
+    @GET("search.php")
+    Observable<RootMeals> getMeal(@Query("s") String mealName);
+
 
 
 }

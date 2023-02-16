@@ -99,7 +99,7 @@ public class API_Client implements  RemoteSource {
         Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
 mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
     networkDelegate.onSuccessSpecificCategory(item.getAllMeals());
-    System.out.println("Specific meal");
+    System.out.println("Specific category");
     System.out.println(item.getAllMeals());
 }, error -> {
     System.out.println("An error occurs while accessing specific category");
@@ -109,6 +109,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
     }
 
     @Override
+
     public void enqueueCallSpecificIngredient(NetworkDelegate networkDelegate, String str) {
         System.out.println("SpecificIngredient");
         Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
@@ -118,6 +119,17 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
             System.out.println(item.getAllMeals());
         }, error -> {
             System.out.println("An error occurs while accessing specific category");
+
+    public void enqueueCallMeal(NetworkDelegate networkDelegate, String mealName) {
+        Observable<RootMeals> mealObservable=api_interface.getMeal(mealName);
+        System.out.println("el meal eli 3awzaha:"+ mealName);
+       mealObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+            networkDelegate.onSuccessMeal(item.getAllMeals());
+            System.out.println("mstanya "+item.getAllMeals().get(0).getStrMeal());
+            System.out.println(item.getAllMeals());
+        }, error -> {
+            System.out.println("An error while getting meal ");
+
         }, () -> {
             System.out.println("Mission completed successfully");
         });

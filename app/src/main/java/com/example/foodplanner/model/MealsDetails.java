@@ -14,45 +14,254 @@ public class MealsDetails implements Serializable {
     private String idMeal ;
     private String strMeal;
     private String strDrinkAlternate;
-    private String strCategoryl;
+    private String strCategory;
 
-  public MealsDetails( String strMeal, String strArea, String strMealThumb, String strInstructions,
-  String strYoutube ){
+//  public MealsDetails( String strMeal, String strArea, String strMealThumb, String strInstructions,
+//  String strYoutube,String strIngerdient1,String strIngerdient2,String strIngerdient3,
+//                       String strIngerdient4,String strIngerdient5,String strIngerdient6,
+//                       String strIngerdient7,String strIngerdient8,String strIngerdient9,
+//                       String strIngerdient10,String strIngerdient11,String strIngerdient12,
+//                       String strIngerdient13,String strIngerdient14,String strIngerdient15,
+//                       String strIngerdient16,String strIngerdient17,String strIngerdient18,
+//                       String strIngerdient19,String strIngerdient20
+//
+//                       ){
+//
+//      this.strMeal = strMeal;
+//      this.strArea = strArea;
 
-      this.strMeal = strMeal;
-      this.strArea = strArea;
-      this.strMealThumb = strMealThumb;
-      this.strInstructions = strInstructions;
-      this.strYoutube= strYoutube;
+    public MealsDetails(String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19, String strIngredient20) {
+        this.strMeal = strMeal;
+        this.strCategory = strCategory;
+        this.strArea = strArea;
+        this.strInstructions = strInstructions;
+        this.strMealThumb = strMealThumb;
+        this.strYoutube = strYoutube;
+        this.strIngredient1 = strIngredient1;
+        this.strIngredient2 = strIngredient2;
+        this.strIngredient3 = strIngredient3;
+        this.strIngredient4 = strIngredient4;
+        this.strIngredient5 = strIngredient5;
+        this.strIngredient6 = strIngredient6;
+        this.strIngredient7 = strIngredient7;
+        this.strIngredient8 = strIngredient8;
+        this.strIngredient9 = strIngredient9;
+        this.strIngredient10 = strIngredient10;
+        this.strIngredient11 = strIngredient11;
+        this.strIngredient12 = strIngredient12;
+        this.strIngredient13 = strIngredient13;
+        this.strIngredient14 = strIngredient14;
+        this.strIngredient15 = strIngredient15;
+        this.strIngredient16 = strIngredient16;
+        this.strIngredient17 = strIngredient17;
+        this.strIngredient18 = strIngredient18;
+        this.strIngredient19 = strIngredient19;
+        this.strIngredient20 = strIngredient20;
+    }
+//      this.strMealThumb = strMealThumb;
+//      this.strInstructions = strInstructions;
+//      this.strYoutube= strYoutube;
+//
+//
+//
+//  }
 
-
-  }
 
     private String strArea;
     private String strInstructions;
     private String strMealThumb;
     private String strTags;
     private String strYoutube;
-    private String strIngerdient1;
-    private String strIngerdient2;
-    private String strIngerdient3;
-    private String strIngerdient4;
-    private String strIngerdient5;
-    private String strIngerdient6;
-    private String strIngerdient7;
-    private String strIngerdient8;
-    private String strIngerdient9;
-    private String strIngerdient10;
-    private String strIngerdient11;
-    private String strIngerdient12;
-    private String strIngerdient13;
-    private String strIngerdient14;
-    private String strIngerdient15;
-    private String strIngerdient16;
-    private String strIngerdient17;
-    private String strIngerdient18;
-    private String strIngerdient19;
-    private String strIngerdient20;
+
+    private String strIngredient1;
+
+    public String getStrCategory() {
+        return strCategory;
+    }
+
+    public void setStrCategory(String strCategory) {
+        this.strCategory = strCategory;
+    }
+
+    public String getStrIngredient1() {
+        return strIngredient1;
+    }
+
+    public void setStrIngredient1(String strIngredient1) {
+        this.strIngredient1 = strIngredient1;
+    }
+
+    public String getStrIngredient2() {
+        return strIngredient2;
+    }
+
+    public void setStrIngredient2(String strIngredient2) {
+        this.strIngredient2 = strIngredient2;
+    }
+
+    public String getStrIngredient3() {
+        return strIngredient3;
+    }
+
+    public void setStrIngredient3(String strIngredient3) {
+        this.strIngredient3 = strIngredient3;
+    }
+
+    public String getStrIngredient4() {
+        return strIngredient4;
+    }
+
+    public void setStrIngredient4(String strIngredient4) {
+        this.strIngredient4 = strIngredient4;
+    }
+
+    public String getStrIngredient5() {
+        return strIngredient5;
+    }
+
+    public void setStrIngredient5(String strIngredient5) {
+        this.strIngredient5 = strIngredient5;
+    }
+
+    public String getStrIngredient6() {
+        return strIngredient6;
+    }
+
+    public void setStrIngredient6(String strIngredient6) {
+        this.strIngredient6 = strIngredient6;
+    }
+
+    public String getStrIngredient7() {
+        return strIngredient7;
+    }
+
+    public void setStrIngredient7(String strIngredient7) {
+        this.strIngredient7 = strIngredient7;
+    }
+
+    public String getStrIngredient8() {
+        return strIngredient8;
+    }
+
+    public void setStrIngredient8(String strIngredient8) {
+        this.strIngredient8 = strIngredient8;
+    }
+
+    public String getStrIngredient9() {
+        return strIngredient9;
+    }
+
+    public void setStrIngredient9(String strIngredient9) {
+        this.strIngredient9 = strIngredient9;
+    }
+
+    public String getStrIngredient10() {
+        return strIngredient10;
+    }
+
+    public void setStrIngredient10(String strIngredient10) {
+        this.strIngredient10 = strIngredient10;
+    }
+
+    public String getStrIngredient11() {
+        return strIngredient11;
+    }
+
+    public void setStrIngredient11(String strIngredient11) {
+        this.strIngredient11 = strIngredient11;
+    }
+
+    public String getStrIngredient12() {
+        return strIngredient12;
+    }
+
+    public void setStrIngredient12(String strIngredient12) {
+        this.strIngredient12 = strIngredient12;
+    }
+
+    public String getStrIngredient13() {
+        return strIngredient13;
+    }
+
+    public void setStrIngredient13(String strIngredient13) {
+        this.strIngredient13 = strIngredient13;
+    }
+
+    public String getStrIngredient14() {
+        return strIngredient14;
+    }
+
+    public void setStrIngredient14(String strIngredient14) {
+        this.strIngredient14 = strIngredient14;
+    }
+
+    public String getStrIngredient15() {
+        return strIngredient15;
+    }
+
+    public void setStrIngredient15(String strIngredient15) {
+        this.strIngredient15 = strIngredient15;
+    }
+
+    public String getStrIngredient16() {
+        return strIngredient16;
+    }
+
+    public void setStrIngredient16(String strIngredient16) {
+        this.strIngredient16 = strIngredient16;
+    }
+
+    public String getStrIngredient17() {
+        return strIngredient17;
+    }
+
+    public void setStrIngredient17(String strIngredient17) {
+        this.strIngredient17 = strIngredient17;
+    }
+
+    public String getStrIngredient18() {
+        return strIngredient18;
+    }
+
+    public void setStrIngredient18(String strIngredient18) {
+        this.strIngredient18 = strIngredient18;
+    }
+
+    public String getStrIngredient19() {
+        return strIngredient19;
+    }
+
+    public void setStrIngredient19(String strIngredient19) {
+        this.strIngredient19 = strIngredient19;
+    }
+
+    public String getStrIngredient20() {
+        return strIngredient20;
+    }
+
+    public void setStrIngredient20(String strIngredient20) {
+        this.strIngredient20 = strIngredient20;
+    }
+
+    private String strIngredient2;
+    private String strIngredient3;
+    private String strIngredient4;
+    private String strIngredient5;
+    private String strIngredient6;
+    private String strIngredient7;
+    private String strIngredient8;
+    private String strIngredient9;
+    private String strIngredient10;
+    private String strIngredient11;
+    private String strIngredient12;
+    private String strIngredient13;
+    private String strIngredient14;
+    private String strIngredient15;
+    private String strIngredient16;
+    private String strIngredient17;
+    private String strIngredient18;
+    private String strIngredient19;
+    private String strIngredient20;
     private String strMeasure1;
     private String strMeasure2;
     private String strMeasure3;
@@ -103,13 +312,7 @@ public class MealsDetails implements Serializable {
         this.strDrinkAlternate = strDrinkAlternate;
     }
 
-    public String getStrCategoryl() {
-        return strCategoryl;
-    }
 
-    public void setStrCategoryl(String strCategoryl) {
-        this.strCategoryl = strCategoryl;
-    }
 
     public String getStrArea() {
         return strArea;
@@ -151,165 +354,7 @@ public class MealsDetails implements Serializable {
         this.strYoutube = strYoutube;
     }
 
-    public String getStrIngerdient1() {
-        return strIngerdient1;
-    }
 
-    public void setStrIngerdient1(String strIngerdient1) {
-        this.strIngerdient1 = strIngerdient1;
-    }
-
-    public String getStrIngerdient2() {
-        return strIngerdient2;
-    }
-
-    public void setStrIngerdient2(String strIngerdient2) {
-        this.strIngerdient2 = strIngerdient2;
-    }
-
-    public String getStrIngerdient3() {
-        return strIngerdient3;
-    }
-
-    public void setStrIngerdient3(String strIngerdient3) {
-        this.strIngerdient3 = strIngerdient3;
-    }
-
-    public String getStrIngerdient4() {
-        return strIngerdient4;
-    }
-
-    public void setStrIngerdient4(String strIngerdient4) {
-        this.strIngerdient4 = strIngerdient4;
-    }
-
-    public String getStrIngerdient5() {
-        return strIngerdient5;
-    }
-
-    public void setStrIngerdient5(String strIngerdient5) {
-        this.strIngerdient5 = strIngerdient5;
-    }
-
-    public String getStrIngerdient6() {
-        return strIngerdient6;
-    }
-
-    public void setStrIngerdient6(String strIngerdient6) {
-        this.strIngerdient6 = strIngerdient6;
-    }
-
-    public String getStrIngerdient7() {
-        return strIngerdient7;
-    }
-
-    public void setStrIngerdient7(String strIngerdient7) {
-        this.strIngerdient7 = strIngerdient7;
-    }
-
-    public String getStrIngerdient8() {
-        return strIngerdient8;
-    }
-
-    public void setStrIngerdient8(String strIngerdient8) {
-        this.strIngerdient8 = strIngerdient8;
-    }
-
-    public String getStrIngerdient9() {
-        return strIngerdient9;
-    }
-
-    public void setStrIngerdient9(String strIngerdient9) {
-        this.strIngerdient9 = strIngerdient9;
-    }
-
-    public String getStrIngerdient10() {
-        return strIngerdient10;
-    }
-
-    public void setStrIngerdient10(String strIngerdient10) {
-        this.strIngerdient10 = strIngerdient10;
-    }
-
-    public String getStrIngerdient11() {
-        return strIngerdient11;
-    }
-
-    public void setStrIngerdient11(String strIngerdient11) {
-        this.strIngerdient11 = strIngerdient11;
-    }
-
-    public String getStrIngerdient12() {
-        return strIngerdient12;
-    }
-
-    public void setStrIngerdient12(String strIngerdient12) {
-        this.strIngerdient12 = strIngerdient12;
-    }
-
-    public String getStrIngerdient13() {
-        return strIngerdient13;
-    }
-
-    public void setStrIngerdient13(String strIngerdient13) {
-        this.strIngerdient13 = strIngerdient13;
-    }
-
-    public String getStrIngerdient14() {
-        return strIngerdient14;
-    }
-
-    public void setStrIngerdient14(String strIngerdient14) {
-        this.strIngerdient14 = strIngerdient14;
-    }
-
-    public String getStrIngerdient15() {
-        return strIngerdient15;
-    }
-
-    public void setStrIngerdient15(String strIngerdient15) {
-        this.strIngerdient15 = strIngerdient15;
-    }
-
-    public String getStrIngerdient16() {
-        return strIngerdient16;
-    }
-
-    public void setStrIngerdient16(String strIngerdient16) {
-        this.strIngerdient16 = strIngerdient16;
-    }
-
-    public String getStrIngerdient17() {
-        return strIngerdient17;
-    }
-
-    public void setStrIngerdient17(String strIngerdient17) {
-        this.strIngerdient17 = strIngerdient17;
-    }
-
-    public String getStrIngerdient18() {
-        return strIngerdient18;
-    }
-
-    public void setStrIngerdient18(String strIngerdient18) {
-        this.strIngerdient18 = strIngerdient18;
-    }
-
-    public String getStrIngerdient19() {
-        return strIngerdient19;
-    }
-
-    public void setStrIngerdient19(String strIngerdient19) {
-        this.strIngerdient19 = strIngerdient19;
-    }
-
-    public String getStrIngerdient20() {
-        return strIngerdient20;
-    }
-
-    public void setStrIngerdient20(String strIngerdient20) {
-        this.strIngerdient20 = strIngerdient20;
-    }
 
     public String getStrMeasure1() {
         return strMeasure1;
