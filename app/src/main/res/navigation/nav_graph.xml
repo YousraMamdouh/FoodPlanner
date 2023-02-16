@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_searchScreen_to_searchByCategoryFragment"
             app:destination="@id/searchByCategory" />
+        <action
+            android:id="@+id/action_searchScreen_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/calenderScreen"

@@ -10,12 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.searchSpecificCategory.view.OnMealClickedListener;
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
     private static final String Tag="All Meals Adapter";
     private List<MealsDetails> allMealsList;
     private Context context;
+    private OnMealClickListener listener;
 
     private AddToFavoriteClickListener addToFavoriteClickListener;
 
@@ -35,11 +38,12 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
    // private OnFavoriteClickListener listener;
 
 
-    public AllMealsAdapter(Context context, List<MealsDetails> allMealsList,AddToFavoriteClickListener listener)
+    public AllMealsAdapter(Context context, List<MealsDetails> allMealsList,AddToFavoriteClickListener listener,OnMealClickListener mealClickedListener)
     {
         this.context=context;
         this.allMealsList = allMealsList;
         this.addToFavoriteClickListener=listener;
+        this.listener=mealClickedListener;
     }
 
     @NonNull
@@ -71,6 +75,16 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
                 addToFavoriteClickListener.onClick(currentProduct);
             }
         });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    listener.getMeal(allMealsList.get(position).getStrMeal());
+                    //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+
+            }
+        });
+
         Log.i(Tag,"onBindViewHolder");
     }
 
@@ -85,12 +99,14 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
         TextView mealCountry;
         ImageView mealImage;
         Button favButton;
+        ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImageView);
             mealName=itemView.findViewById(R.id.favMealName);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.favButton);
+            layout=itemView.findViewById(R.id.layout);
 
         }
     }

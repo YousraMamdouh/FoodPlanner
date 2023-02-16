@@ -51,6 +51,7 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
    View view;
  MealsDetails mealObject;
 List<String> ingredientsList=new ArrayList<>();
+    private AddToFavorites addToFavorites=this;
 
 
 
@@ -113,6 +114,13 @@ List<String> ingredientsList=new ArrayList<>();
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setAdapter(adapter);
         mealPresenterInterface.getMeal();
+
+        addToFavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToFavorites.onClick(mealObject);
+            }
+        });
 
 
        return  view;

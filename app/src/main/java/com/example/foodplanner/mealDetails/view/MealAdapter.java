@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
-import com.example.foodplanner.searchSpecificCategory.view.AddToFavorites;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder>{
     private List<String> ingredientsList;
     private Context context;
 
-    private AddToFavorites addToFavorites;
+
 
 
     public void setIngredientsList(List<String> ingredientsList) {
@@ -62,7 +61,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder>{
 
         holder.ingredientName.setText(ingredientsList.get(position));
         System.out.println("inside adapter "+ingredientsList.get(0));
-  ;
         Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position)))
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(holder.ingredientImage);
