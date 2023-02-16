@@ -50,8 +50,13 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+
+    public void enqueueCallSpecificIngredient(NetworkDelegate networkDelegate, String str) {
+        remoteSource.enqueueCallSpecificIngredient(networkDelegate,str);
+
     public void enqueueCallMeal(NetworkDelegate networkDelegate, String mealName) {
         remoteSource.enqueueCallMeal(networkDelegate,mealName);
+
     }
 
     @Override

@@ -79,7 +79,11 @@
         android:id="@+id/searcByhIngridientFragment"
         android:name="com.example.foodplanner.searchByIngredient.View.SearchByIngredientFragment"
         android:label="fragment_searc_byh_ingridient"
-        tools:layout="@layout/fragment_search_by_ingridient" />
+        tools:layout="@layout/fragment_search_by_ingridient" >
+        <action
+            android:id="@+id/action_searcByhIngridientFragment_to_specificIngredient"
+            app:destination="@id/specificIngredient" />
+    </fragment>
     <fragment
         android:id="@+id/searchByCategory"
         android:name="com.example.foodplanner.searchByCategory.View.SearchByCategoryFragment"
@@ -155,5 +159,14 @@
         <action
             android:id="@+id/action_searchSpecificCategory_to_mealDetailsFragment"
             app:destination="@id/mealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specificIngredient"
+        android:name="com.example.foodplanner.specificIngredient.view.SpecificIngredient"
+        android:label="fragment_specific_ingredient"
+        tools:layout="@layout/fragment_specific_ingredient" >
+        <argument
+            android:name="IngredientName"
+            app:argType="string" />
     </fragment>
 </navigation>

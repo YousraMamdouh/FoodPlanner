@@ -70,12 +70,20 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
     }
 
     @Override
+
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
 
     }
 
     @Override
+
+    public void onFailureSpecificIngredient(String errorMsg) {
+=======
     public void onFailureMeal(String errorMsg) {
+
 
     }
 

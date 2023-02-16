@@ -72,12 +72,20 @@ public class CountriesPresenter implements CountriesPresenterInterface, NetworkD
     }
 
     @Override
+
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
 
     }
 
     @Override
+
+    public void onFailureSpecificIngredient(String errorMsg) {
+
     public void onFailureMeal(String errorMsg) {
+
 
     }
 
