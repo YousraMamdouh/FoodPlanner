@@ -112,13 +112,13 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
 
     public void enqueueCallSpecificIngredient(NetworkDelegate networkDelegate, String str) {
         System.out.println("SpecificIngredient");
-        Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
+        Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedIngredient(str);
         mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessSpecificIngredient(item.getAllMeals());
             System.out.println("Specific meal");
             System.out.println(item.getAllMeals());
         }, error -> {
-            System.out.println("An error occurs while accessing specific category");
+            System.out.println("An error occurs while accessing specific ingredient");
         });
     }
 

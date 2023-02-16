@@ -94,6 +94,16 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
     }
 
     @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
         System.out.println("ingredient");
         repo.enqueueCallSpecificIngredient(this,ingredient);

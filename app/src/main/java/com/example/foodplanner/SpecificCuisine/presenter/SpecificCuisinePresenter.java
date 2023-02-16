@@ -69,6 +69,16 @@ public class SpecificCuisinePresenter implements SpecificCuisinePresenterInterfa
     }
 
     @Override
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificIngredient(String errorMsg) {
+
+    }
+
+    @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
 
     }
