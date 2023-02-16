@@ -117,7 +117,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
             System.out.println("mstanya "+item.getAllMeals().get(0).getStrMeal());
             System.out.println(item.getAllMeals());
         }, error -> {
-            System.out.println("An error ");
+            System.out.println("An error while getting meal ");
         }, () -> {
             System.out.println("Mission completed successfully");
         });

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
-import com.example.foodplanner.searchByIngredient.model.Ingredients;
 import com.example.foodplanner.searchSpecificCategory.view.AddToFavorites;
 
 import java.util.List;
@@ -21,21 +20,23 @@ import java.util.List;
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder>{
 
     private static final String Tag="Meal Adapter";
-    private List<Ingredients> ingredientsList;
+    private List<String> ingredientsList;
     private Context context;
 
     private AddToFavorites addToFavorites;
 
 
-    public void setIngredientsList(List<Ingredients> ingredientsList) {
+    public void setIngredientsList(List<String> ingredientsList) {
         this.ingredientsList=ingredientsList;
     }
+
+
 
 
    // private OnFavoriteClickListener listener;
 
 
-    public MealAdapter(Context context, List<Ingredients> ingredientsList)
+    public MealAdapter(Context context, List<String> ingredientsList)
     {
         this.context=context;
         this.ingredientsList=ingredientsList;
@@ -58,10 +59,11 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Ingredients currentProduct = ingredientsList.get(position);
-        holder.ingredientName.setText(currentProduct.getStrIngredient());
+
+        holder.ingredientName.setText(ingredientsList.get(position));
+        System.out.println("inside adapter "+ingredientsList.get(0));
   ;
-        Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position).getStrIngredient()))
+        Glide.with(context).load(String.format("https://www.themealdb.com/images/ingredients/%s-Small.png", ingredientsList.get(position)))
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(holder.ingredientImage);
 

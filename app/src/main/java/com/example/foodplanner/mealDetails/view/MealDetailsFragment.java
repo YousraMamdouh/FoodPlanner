@@ -49,8 +49,8 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
     YouTubePlayerView youTubePlayerView;
    Button addToFavButton;
    View view;
-   MealsDetails mealObject;
-   List<Ingredients> ingredientsList;
+ MealsDetails mealObject;
+List<String> ingredientsList=new ArrayList<>();
 
 
 
@@ -110,6 +110,7 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
        adapter=new MealAdapter(getActivity(),new ArrayList<>());
        mealPresenterInterface=new MealPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),MealDetailsFragmentArgs.fromBundle(getArguments()).getMealName());
         recyclerView.setLayoutManager(layoutManager);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setAdapter(adapter);
         mealPresenterInterface.getMeal();
 
@@ -125,21 +126,30 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
 
 
 
+
+
     @Override
     public void showIngredients(List<Ingredients> ingredients) {
-        adapter.setIngredientsList(ingredients);
-        adapter.notifyDataSetChanged();
+
+
+//        adapter.setIngredientsList(ingredientsList);
+//        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showMealDetails(MealsDetails mealsDetails) {
+        System.out.println("hi");
        mealObject=mealsDetails;
         mealName.setText(mealObject.getStrMeal());
         recipeView.setText(mealObject.getStrInstructions());
         mealCountry.setText(mealObject.getStrArea());
+        adapter.setIngredientsList(getExistIngredients());
+        adapter.notifyDataSetChanged();
+
 
         getLifecycle().addObserver(youTubePlayerView);
 
+       // System.out.println("yarab "+ingredientsList.get(0));
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
@@ -154,7 +164,8 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
                 .apply(new RequestOptions()
                         .override(150,150)).into(mealImage);
 
-
+//
+//adapter.notifyDataSetChanged();
 
 
     }
@@ -163,5 +174,51 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
     @Override
     public void addMealToFavorites(MealsDetails mealsDetails) {
         mealPresenterInterface.addToFavorites(mealsDetails);
+    }
+
+    public List<String> getExistIngredients()
+    {
+        if(  mealObject.getStrIngredient1()!=null &&  mealObject.getStrIngredient1()!="")
+            ingredientsList.add(mealObject.getStrIngredient1());
+        if(  mealObject.getStrIngredient2()!=null &&  mealObject.getStrIngredient2()!="")
+            ingredientsList.add(mealObject.getStrIngredient2());
+        if(  mealObject.getStrIngredient3()!=null &&  mealObject.getStrIngredient3()!="")
+            ingredientsList.add(mealObject.getStrIngredient3());
+        if(  mealObject.getStrIngredient4()!=null &&  mealObject.getStrIngredient4()!="")
+            ingredientsList.add(mealObject.getStrIngredient4());
+        if(  mealObject.getStrIngredient5()!=null &&  mealObject.getStrIngredient5()!="")
+            ingredientsList.add(mealObject.getStrIngredient5());
+        if(  mealObject.getStrIngredient6()!=null &&  mealObject.getStrIngredient6()!="")
+            ingredientsList.add(mealObject.getStrIngredient6());
+        if(  mealObject.getStrIngredient7()!=null &&  mealObject.getStrIngredient7()!="")
+            ingredientsList.add(mealObject.getStrIngredient7());
+        if(  mealObject.getStrIngredient8()!=null &&  mealObject.getStrIngredient8()!="")
+            ingredientsList.add(mealObject.getStrIngredient8());
+        if(  mealObject.getStrIngredient9()!=null &&  mealObject.getStrIngredient9()!="")
+            ingredientsList.add(mealObject.getStrIngredient9());
+        if(  mealObject.getStrIngredient10()!=null &&  mealObject.getStrIngredient10()!="")
+            ingredientsList.add(mealObject.getStrIngredient10());
+        if(  mealObject.getStrIngredient11()!=null &&  mealObject.getStrIngredient11()!="")
+            ingredientsList.add(mealObject.getStrIngredient11());
+        if(  mealObject.getStrIngredient12()!=null &&  mealObject.getStrIngredient12()!="")
+            ingredientsList.add(mealObject.getStrIngredient12());
+        if(  mealObject.getStrIngredient13()!=null &&  mealObject.getStrIngredient13()!="")
+            ingredientsList.add(mealObject.getStrIngredient13());
+        if(  mealObject.getStrIngredient14()!=null &&  mealObject.getStrIngredient14()!="")
+            ingredientsList.add(mealObject.getStrIngredient14());
+        if(  mealObject.getStrIngredient15()!=null &&  mealObject.getStrIngredient15()!="")
+            ingredientsList.add(mealObject.getStrIngredient15());
+        if(  mealObject.getStrIngredient16()!=null &&  mealObject.getStrIngredient16()!="")
+            ingredientsList.add(mealObject.getStrIngredient16());
+        if(  mealObject.getStrIngredient17()!=null &&  mealObject.getStrIngredient17()!="")
+            ingredientsList.add(mealObject.getStrIngredient17());
+        if(  mealObject.getStrIngredient18()!=null &&  mealObject.getStrIngredient18()!="")
+            ingredientsList.add(mealObject.getStrIngredient18());
+        if(  mealObject.getStrIngredient19()!=null &&  mealObject.getStrIngredient19()!="")
+            ingredientsList.add(mealObject.getStrIngredient19());
+        if(  mealObject.getStrIngredient20()!=null &&  mealObject.getStrIngredient20()!="")
+            ingredientsList.add(mealObject.getStrIngredient20());
+
+return ingredientsList;
     }
 }

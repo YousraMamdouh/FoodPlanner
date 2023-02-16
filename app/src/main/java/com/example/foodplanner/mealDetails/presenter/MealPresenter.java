@@ -73,7 +73,6 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
       mealObject=mealsDetails.get(0);
-        System.out.println("kolo tamam ");
         viewInterface.showMealDetails(mealObject);
 //       mealObject=mealsDetails.get(0);
 //
@@ -89,7 +88,6 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
 
     @Override
     public void getMeal() {
-        System.out.println("bnady 3la el meaaaal");
         repo.enqueueCallMeal(this,mealName);
 
     }
