@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
+import java.util.Random;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -95,7 +97,7 @@ public class API_Client implements  RemoteSource {
             System.out.println("Mission completed successfully");
         });
 
-        Observable<DailyInspirationRoot> dailyInspiration=api_interface.getRandomMeal();
+        Observable<DailyInspirationRoot> dailyInspiration=api_interface.getRandomMeal(String.valueOf(randomNumber()));
         dailyInspiration.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessDailyInspiration(item.getMeal());
             System.out.println("iuuu"+ item.getMeal().get(0).getIdMeal());
@@ -108,5 +110,12 @@ public class API_Client implements  RemoteSource {
 
         });
 
+    }
+
+    public int randomNumber(){
+        Random random = new Random();
+       int randomNumber = random.nextInt((53066 - 52772) + 1) + 52772;
+        // int randomNumber = random.nextInt(52772 - 53066 );
+        return  randomNumber;
     }
 }

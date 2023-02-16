@@ -9,6 +9,7 @@ import com.example.foodplanner.searchByIngredient.model.RootIngredients;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface API_Interface {
 
@@ -25,6 +26,6 @@ Observable<RootCategories> getAllMealsCategories();
     Observable<RootIngredients> getAllIngredients();
 
 @GET("random.php")
-Observable<DailyInspirationRoot> getRandomMeal();
+Observable<DailyInspirationRoot> getRandomMeal(@Query("i")String mealId);
 
 }

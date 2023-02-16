@@ -78,8 +78,8 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     public void onSuccessDailyInspiration(List<MealsDetails> meal) {
         System.out.println("presenter inspiration");
 
-     int randomNo=getRandomNumber(meal);
-        viewInterface.showDailyInspiration(meal.get(meal.indexOf(randomNo)));
+//     int randomNo=getRandomNumber(meal);
+//        viewInterface.showDailyInspiration(meal.get(meal.indexOf(randomNo)));
 
     }
 
@@ -90,11 +90,11 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
 
     }
 
-    public int getRandomNumber(List<MealsDetails> meal){
-
-        Random random = new Random();
-        int randomNumber = random.nextInt(0 - meal.size() );
-        return  randomNumber;
-    }
+//    public int getRandomNumber(List<MealsDetails> meal){
+//
+//        Random random = new Random();
+//        int randomNumber = random.nextInt(0 - meal.size() );
+//        return  randomNumber;
+//    }
 
 }
