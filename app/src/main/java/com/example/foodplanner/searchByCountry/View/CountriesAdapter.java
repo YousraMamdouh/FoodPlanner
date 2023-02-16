@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
@@ -21,6 +22,8 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
     private static final String Tag="Countries Adapter";
     private List<Countries> countriesList;
     private Context context;
+    private GetMealsClickListener listener;
+
 
     public void setCountriesItemsList(List<Countries> countriesList) {
         this.countriesList = countriesList;
@@ -30,9 +33,10 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
    // private OnFavoriteClickListener listener;
 
 
-    public CountriesAdapter(Context context, List<Countries> countriesList)
+    public CountriesAdapter(Context context, List<Countries> countriesList,GetMealsClickListener listener)
     {
         this.context=context;
+        this.listener=listener;
         this.countriesList=countriesList;
         System.out.println("adapter created");
       //  System.out.println("The first item category "+categoryItemsList.get(0).getStrCategory());
@@ -61,6 +65,14 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
 //        Glide.with(context).load(current.getStrCategoryThumb())
 //                .apply(new RequestOptions()
 //                        .override(150,150)).into(holder.countryImage);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //    listener.getMealsOfClickedCategory(currentProduct.getStrCategory());
+                listener.getMealsOfClickedCategory(countriesList.get(position).getStrArea());
+                System.out.println("Click:"+countriesList.get(position).getStrArea());
+            }
+        });
         Log.i(Tag,"onBindViewHolder");
     }
 
@@ -73,11 +85,13 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
 
         TextView countryName;
         ImageView countryImage;
+        ConstraintLayout layout;
       //  ImageView categoryImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             countryName=itemView.findViewById(R.id.nameView);
             countryImage=itemView.findViewById(R.id.favImageView);
+            layout=itemView.findViewById(R.id.layout);
         }
     }
 }

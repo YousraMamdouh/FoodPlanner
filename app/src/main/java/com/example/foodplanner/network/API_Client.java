@@ -114,10 +114,20 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
         System.out.println("el meal eli 3awzaha:"+ mealName);
        mealObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessMeal(item.getAllMeals());
-            System.out.println("mstanya "+item.getAllMeals().get(0).getStrMeal());
-            System.out.println(item.getAllMeals());
         }, error -> {
             System.out.println("An error while getting meal ");
+        }, () -> {
+            System.out.println("Mission completed successfully");
+        });
+    }
+
+    @Override
+    public void enqueueCallSpecificCuisine(NetworkDelegate networkDelegate, String cuisineName) {
+       Observable<RootMeals> cuisineObservable=api_interface.getMealsOfSelectedCountry(cuisineName);
+       cuisineObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+            networkDelegate.onSuccessSpecificCuisine(item.getAllMeals());
+        }, error -> {
+            networkDelegate.onFailureSpecificCuisine("Failed to get required cuisine");
         }, () -> {
             System.out.println("Mission completed successfully");
         });

@@ -55,6 +55,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public void enqueueCallSpecificCuisine(NetworkDelegate networkDelegate, String cuisineName) {
+
+    }
+
+    @Override
     public LiveData<List<MealsDetails>> getAllStoredMeals() {
         return localSource.getAllStoredMeals();
     }

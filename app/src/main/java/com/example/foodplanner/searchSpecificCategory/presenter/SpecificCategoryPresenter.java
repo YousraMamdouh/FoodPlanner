@@ -80,6 +80,16 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
     }
 
     @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
         repo.enqueueCallSpecificCategory(this, categoryName);
 

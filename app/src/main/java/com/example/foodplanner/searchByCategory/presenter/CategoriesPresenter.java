@@ -79,6 +79,16 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
     }
 
+    @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
+
+    }
+
 
     @Override
     public void getCategories() {

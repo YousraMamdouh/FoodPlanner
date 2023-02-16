@@ -25,7 +25,7 @@ import java.util.List;
  * Use the {@link SearchByCountryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchByCountryFragment extends Fragment implements CountriesViewInterface {
+public class SearchByCountryFragment extends Fragment implements CountriesViewInterface, GetMealsClickListener {
     RecyclerView countryRecyclerView;
     CountriesAdapter countriesAdapter;
     LinearLayoutManager layoutManager;
@@ -78,7 +78,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
         View view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
         countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
         layoutManager=new LinearLayoutManager(getActivity());
-        countriesAdapter=new CountriesAdapter(getActivity(), new ArrayList<>());
+        countriesAdapter=new CountriesAdapter(getActivity(), new ArrayList<>(),this);
         countriesPresenterInterface= new CountriesPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        countryRecyclerView.setLayoutManager(layoutManager);
        countryRecyclerView.setAdapter(countriesAdapter);
@@ -96,5 +96,11 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
 
         countriesAdapter.setCountriesItemsList(countries);
         countriesAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void getMealsOfClickedCategory(String categoryName) {
+
+
     }
 }
