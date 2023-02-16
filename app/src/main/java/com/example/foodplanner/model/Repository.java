@@ -56,7 +56,7 @@ public class Repository implements RepositoryInterface{
 
     @Override
     public void enqueueCallSpecificCuisine(NetworkDelegate networkDelegate, String cuisineName) {
-
+remoteSource.enqueueCallSpecificCuisine(networkDelegate,cuisineName);
     }
 
     @Override

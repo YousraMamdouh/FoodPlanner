@@ -81,6 +81,7 @@ public class SpecificCuisinePresenter implements SpecificCuisinePresenterInterfa
     @Override
     public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
         viewInterface.showMeals(mealsDetails);
+        System.out.println("onSuccess");
     }
 
     @Override
@@ -90,7 +91,7 @@ public class SpecificCuisinePresenter implements SpecificCuisinePresenterInterfa
 
     @Override
     public void getMeals() {
-        repo.enqueueCallSpecificCategory(this, cuisineName);
+        repo.enqueueCallSpecificCuisine(this, cuisineName);
 
 
     }

@@ -123,9 +123,11 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
 
     @Override
     public void enqueueCallSpecificCuisine(NetworkDelegate networkDelegate, String cuisineName) {
+        System.out.println("gowa el enqueue");
        Observable<RootMeals> cuisineObservable=api_interface.getMealsOfSelectedCountry(cuisineName);
        cuisineObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
             networkDelegate.onSuccessSpecificCuisine(item.getAllMeals());
+           System.out.println("ana hena "+item.getAllMeals().get(0).getStrMeal());
         }, error -> {
             networkDelegate.onFailureSpecificCuisine("Failed to get required cuisine");
         }, () -> {
