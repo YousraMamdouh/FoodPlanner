@@ -71,6 +71,16 @@ public class CountriesPresenter implements CountriesPresenterInterface, NetworkD
 
     }
 
+    @Override
+    public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureMeal(String errorMsg) {
+
+    }
+
 
     @Override
     public void getCountries() {

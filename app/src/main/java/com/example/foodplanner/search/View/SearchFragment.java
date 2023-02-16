@@ -17,8 +17,8 @@ import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.search.presentor.allMealsPresenter;
 import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;
+import com.example.foodplanner.search.presentor.allMealsPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,9 @@ import java.util.List;
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment implements AllMealsViewInterface , AddToFavoriteClickListener{
+public class SearchFragment extends Fragment implements AllMealsViewInterface , AddToFavoriteClickListener, OnMealClickListener {
 Button cuisineButton;
+    View view;
 Button categoryButton;
 Button ingredientButton;
 RecyclerView allMealsRecyclerView;
@@ -81,7 +82,7 @@ AllMealsPresenterInterface allMealsPresenterInterface;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view=inflater.inflate(R.layout.fragment_search_screen, container, false);
+       view=inflater.inflate(R.layout.fragment_search_screen, container, false);
 
        cuisineButton=view.findViewById(R.id.cuisineButton);
        categoryButton=view.findViewById(R.id.categoryButton);
@@ -89,7 +90,7 @@ AllMealsPresenterInterface allMealsPresenterInterface;
        allMealsRecyclerView=view.findViewById(R.id.allMealsRecyclerView);
     //   layoutManager=new LinearLayoutManager(getActivity());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>(),this);
+       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>(),this,this);
        allMealsPresenterInterface=new allMealsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        allMealsRecyclerView.setLayoutManager(layoutManager);
        allMealsRecyclerView.setAdapter(allMealsAdapter);
@@ -135,5 +136,12 @@ allMealsPresenterInterface.addToFavorites(mealsDetails);
     public void onClick(MealsDetails currentMeal) {
         Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
 addMealToFavorites(currentMeal);
+    }
+
+    @Override
+    public void getMeal(String mealName) {
+       com.example.foodplanner.search.View.SearchFragmentDirections.ActionSearchScreenToMealDetailsFragment action=SearchFragmentDirections.actionSearchScreenToMealDetailsFragment(mealName);
+        Navigation.findNavController(view).navigate(action);
+
     }
 }

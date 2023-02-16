@@ -1,36 +1,37 @@
-package com.example.foodplanner.search.presentor;
+package com.example.foodplanner.mealDetails.presenter;
 
+import com.example.foodplanner.mealDetails.view.MealViewInterface;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.search.View.AllMealsViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
 
-public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDelegate {
+public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
 
-    private AllMealsViewInterface viewInterface;
+    private MealViewInterface viewInterface;
     private RepositoryInterface repo;
+    private String mealName;
+ private MealsDetails mealObject;
 
-    public allMealsPresenter(AllMealsViewInterface viewInterface, RepositoryInterface repo) {
-        this.viewInterface=viewInterface;
+
+    public MealPresenter(MealViewInterface viewInterface, RepositoryInterface repo, String mealName) {
+        this.viewInterface = viewInterface;
         this.repo = repo;
+        this.mealName=mealName;
     }
 
 
 
     @Override
     public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {
-        viewInterface.showMeals(mealsDetails);
-
     }
 
     @Override
     public void onFailureAllMeals(String errorMsg) {
-        System.out.println("Failed to get Meals ");
     }
 
     @Override
@@ -71,7 +72,13 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
 
     @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
-
+      mealObject=mealsDetails.get(0);
+        viewInterface.showMealDetails(mealObject);
+//       mealObject=mealsDetails.get(0);
+//
+//
+//        System.out.println("tamam "+mealObject.getStrMeal());
+    //    System.out.println("ana esmy:"+ mealObject.getStrArea()+"W sorty "+mealObject.getStrMealThumb());
     }
 
     @Override
@@ -80,8 +87,8 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
     }
 
     @Override
-    public void getMeals() {
-        repo.enqueueCall(this);
+    public void getMeal() {
+        repo.enqueueCallMeal(this,mealName);
 
     }
 
