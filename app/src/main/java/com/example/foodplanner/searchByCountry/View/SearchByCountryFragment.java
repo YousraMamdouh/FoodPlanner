@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ import java.util.List;
  */
 public class SearchByCountryFragment extends Fragment implements CountriesViewInterface, GetMealsClickListener {
     RecyclerView countryRecyclerView;
+    View view;
     CountriesAdapter countriesAdapter;
     LinearLayoutManager layoutManager;
     CountriesPresenterInterface countriesPresenterInterface;
@@ -75,7 +77,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
+        view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
         countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
         layoutManager=new LinearLayoutManager(getActivity());
         countriesAdapter=new CountriesAdapter(getActivity(), new ArrayList<>(),this);
@@ -92,14 +94,15 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
 
     @Override
     public void showCountries(List<Countries> countries) {
-
-
         countriesAdapter.setCountriesItemsList(countries);
         countriesAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void getMealsOfClickedCategory(String cuisineName) {
-        //com.example.foodplanner.searchByCountry.View.SearchByCountryFragmentDirections.ActionSearchByCountryFragmentToSpecificCuisine action=SearchByCountryFragmentDirections.actionSpecificCuisineToMealDetailsFragment(cuisineName);
+        com.example.foodplanner.searchByCountry.View.SearchByCountryFragmentDirections.ActionSearchByCountryFragmentToSpecificCuisine action=
+                SearchByCountryFragmentDirections.actionSearchByCountryFragmentToSpecificCuisine(cuisineName);
+        Navigation.findNavController(view).navigate(action);
+
     }
 }
