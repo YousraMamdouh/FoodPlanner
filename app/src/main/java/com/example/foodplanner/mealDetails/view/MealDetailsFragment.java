@@ -178,45 +178,45 @@ List<String> ingredientsList=new ArrayList<>();
 
     public List<String> getExistIngredients()
     {
-        if(  mealObject.getStrIngredient1()!=null &&  mealObject.getStrIngredient1()!="")
+        if(  mealObject.getStrIngredient1()!=null&& !mealObject.getStrIngredient1().equals(""))
             ingredientsList.add(mealObject.getStrIngredient1());
-        if(  mealObject.getStrIngredient2()!=null &&  mealObject.getStrIngredient2()!="")
+        if(  mealObject.getStrIngredient2()!=null &&  !mealObject.getStrIngredient2().equals(""))
             ingredientsList.add(mealObject.getStrIngredient2());
-        if(  mealObject.getStrIngredient3()!=null &&  mealObject.getStrIngredient3()!="")
+        if(  mealObject.getStrIngredient3()!=null && ! mealObject.getStrIngredient3().equals(""))
             ingredientsList.add(mealObject.getStrIngredient3());
-        if(  mealObject.getStrIngredient4()!=null &&  mealObject.getStrIngredient4()!="")
+        if(  mealObject.getStrIngredient4()!=null &&  !mealObject.getStrIngredient4().equals(""))
             ingredientsList.add(mealObject.getStrIngredient4());
-        if(  mealObject.getStrIngredient5()!=null &&  mealObject.getStrIngredient5()!="")
+        if(  mealObject.getStrIngredient5()!=null &&  !mealObject.getStrIngredient5().equals(""))
             ingredientsList.add(mealObject.getStrIngredient5());
-        if(  mealObject.getStrIngredient6()!=null &&  mealObject.getStrIngredient6()!="")
+        if(  mealObject.getStrIngredient6()!=null &&  !mealObject.getStrIngredient6().equals(""))
             ingredientsList.add(mealObject.getStrIngredient6());
-        if(  mealObject.getStrIngredient7()!=null &&  mealObject.getStrIngredient7()!="")
+        if(  mealObject.getStrIngredient7()!=null &&  !mealObject.getStrIngredient7().equals(""))
             ingredientsList.add(mealObject.getStrIngredient7());
-        if(  mealObject.getStrIngredient8()!=null &&  mealObject.getStrIngredient8()!="")
+        if(  mealObject.getStrIngredient8()!=null &&  !mealObject.getStrIngredient8().equals(""))
             ingredientsList.add(mealObject.getStrIngredient8());
-        if(  mealObject.getStrIngredient9()!=null &&  mealObject.getStrIngredient9()!="")
+        if(  mealObject.getStrIngredient9()!=null &&  !mealObject.getStrIngredient9().equals(""))
             ingredientsList.add(mealObject.getStrIngredient9());
-        if(  mealObject.getStrIngredient10()!=null &&  mealObject.getStrIngredient10()!="")
+        if(  mealObject.getStrIngredient10()!=null &&  !mealObject.getStrIngredient10().equals(""))
             ingredientsList.add(mealObject.getStrIngredient10());
-        if(  mealObject.getStrIngredient11()!=null &&  mealObject.getStrIngredient11()!="")
+        if(  mealObject.getStrIngredient11()!=null &&  !mealObject.getStrIngredient11().equals(""))
             ingredientsList.add(mealObject.getStrIngredient11());
-        if(  mealObject.getStrIngredient12()!=null &&  mealObject.getStrIngredient12()!="")
+        if(  mealObject.getStrIngredient12()!=null &&  !mealObject.getStrIngredient12().equals(""))
             ingredientsList.add(mealObject.getStrIngredient12());
-        if(  mealObject.getStrIngredient13()!=null &&  mealObject.getStrIngredient13()!="")
+        if(  mealObject.getStrIngredient13()!=null &&  !mealObject.getStrIngredient13().equals(""))
             ingredientsList.add(mealObject.getStrIngredient13());
-        if(  mealObject.getStrIngredient14()!=null &&  mealObject.getStrIngredient14()!="")
+        if(  mealObject.getStrIngredient14()!=null &&  !mealObject.getStrIngredient14().equals(""))
             ingredientsList.add(mealObject.getStrIngredient14());
-        if(  mealObject.getStrIngredient15()!=null &&  mealObject.getStrIngredient15()!="")
+        if(  mealObject.getStrIngredient15()!=null &&  !mealObject.getStrIngredient15().equals(""))
             ingredientsList.add(mealObject.getStrIngredient15());
-        if(  mealObject.getStrIngredient16()!=null &&  mealObject.getStrIngredient16()!="")
+        if(  mealObject.getStrIngredient16()!=null &&  !mealObject.getStrIngredient16().equals(""))
             ingredientsList.add(mealObject.getStrIngredient16());
-        if(  mealObject.getStrIngredient17()!=null &&  mealObject.getStrIngredient17()!="")
+        if(  mealObject.getStrIngredient17()!=null &&  !mealObject.getStrIngredient17().equals(""))
             ingredientsList.add(mealObject.getStrIngredient17());
-        if(  mealObject.getStrIngredient18()!=null &&  mealObject.getStrIngredient18()!="")
+        if(  mealObject.getStrIngredient18()!=null &&  !mealObject.getStrIngredient18().equals(""))
             ingredientsList.add(mealObject.getStrIngredient18());
-        if(  mealObject.getStrIngredient19()!=null &&  mealObject.getStrIngredient19()!="")
+        if(  mealObject.getStrIngredient19()!=null &&  !mealObject.getStrIngredient19().equals(""))
             ingredientsList.add(mealObject.getStrIngredient19());
-        if(  mealObject.getStrIngredient20()!=null &&  mealObject.getStrIngredient20()!="")
+        if(  mealObject.getStrIngredient20()!=null &&  !mealObject.getStrIngredient20().equals(""))
             ingredientsList.add(mealObject.getStrIngredient20());
 
 return ingredientsList;
