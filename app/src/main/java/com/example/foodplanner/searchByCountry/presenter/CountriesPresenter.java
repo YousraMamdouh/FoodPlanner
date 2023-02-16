@@ -75,6 +75,8 @@ public class CountriesPresenter implements CountriesPresenterInterface, NetworkD
 
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
 
+    }
+    @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
 
 
@@ -84,10 +86,14 @@ public class CountriesPresenter implements CountriesPresenterInterface, NetworkD
 
     public void onFailureSpecificIngredient(String errorMsg) {
 
+    }
+    @Override
     public void onFailureMeal(String errorMsg) {
 
-
     }
+
+
+
 
 
     @Override

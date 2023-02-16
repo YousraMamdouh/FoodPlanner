@@ -71,6 +71,16 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     }
 
     @Override
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificIngredient(String errorMsg) {
+
+    }
+
+    @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
       mealObject=mealsDetails.get(0);
         viewInterface.showMealDetails(mealObject);

@@ -66,15 +66,21 @@ public class IngredientsPresenter implements IngredientsPresenterInterface, Netw
 
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
 
+    }
+    @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
 
-
     }
+
+
+
 
     @Override
 
     public void onFailureSpecificIngredient(String errorMsg) {
 
+    }
+    @Override
     public void onFailureMeal(String errorMsg) {
 
 

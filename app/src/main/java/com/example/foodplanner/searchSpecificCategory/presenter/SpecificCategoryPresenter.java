@@ -73,6 +73,8 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
 
+    }
+    @Override
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
 
 
@@ -82,6 +84,8 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     public void onFailureSpecificIngredient(String errorMsg) {
 
+    }
+    @Override
     public void onFailureMeal(String errorMsg) {
 
 

@@ -73,19 +73,27 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
 
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
 
+    }
+
     public void onSuccessMeal(List<MealsDetails> mealsDetails) {
 
+        }
 
-    }
+
+
 
     @Override
 
     public void onFailureSpecificIngredient(String errorMsg) {
 
+    }
+
     public void onFailureMeal(String errorMsg) {
 
+        }
 
-    }
+
+
 
     @Override
     public void getMeals() {
