@@ -47,6 +47,8 @@
     <string name="description3">Let\'s Do It Together</string>
     <string name="logoutbtn">Logout</string>
     <string name="forgottxt">Forgot Password? Recover</string>
+    <string name="skipBtn">Skip</string>
+    <string name="skip">Skip</string>
 
 
 </resources>
