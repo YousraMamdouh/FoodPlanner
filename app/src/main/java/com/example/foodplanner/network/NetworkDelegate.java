@@ -25,7 +25,7 @@ public interface NetworkDelegate {
     void onSuccessAllIngredients(List<Ingredients> ingredients);
     void onFailureAllIngredients(String errorMsg);
 //Specific Category
-    void onSuccessSpecificCategory(List<MealsDetails> mealsDetails);
+void onSuccessSpecificCategory(List<MealsDetails> mealsDetails);
     void onFailureSpecificCategory(String errorMsg);
 
     //Specific Ingredients
@@ -36,5 +36,10 @@ public interface NetworkDelegate {
     //Meal
     void onSuccessMeal(List<MealsDetails> mealsDetails);
     void onFailureMeal(String errorMsg);
+
+    //Specific Cuisine
+    void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails);
+    void onFailureSpecificCuisine(String errorMsg);
+
 
 }

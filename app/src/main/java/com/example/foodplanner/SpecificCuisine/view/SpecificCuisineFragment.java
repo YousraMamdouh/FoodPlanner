@@ -1,4 +1,4 @@
-package com.example.foodplanner.searchSpecificCategory.view;
+package com.example.foodplanner.SpecificCuisine.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,31 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.SpecificCuisine.presenter.SpecificCuisinePresenter;
+import com.example.foodplanner.SpecificCuisine.presenter.SpecificCuisinePresenterInterface;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenter;
-import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenterInterface;
-import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryFragmentDirections.ActionSearchSpecificCategoryToMealDetailsFragment;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SpecificCategoryFragment#newInstance} factory method to
+ * Use the {@link SpecificCuisineFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificCategoryFragment extends Fragment implements SpecificCategoryViewInterface,AddToFavorites,OnMealClickedListener {
+public class SpecificCuisineFragment extends Fragment implements SpecificCuisineViewInterface,AddToFavorites,OnMealClickedListener {
 
     RecyclerView recyclerView;
-   SpecificCategoryAdapter adapter;
+    SpecificCuisineAdapter adapter;
     StaggeredGridLayoutManager layoutManager;
-    SpecificCategoryPresenterInterface specificCategoryPresenterInterface;
+    SpecificCuisinePresenterInterface specificCuisinePresenterInterface;
     View view;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +44,7 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     private String mParam1;
     private String mParam2;
 
-    public SpecificCategoryFragment() {
+    public SpecificCuisineFragment() {
         // Required empty public constructor
     }
 
@@ -57,11 +54,11 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment searchSpecificCategory.
+     * @return A new instance of fragment SpecificCuisine.
      */
     // TODO: Rename and change types and number of parameters
-    public static SpecificCategoryFragment newInstance(String param1, String param2) {
-        SpecificCategoryFragment fragment = new SpecificCategoryFragment();
+    public static SpecificCuisineFragment newInstance(String param1, String param2) {
+        SpecificCuisineFragment fragment = new SpecificCuisineFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -82,30 +79,15 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       view= inflater.inflate(R.layout.fragment_search_specific_category, container, false);
-       recyclerView=view.findViewById(R.id.cuisineRecyclerView);
+        view= inflater.inflate(R.layout.fragment_specific_cuisine, container, false);
+        recyclerView=view.findViewById(R.id.cuisineRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        adapter=new SpecificCategoryAdapter(getActivity(),new ArrayList<>(),this,this);
-        specificCategoryPresenterInterface=new SpecificCategoryPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),SpecificCategoryFragmentArgs.fromBundle(getArguments()).getCategoryName());
+        adapter=new SpecificCuisineAdapter(getActivity(),new ArrayList<>(),this,this);
+        specificCuisinePresenterInterface =new SpecificCuisinePresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), SpecificCuisineFragmentArgs.fromBundle(getArguments()).getCuisineName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        specificCategoryPresenterInterface.getMeals();
+        specificCuisinePresenterInterface.getMeals();
         return view;
-
-    }
-
-    @Override
-    public void showMeals(List<MealsDetails> mealsDetails) {
-        adapter.setCategoryItemList(mealsDetails);
-        System.out.println("meals:"+mealsDetails.size());
-        adapter.notifyDataSetChanged();
-
-    }
-
-    @Override
-    public void addMealToFavorites(MealsDetails mealsDetails) {
-        specificCategoryPresenterInterface.addToFavorites(mealsDetails);
-
     }
 
     @Override
@@ -116,8 +98,22 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
 
     @Override
     public void getMeal(String mealName) {
-ActionSearchSpecificCategoryToMealDetailsFragment action = SpecificCategoryFragmentDirections.actionSearchSpecificCategoryToMealDetailsFragment(mealName);
+        SpecificCuisineFragmentDirections.ActionSpecificCuisineToMealDetailsFragment action=SpecificCuisineFragmentDirections.actionSpecificCuisineToMealDetailsFragment(mealName);
         Navigation.findNavController(view).navigate(action);
+
+
+    }
+
+    @Override
+    public void showMeals(List<MealsDetails> mealsDetails) {
+        System.out.println("showMeals");
+        adapter.setCuisineItemList(mealsDetails);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void addMealToFavorites(MealsDetails mealsDetails) {
+        specificCuisinePresenterInterface.addToFavorites(mealsDetails);
 
     }
 }

@@ -86,6 +86,16 @@ public class IngredientsPresenter implements IngredientsPresenterInterface, Netw
 
     }
 
+    @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
+
+    }
+
 
     @Override
     public void getIngredients() {

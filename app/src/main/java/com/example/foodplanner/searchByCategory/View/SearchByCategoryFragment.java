@@ -81,7 +81,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
-        categoryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
+        categoryRecyclerView=view.findViewById(R.id.cuisineRecyclerView);
 
 
         layoutManager=new LinearLayoutManager(getActivity());

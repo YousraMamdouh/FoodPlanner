@@ -97,7 +97,11 @@
         android:id="@+id/searchByCountryFragment"
         android:name="com.example.foodplanner.searchByCountry.View.SearchByCountryFragment"
         android:label="fragment_search_by_country"
-        tools:layout="@layout/fragment_search_by_country" />
+        tools:layout="@layout/fragment_search_by_country" >
+        <action
+            android:id="@+id/action_searchByCountryFragment_to_specificCuisine"
+            app:destination="@id/specificCuisine" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.foodplanner.login.view.LoginFragment"
@@ -167,6 +171,18 @@
         tools:layout="@layout/fragment_specific_ingredient" >
         <argument
             android:name="IngredientName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/specificCuisine"
+        android:name="com.example.foodplanner.SpecificCuisine.view.SpecificCuisineFragment"
+        android:label="fragment_specific_cuisine"
+        tools:layout="@layout/fragment_specific_cuisine" >
+        <action
+            android:id="@+id/action_specificCuisine_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+        <argument
+            android:name="cuisineName"
             app:argType="string" />
     </fragment>
 </navigation>

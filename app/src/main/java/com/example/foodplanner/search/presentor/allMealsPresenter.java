@@ -96,6 +96,16 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
 
 
     @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
+
+    }
+
+    @Override
     public void getMeals() {
         repo.enqueueCall(this);
 

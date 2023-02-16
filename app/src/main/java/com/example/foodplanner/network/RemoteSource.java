@@ -7,6 +7,7 @@ public interface RemoteSource {
     void enqueueCallSpecificIngredient(NetworkDelegate networkDelegate,String str);
 
     void enqueueCallMeal(NetworkDelegate networkDelegate,String mealName);
+    void enqueueCallSpecificCuisine(NetworkDelegate networkDelegate,String cuisineName);
 
 
 
