@@ -83,7 +83,7 @@ public class SpecificCuisineFragment extends Fragment implements SpecificCuisine
         recyclerView=view.findViewById(R.id.cuisineRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         adapter=new SpecificCuisineAdapter(getActivity(),new ArrayList<>(),this,this);
-        specificCuisinePresenterInterface =new SpecificCuisinePresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryFragmentArgs.fromBundle(getArguments()).getCategoryName());
+        specificCuisinePresenterInterface =new SpecificCuisinePresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), SpecificCuisineFragmentArgs.fromBundle(getArguments()).getCuisineName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         specificCuisinePresenterInterface.getMeals();

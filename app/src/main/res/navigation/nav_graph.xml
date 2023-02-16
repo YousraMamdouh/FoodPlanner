@@ -168,5 +168,8 @@
         <action
             android:id="@+id/action_specificCuisine_to_mealDetailsFragment"
             app:destination="@id/mealDetailsFragment" />
+        <argument
+            android:name="cuisineName"
+            app:argType="string" />
     </fragment>
 </navigation>

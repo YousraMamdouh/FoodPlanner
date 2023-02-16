@@ -99,8 +99,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     }
 
     @Override
-    public void getMealsOfClickedCategory(String categoryName) {
-
-
+    public void getMealsOfClickedCategory(String cuisineName) {
+        //com.example.foodplanner.searchByCountry.View.SearchByCountryFragmentDirections.ActionSearchByCountryFragmentToSpecificCuisine action=SearchByCountryFragmentDirections.actionSpecificCuisineToMealDetailsFragment(cuisineName);
     }
 }
