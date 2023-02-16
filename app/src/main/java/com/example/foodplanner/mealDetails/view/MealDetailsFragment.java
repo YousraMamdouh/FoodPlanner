@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +24,9 @@ import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +46,11 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
    TextView mealName;
    TextView recipeView;
    TextView mealCountry;
-   VideoView videoView;
+    YouTubePlayerView youTubePlayerView;
    Button addToFavButton;
    View view;
    MealsDetails mealObject;
+   List<Ingredients> ingredientsList;
 
 
 
@@ -97,7 +101,7 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
        view= inflater.inflate(R.layout.fragment_meal_details, container, false);
        mealName=view.findViewById(R.id.myName);
        mealImage=view.findViewById(R.id.myImage);
-       videoView=view.findViewById(R.id.videoView);
+       youTubePlayerView =view.findViewById(R.id.videoView);
        recipeView=view.findViewById(R.id.recipeView);
        recyclerView=view.findViewById(R.id.myRecyclerView);
        addToFavButton=view.findViewById(R.id.addToFavButton);
@@ -121,8 +125,6 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
 
 
 
-
-
     @Override
     public void showIngredients(List<Ingredients> ingredients) {
         adapter.setIngredientsList(ingredients);
@@ -135,13 +137,25 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
         mealName.setText(mealObject.getStrMeal());
         recipeView.setText(mealObject.getStrInstructions());
         mealCountry.setText(mealObject.getStrArea());
-//        videoView.setVideoURI(Uri.parse(mealObject.getStrYoutube()));
-//        videoView.setFocusable(true);
-//        videoView.start();
+
+        getLifecycle().addObserver(youTubePlayerView);
+
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = mealObject.getStrYoutube();
+                System.out.println("URL:"+mealObject.getStrYoutube());
+                youTubePlayer.loadVideo(videoId, 0);
+                youTubePlayer.play();
+            }
+        });
 
         Glide.with(getActivity()).load(mealObject.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(mealImage);
+
+
+
 
     }
 

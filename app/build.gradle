@@ -77,4 +77,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
     implementation 'androidx.room:room-rxjava2:2.4.1'
 
+    //VideoPlay
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
+
+
 }
