@@ -1,39 +1,41 @@
-package com.example.foodplanner.searchSpecificCategory.view;
+package com.example.foodplanner.specificIngredient.view;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
+import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
-import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenter;
-import com.example.foodplanner.searchSpecificCategory.presenter.SpecificCategoryPresenterInterface;
+
+
+import com.example.foodplanner.specificIngredient.presenter.SpecificIngredientPresenter;
+import com.example.foodplanner.specificIngredient.presenter.SpecificIngredientPresenterInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SpecificCategoryFragment#newInstance} factory method to
+ * Use the {@link SpecificIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificCategoryFragment extends Fragment implements SpecificCategoryViewInterface,AddToFavorites {
+public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite {
 
     RecyclerView recyclerView;
-   SpecificCategoryAdapter adapter;
+    SpecificIngredientAdapter adapter;
     StaggeredGridLayoutManager layoutManager;
-    SpecificCategoryPresenterInterface specificCategoryPresenterInterface;
-
-
+    SpecificIngredientPresenterInterface specificIngredientPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,7 +45,7 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     private String mParam1;
     private String mParam2;
 
-    public SpecificCategoryFragment() {
+    public SpecificIngredient() {
         // Required empty public constructor
     }
 
@@ -53,11 +55,11 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment searchSpecificCategory.
+     * @return A new instance of fragment SpecificIngredient.
      */
     // TODO: Rename and change types and number of parameters
-    public static SpecificCategoryFragment newInstance(String param1, String param2) {
-        SpecificCategoryFragment fragment = new SpecificCategoryFragment();
+    public static SpecificIngredient newInstance(String param1, String param2) {
+        SpecificIngredient fragment = new SpecificIngredient();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,30 +80,15 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_search_specific_category, container, false);
-       recyclerView=view.findViewById(R.id.categoryRecyclerView);
+        View view= inflater.inflate(R.layout.fragment_specific_ingredient, container, false);
+        recyclerView=view.findViewById(R.id.ingredientRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        adapter=new SpecificCategoryAdapter(getActivity(),new ArrayList<>(),this);
-        specificCategoryPresenterInterface=new SpecificCategoryPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),SpecificCategoryFragmentArgs.fromBundle(getArguments()).getCategoryName());
+        adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this);
+        specificIngredientPresenterInterface=new SpecificIngredientPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), com.example.foodplanner.specificIngredient.view.SpecificIngredientArgs.fromBundle(getArguments()).getIngredientName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        specificCategoryPresenterInterface.getMeals();
+        specificIngredientPresenterInterface.getMeals();
         return view;
-
-    }
-
-    @Override
-    public void showMeals(List<MealsDetails> mealsDetails) {
-        adapter.setCategoryItemList(mealsDetails);
-        System.out.println("meals:"+mealsDetails.size());
-        adapter.notifyDataSetChanged();
-
-    }
-
-    @Override
-    public void addMealToFavorites(MealsDetails mealsDetails) {
-        specificCategoryPresenterInterface.addToFavorites(mealsDetails);
-        Toast.makeText(getActivity(), "yousra", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -109,5 +96,18 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
     public void onClick(MealsDetails currentMeal) {
         Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
         addMealToFavorites(currentMeal);
+    }
+
+    @Override
+    public void showMeals(List<MealsDetails> mealsDetails) {
+        adapter.setIngredientItemList(mealsDetails);
+        System.out.println("meals:"+mealsDetails.size());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void addMealToFavorites(MealsDetails mealsDetails) {
+       specificIngredientPresenterInterface.addToFavorites(mealsDetails);
+        Toast.makeText(getActivity(), "added", Toast.LENGTH_SHORT).show();
     }
 }

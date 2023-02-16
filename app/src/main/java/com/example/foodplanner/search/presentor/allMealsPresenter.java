@@ -1,7 +1,7 @@
 package com.example.foodplanner.search.presentor;
 
-import com.example.foodplanner.network.model.MealsDetails;
-import com.example.foodplanner.network.model.RepositoryInterface;
+import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.search.View.AllMealsViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;

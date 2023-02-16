@@ -1,6 +1,6 @@
 package com.example.foodplanner.searchSpecificCategory.presenter;
 
-import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.model.MealsDetails;
 
 public interface SpecificCategoryPresenterInterface {
 

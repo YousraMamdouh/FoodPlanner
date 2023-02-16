@@ -1,7 +1,8 @@
-package com.example.foodplanner.search.View;
+package com.example.foodplanner.specificIngredient.view;
 
 import com.example.foodplanner.model.MealsDetails;
 
-public interface AddToFavoriteClickListener {
+public interface AddToFavorite {
+
     void onClick(MealsDetails currentMeal);
 }

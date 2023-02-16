@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 

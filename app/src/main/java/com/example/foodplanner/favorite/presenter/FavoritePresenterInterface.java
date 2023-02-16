@@ -1,7 +1,7 @@
 package com.example.foodplanner.favorite.presenter;
 
 
-import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.model.MealsDetails;
 
 public interface FavoritePresenterInterface {
     void getMyFavorites();

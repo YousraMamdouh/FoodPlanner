@@ -9,10 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
+import com.example.foodplanner.searchByCategory.View.GetMealsClickListener;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 
 import java.util.List;
@@ -22,16 +24,18 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     private static final String Tag="Ingredients Adapter";
     private List<Ingredients> ingredientsList;
     private Context context;
+    private GetMealsClickListener listener;
 
     public void setIngredientsItemsList(List<Ingredients> ingredientsList) {
         this.ingredientsList=ingredientsList;
     }
 
 
-    public IngredientsAdapter(Context context, List<Ingredients> ingredientsList)
+    public IngredientsAdapter(Context context, List<Ingredients> ingredientsList,  GetMealsClickListener listener)
     {
         this.context=context;
         this.ingredientsList=ingredientsList;
+        this.listener=listener;
         System.out.println("adapter created");
     }
 
@@ -61,6 +65,16 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
                 .into(holder.ingredientImage);
 
         Log.i(Tag,"onBindViewHolder");
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //    listener.getMealsOfClickedCategory(currentProduct.getStrCategory());
+                listener.getMealsOfClickedCategory(ingredientsList.get(position).getStrIngredient());
+                System.out.println("Click:"+ingredientsList.get(position).getStrIngredient());
+            }
+        });
+
     }
 
     @Override
@@ -70,12 +84,14 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        ConstraintLayout layout;
         TextView ingredientName;
       ImageView ingredientImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             ingredientName =itemView.findViewById(R.id.nameView);
           ingredientImage=itemView.findViewById(R.id.mealImageFav);
+            layout=itemView.findViewById(R.id.layout);
         }
     }
 }

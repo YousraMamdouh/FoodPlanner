@@ -1,6 +1,6 @@
 package com.example.foodplanner.network;
 
-import com.example.foodplanner.network.model.RootMeals;
+import com.example.foodplanner.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
 import com.example.foodplanner.searchByIngredient.model.RootIngredients;
@@ -113,7 +113,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
         System.out.println("SpecificIngredient");
         Observable<RootMeals> mealsOfSelectedCountryObservable=api_interface.getMealsOfSelectedCategory(str);
         mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
-            networkDelegate.onSuccessSpecificCategory(item.getAllMeals());
+            networkDelegate.onSuccessSpecificIngredient(item.getAllMeals());
             System.out.println("Specific meal");
             System.out.println(item.getAllMeals());
         }, error -> {

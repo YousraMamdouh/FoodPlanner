@@ -1,4 +1,4 @@
-package com.example.foodplanner.search.View;
+package com.example.foodplanner.specificIngredient.view;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,58 +17,60 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.MealsDetails;
 
+
 import java.util.List;
 
-public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyViewHolder>{
-
-    private static final String Tag="All Meals Adapter";
+public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder>{
+    private static final String Tag="Specific ingredient Adapter";
     private List<MealsDetails> allMealsList;
     private Context context;
 
-    private AddToFavoriteClickListener addToFavoriteClickListener;
+    private AddToFavorite addToFavorite;
 
-    public void setAllMealsItemList(List<MealsDetails> allMealsList) {
+    public void setIngredientItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
     }
 
 
-   // private OnFavoriteClickListener listener;
+    // private OnFavoriteClickListener listener;
 
 
-    public AllMealsAdapter(Context context, List<MealsDetails> allMealsList,AddToFavoriteClickListener listener)
+    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite listener)
     {
         this.context=context;
         this.allMealsList = allMealsList;
-        this.addToFavoriteClickListener=listener;
+        this.addToFavorite =listener;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SpecificIngredientAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
         LayoutInflater inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view =inflater.inflate(R.layout.search_all_meals,parent,false);
 
-        MyViewHolder myViewHolder=new MyViewHolder(view);
+       SpecificIngredientAdapter.MyViewHolder myViewHolder=new SpecificIngredientAdapter.MyViewHolder(view);
         Log.i(Tag,"OnCreateViewHolder");
         return myViewHolder;
 
 
     }
 
+
+
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SpecificIngredientAdapter.MyViewHolder holder, int position) {
         MealsDetails currentProduct = allMealsList.get(position);
         holder.mealName.setText(currentProduct.getStrMeal());
-       holder.mealCountry.setText(currentProduct.getStrArea());
+        holder.mealCountry.setText(currentProduct.getStrArea());
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToFavoriteClickListener.onClick(currentProduct);
+                addToFavorite.onClick(currentProduct);
             }
         });
         Log.i(Tag,"onBindViewHolder");
@@ -94,4 +96,5 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
 
         }
     }
+
 }

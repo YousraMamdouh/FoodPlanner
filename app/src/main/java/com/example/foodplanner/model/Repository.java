@@ -1,4 +1,4 @@
-package com.example.foodplanner.network.model;
+package com.example.foodplanner.model;
 
 import android.content.Context;
 
@@ -47,6 +47,11 @@ public class Repository implements RepositoryInterface{
     public void enqueueCallSpecificCategory(NetworkDelegate networkDelegate, String str) {
         remoteSource.enqueueCallSpecificCategory(networkDelegate,str);
 
+    }
+
+    @Override
+    public void enqueueCallSpecificIngredient(NetworkDelegate networkDelegate, String str) {
+        remoteSource.enqueueCallSpecificIngredient(networkDelegate,str);
     }
 
     @Override

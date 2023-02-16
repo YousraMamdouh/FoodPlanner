@@ -1,12 +1,12 @@
-package com.example.foodplanner.spcificIngredient.presenter;
+package com.example.foodplanner.specificIngredient.presenter;
 
-import com.example.foodplanner.network.model.MealsDetails;
-import com.example.foodplanner.network.model.RepositoryInterface;
+import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
-import com.example.foodplanner.spcificIngredient.view.SpecificIngredientViewInterface;
+import com.example.foodplanner.specificIngredient.view.SpecificIngredientViewInterface;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
     @Override
     public void getMeals() {
         System.out.println("ingredient");
-        repo.enqueueCallSpecificCategory(this,ingredient);
+        repo.enqueueCallSpecificIngredient(this,ingredient);
     }
 
     @Override

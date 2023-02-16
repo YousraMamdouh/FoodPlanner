@@ -6,13 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
-import com.example.foodplanner.network.model.Repository;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
+import com.example.foodplanner.searchByCategory.View.GetMealsClickListener;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
 import com.example.foodplanner.searchByIngredient.presenter.IngredientsPresenter;
 import com.example.foodplanner.searchByIngredient.presenter.IngredientsPresenterInterface;
@@ -25,11 +27,12 @@ import java.util.List;
  * Use the {@link SearchByIngredientFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchByIngredientFragment extends Fragment implements IngredientsViewInterface {
+public class SearchByIngredientFragment extends Fragment implements IngredientsViewInterface, GetMealsClickListener {
     RecyclerView ingredientRecyclerView;
    IngredientsAdapter ingredientsAdapter;
     LinearLayoutManager layoutManager;
     IngredientsPresenterInterface ingredientsPresenterInterface;
+    View view;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,10 +78,10 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_search_by_ingridient, container, false);
+        view= inflater.inflate(R.layout.fragment_search_by_ingridient, container, false);
         ingredientRecyclerView=view.findViewById(R.id.ingredientRecyclerView);
         layoutManager=new LinearLayoutManager(getActivity());
-        ingredientsAdapter=new IngredientsAdapter(getActivity(),new ArrayList<>());
+        ingredientsAdapter=new IngredientsAdapter(getActivity(),new ArrayList<>(),this);
         ingredientsPresenterInterface= new IngredientsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         ingredientRecyclerView.setLayoutManager(layoutManager);
         ingredientRecyclerView.setAdapter(ingredientsAdapter);
@@ -93,5 +96,12 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
     public void showIngredients(List<Ingredients> ingredients) {
         ingredientsAdapter.setIngredientsItemsList(ingredients);
         ingredientsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void getMealsOfClickedCategory(String IngredientName) {
+        com.example.foodplanner.searchByIngredient.View.SearchByIngredientFragmentDirections.ActionSearcByhIngridientFragmentToSpecificIngredient action=
+               SearchByIngredientFragmentDirections.actionSearcByhIngridientFragmentToSpecificIngredient(IngredientName);
+        Navigation.findNavController(view).navigate(action);
     }
 }

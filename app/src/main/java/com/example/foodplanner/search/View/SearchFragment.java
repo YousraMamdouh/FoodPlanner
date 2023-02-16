@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
-import com.example.foodplanner.network.model.MealsDetails;
-import com.example.foodplanner.network.model.Repository;
+import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.search.presentor.allMealsPresenter;
 import com.example.foodplanner.search.presentor.AllMealsPresenterInterface;

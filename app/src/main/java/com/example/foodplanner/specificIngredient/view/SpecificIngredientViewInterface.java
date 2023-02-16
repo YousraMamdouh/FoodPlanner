@@ -1,6 +1,6 @@
-package com.example.foodplanner.spcificIngredient.view;
+package com.example.foodplanner.specificIngredient.view;
 
-import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.example.foodplanner.spcificIngredient.presenter;
+package com.example.foodplanner.specificIngredient.presenter;
 
-import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.model.MealsDetails;
 
 public interface SpecificIngredientPresenterInterface {
 
