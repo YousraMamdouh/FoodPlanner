@@ -1,8 +1,8 @@
-package com.example.foodplanner.searchSpecificCategory.presenter;
+package com.example.foodplanner.spcificIngredient.presenter;
 
 import com.example.foodplanner.network.model.MealsDetails;
 
-public interface SpecificCategoryPresenterInterface {
+public interface SpecificIngredientPresenterInterface {
 
     void getMeals();
     void addToFavorites(MealsDetails mealsDetails);

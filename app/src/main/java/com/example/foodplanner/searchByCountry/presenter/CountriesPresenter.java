@@ -1,7 +1,7 @@
 package com.example.foodplanner.searchByCountry.presenter;
 
-import com.example.foodplanner.model.MealsDetails;
-import com.example.foodplanner.model.RepositoryInterface;
+import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.network.model.RepositoryInterface;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.View.CountriesViewInterface;
@@ -68,6 +68,16 @@ public class CountriesPresenter implements CountriesPresenterInterface, NetworkD
 
     @Override
     public void onFailureSpecificCategory(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificIngredient(String errorMsg) {
 
     }
 

@@ -1,7 +1,7 @@
 package com.example.foodplanner.searchByCategory.presenter;
 
-import com.example.foodplanner.model.MealsDetails;
-import com.example.foodplanner.model.RepositoryInterface;
+import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.network.model.RepositoryInterface;
 import com.example.foodplanner.searchByCategory.View.CategoriesViewInterface;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.network.NetworkDelegate;
@@ -66,6 +66,16 @@ public class CategoriesPresenter implements CategoriesPresenterInterface, Networ
 
     @Override
     public void onFailureSpecificCategory(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificIngredient(String errorMsg) {
 
     }
 

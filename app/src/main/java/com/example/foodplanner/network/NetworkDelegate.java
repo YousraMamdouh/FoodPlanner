@@ -1,6 +1,6 @@
 package com.example.foodplanner.network;
 
-import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.network.model.MealsDetails;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
@@ -27,4 +27,7 @@ public interface NetworkDelegate {
 //Specific Category
     void onSuccessSpecificCategory(List<MealsDetails> mealsDetails);
     void onFailureSpecificCategory(String errorMsg);
+    //Specific Ingredients
+    void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails);
+    void onFailureSpecificIngredient(String errorMsg);
 }

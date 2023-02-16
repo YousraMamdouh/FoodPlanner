@@ -1,7 +1,7 @@
 package com.example.foodplanner.network;
 
 
-import com.example.foodplanner.model.RootMeals;
+import com.example.foodplanner.network.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
 import com.example.foodplanner.searchByIngredient.model.RootIngredients;

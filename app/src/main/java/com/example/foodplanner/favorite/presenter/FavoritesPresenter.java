@@ -2,8 +2,8 @@ package com.example.foodplanner.favorite.presenter;
 
 
 import com.example.foodplanner.favorite.view.FavoritesViewInterface;
-import com.example.foodplanner.model.MealsDetails;
-import com.example.foodplanner.model.RepositoryInterface;
+import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.network.model.RepositoryInterface;
 
 public class FavoritesPresenter implements FavoritePresenterInterface{
 

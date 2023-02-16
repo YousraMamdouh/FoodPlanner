@@ -1,4 +1,4 @@
-package com.example.foodplanner.searchSpecificCategory.presenter;
+package com.example.foodplanner.spcificIngredient.presenter;
 
 import com.example.foodplanner.network.model.MealsDetails;
 import com.example.foodplanner.network.model.RepositoryInterface;
@@ -6,37 +6,41 @@ import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
-import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryViewInterface;
+import com.example.foodplanner.spcificIngredient.view.SpecificIngredientViewInterface;
 
 import java.util.List;
 
-public class SpecificCategoryPresenter implements SpecificCategoryPresenterInterface, NetworkDelegate {
+public class SpecificIngredientPresenter implements SpecificIngredientPresenterInterface, NetworkDelegate {
 
-    private SpecificCategoryViewInterface viewInterface;
+    private SpecificIngredientViewInterface  viewInterface;
     private RepositoryInterface repo;
-    private String category;
-
-    public SpecificCategoryPresenter(SpecificCategoryViewInterface viewInterface, RepositoryInterface repo,String category) {
+    private String ingredient;
+    public SpecificIngredientPresenter(SpecificIngredientViewInterface viewInterface, RepositoryInterface repo, String ingredient) {
         this.viewInterface=viewInterface;
         this.repo = repo;
-        this.category=category;
+        this.ingredient=ingredient;
     }
-
 
 
     @Override
     public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {
+
     }
 
     @Override
     public void onFailureAllMeals(String errorMsg) {
+
     }
 
     @Override
-    public void onSuccessAllCategories(List<Categories> categoryItems) {}
+    public void onSuccessAllCategories(List<Categories> categories) {
+
+    }
 
     @Override
-    public void onFailureAllCategories(String errorMsg) {}
+    public void onFailureAllCategories(String errorMsg) {
+
+    }
 
     @Override
     public void onSuccessAllCountries(List<Countries> countries) {
@@ -60,8 +64,7 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
-        viewInterface.showMeals(mealsDetails);
-        System.out.println("Data retrieved successfully");
+
     }
 
     @Override
@@ -71,7 +74,8 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
-
+        viewInterface.showMeals(mealsDetails);
+        System.out.println("Data retrieved successfully");
     }
 
     @Override
@@ -81,13 +85,12 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
 
     @Override
     public void getMeals() {
-        System.out.println("bnady 3aleh");
-        repo.enqueueCallSpecificCategory(this,category);
-
+        System.out.println("ingredient");
+        repo.enqueueCallSpecificCategory(this,ingredient);
     }
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
-        repo.addToFavorites(mealsDetails);
+
     }
 }

@@ -2,7 +2,7 @@ package com.example.foodplanner.dataBase;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.network.model.MealsDetails;
 
 import java.util.List;
 

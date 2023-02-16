@@ -16,8 +16,8 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.favorite.presenter.FavoritePresenterInterface;
 import com.example.foodplanner.favorite.presenter.FavoritesPresenter;
-import com.example.foodplanner.model.MealsDetails;
-import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.model.MealsDetails;
+import com.example.foodplanner.network.model.Repository;
 import com.example.foodplanner.network.API_Client;
 
 import java.util.ArrayList;

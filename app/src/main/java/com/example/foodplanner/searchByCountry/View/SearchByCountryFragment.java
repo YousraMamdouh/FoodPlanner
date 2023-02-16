@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
-import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByCountry.presenter.CountriesPresenter;
