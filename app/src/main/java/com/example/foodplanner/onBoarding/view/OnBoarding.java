@@ -81,7 +81,7 @@ public class OnBoarding extends Fragment {
             dots[i].setText(Html.fromHtml("&#8226"));
             dots[i].setTextSize(35);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                dots[i].setTextColor(getResources().getColor(R.color.darkYellow, requireContext().getTheme()));
+                dots[i].setTextColor(getResources().getColor(R.color.darkGreen, requireContext().getTheme()));
             }
             dotLayout.addView(dots[i]);
 
