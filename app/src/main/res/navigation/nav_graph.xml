@@ -191,4 +191,9 @@
             android:name="cuisineName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/weekPlan"
+        android:name="com.example.foodplanner.weekPlan.view.WeekPlan"
+        android:label="fragment_week_plan"
+        tools:layout="@layout/fragment_week_plan" />
 </navigation>
