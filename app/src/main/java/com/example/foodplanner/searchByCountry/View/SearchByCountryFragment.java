@@ -1,9 +1,13 @@
 package com.example.foodplanner.searchByCountry.View;
 
+import static com.example.foodplanner.network.API_Client.Tag;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -20,6 +24,9 @@ import com.example.foodplanner.searchByCountry.presenter.CountriesPresenterInter
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import io.reactivex.Observable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +39,9 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     CountriesAdapter countriesAdapter;
     LinearLayoutManager layoutManager;
     CountriesPresenterInterface countriesPresenterInterface;
+    SearchView searchView;
+    List<Countries> countries;
+    List<Countries> filteredList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,12 +89,16 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
         countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
+        searchView=view.findViewById(R.id.searchView);
         layoutManager=new LinearLayoutManager(getActivity());
+
         countriesAdapter=new CountriesAdapter(getActivity(), new ArrayList<>(),this);
         countriesPresenterInterface= new CountriesPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
        countryRecyclerView.setLayoutManager(layoutManager);
        countryRecyclerView.setAdapter(countriesAdapter);
        countriesPresenterInterface.getCountries();
+        filterCountries();
+
 
 
 
@@ -94,6 +108,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
 
     @Override
     public void showCountries(List<Countries> countries) {
+        this.countries=countries;
         countriesAdapter.setCountriesItemsList(countries);
         countriesAdapter.notifyDataSetChanged();
     }
@@ -103,6 +118,34 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
         com.example.foodplanner.searchByCountry.View.SearchByCountryFragmentDirections.ActionSearchByCountryFragmentToSpecificCuisine action=
                 SearchByCountryFragmentDirections.actionSearchByCountryFragmentToSpecificCuisine(cuisineName);
         Navigation.findNavController(view).navigate(action);
+
+    }
+    public void filterCountries()
+    {
+        Observable.create(emitter -> searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                if(newText.length()!=0)
+
+                    emitter.onNext(newText);
+                filteredList=countries.stream().filter(r->r.getStrArea().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
+                countriesAdapter.setCountriesItemsList(filteredList);
+                countriesAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        })).doOnNext(c -> Log.i(Tag, "UpSteam: " + c)).subscribe(r ->
+                Log.i(Tag, "DownStream: " + r));
+
 
     }
 }

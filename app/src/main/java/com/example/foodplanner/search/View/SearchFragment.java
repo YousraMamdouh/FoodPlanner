@@ -1,10 +1,14 @@
 package com.example.foodplanner.search.View;
 
+import static com.example.foodplanner.network.API_Client.Tag;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +26,9 @@ import com.example.foodplanner.search.presentor.allMealsPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import io.reactivex.Observable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +43,9 @@ Button ingredientButton;
 RecyclerView allMealsRecyclerView;
 AllMealsAdapter allMealsAdapter;
 StaggeredGridLayoutManager layoutManager;
+SearchView searchView;
+List<MealsDetails> mealList;
+List<MealsDetails> filteredMealsList;
 AllMealsPresenterInterface allMealsPresenterInterface;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,7 +93,7 @@ AllMealsPresenterInterface allMealsPresenterInterface;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        view=inflater.inflate(R.layout.fragment_search_screen, container, false);
-
+searchView=view.findViewById(R.id.searchView);
        cuisineButton=view.findViewById(R.id.cuisineButton);
        categoryButton=view.findViewById(R.id.categoryButton);
        ingredientButton=view.findViewById(R.id.ingredientsButton);
@@ -95,36 +105,22 @@ AllMealsPresenterInterface allMealsPresenterInterface;
        allMealsRecyclerView.setLayoutManager(layoutManager);
        allMealsRecyclerView.setAdapter(allMealsAdapter);
        allMealsPresenterInterface.getMeals();
-       cuisineButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCountryFragment);
+        filterMeals();
 
-           }
-       });
+       cuisineButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCountryFragment));
 
-        categoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCategoryFragment);
+        categoryButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCategoryFragment));
 
-            }
-        });
-
-       ingredientButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searcByhIngridientFragment);
-
-            }
-        });
+       ingredientButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searcByhIngridientFragment));
        return view;
     }
 
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
+        mealList=mealsDetails;
         allMealsAdapter.setAllMealsItemList(mealsDetails);
         allMealsAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -142,6 +138,34 @@ addMealToFavorites(currentMeal);
     public void getMeal(String mealName) {
        com.example.foodplanner.search.View.SearchFragmentDirections.ActionSearchScreenToMealDetailsFragment action=SearchFragmentDirections.actionSearchScreenToMealDetailsFragment(mealName);
         Navigation.findNavController(view).navigate(action);
+
+    }
+
+    public void filterMeals()
+    {
+        Observable.create(emitter -> searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                if(newText.length()!=0)
+
+                    emitter.onNext(newText);
+                    filteredMealsList=mealList.stream().filter(r->r.getStrMeal().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
+                    allMealsAdapter.setAllMealsItemList(filteredMealsList);
+                    allMealsAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        })).doOnNext(c -> Log.i(Tag, "UpSteam: " + c)).subscribe(r ->
+                Log.i(Tag, "DownStream: " + r));
 
     }
 }

@@ -1,9 +1,13 @@
 package com.example.foodplanner.searchByCategory.View;
 
+import static com.example.foodplanner.network.API_Client.Tag;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -21,6 +25,9 @@ import com.example.foodplanner.searchByCategory.presenter.CategoriesPresenterInt
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import io.reactivex.Observable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +41,9 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
     CategoryAdapter categoryAdapter;
     LinearLayoutManager layoutManager;
     View view;
+    SearchView searchView;
+    List<Categories> categories;
+    List<Categories> filteredList;
    // GetMealsClickListener listener;
     CategoriesPresenterInterface categoriesPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
@@ -83,6 +93,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
          view=inflater.inflate(R.layout.fragment_search_by_category, container, false);
         categoryRecyclerView=view.findViewById(R.id.cuisineRecyclerView);
 
+        searchView=view.findViewById(R.id.searchView);
 
         layoutManager=new LinearLayoutManager(getActivity());
       //  layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL);
@@ -92,6 +103,7 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
         categoryRecyclerView.setLayoutManager(layoutManager);
         categoryRecyclerView.setAdapter(categoryAdapter);
         categoriesPresenterInterface.getCategories();
+        filterCategories();
 
 
 
@@ -100,8 +112,8 @@ public class SearchByCategoryFragment extends Fragment implements CategoriesView
 
     @Override
     public void showCategories(List<Categories> categoryItems) {
-categoryAdapter.setCategoryItemsList(categoryItems);
-
+        categories=categoryItems;
+        categoryAdapter.setCategoryItemsList(categoryItems);
 categoryAdapter.notifyDataSetChanged();
     }
 
@@ -111,5 +123,33 @@ categoryAdapter.notifyDataSetChanged();
       ActionSearchByCategoryFragmentToSearchSpecificCategory action=
               SearchByCategoryFragmentDirections.actionSearchByCategoryFragmentToSearchSpecificCategory(categoryName);
         Navigation.findNavController(view).navigate(action);
+    }
+
+    public void filterCategories()
+    {
+        Observable.create(emitter -> searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                if(newText.length()!=0)
+
+                    emitter.onNext(newText);
+                    filteredList=categories.stream().filter(r->r.getStrCategory().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
+                    categoryAdapter.setCategoryItemsList(filteredList);
+                    categoryAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        })).doOnNext(c -> Log.i(Tag, "UpSteam: " + c)).subscribe(r ->
+                Log.i(Tag, "DownStream: " + r));
+
     }
 }

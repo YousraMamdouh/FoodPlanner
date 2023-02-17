@@ -1,9 +1,13 @@
 package com.example.foodplanner.searchByIngredient.View;
 
+import static com.example.foodplanner.network.API_Client.Tag;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -21,6 +25,9 @@ import com.example.foodplanner.searchByIngredient.presenter.IngredientsPresenter
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import io.reactivex.Observable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +40,11 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
     LinearLayoutManager layoutManager;
     IngredientsPresenterInterface ingredientsPresenterInterface;
     View view;
+
+    SearchView searchView;
+    List<Ingredients> ingredients;
+    List<Ingredients> filteredList;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,12 +92,14 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_search_by_ingridient, container, false);
         ingredientRecyclerView=view.findViewById(R.id.ingredientRecyclerView);
+        searchView=view.findViewById(R.id.searchView);
         layoutManager=new LinearLayoutManager(getActivity());
         ingredientsAdapter=new IngredientsAdapter(getActivity(),new ArrayList<>(),this);
         ingredientsPresenterInterface= new IngredientsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         ingredientRecyclerView.setLayoutManager(layoutManager);
         ingredientRecyclerView.setAdapter(ingredientsAdapter);
         ingredientsPresenterInterface.getIngredients();
+        filterIngredients();
 
 
 
@@ -94,6 +108,7 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
 
     @Override
     public void showIngredients(List<Ingredients> ingredients) {
+       this.ingredients=ingredients;
         ingredientsAdapter.setIngredientsItemsList(ingredients);
         ingredientsAdapter.notifyDataSetChanged();
     }
@@ -103,5 +118,33 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
         com.example.foodplanner.searchByIngredient.View.SearchByIngredientFragmentDirections.ActionSearcByhIngridientFragmentToSpecificIngredient action=
                SearchByIngredientFragmentDirections.actionSearcByhIngridientFragmentToSpecificIngredient(IngredientName);
         Navigation.findNavController(view).navigate(action);
+    }
+    public void filterIngredients()
+    {
+        Observable.create(emitter -> searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                if(newText.length()!=0)
+
+                    emitter.onNext(newText);
+                filteredList=ingredients.stream().filter(r->r.getStrIngredient().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
+                ingredientsAdapter.setIngredientsItemsList(filteredList);
+                ingredientsAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        })).doOnNext(c -> Log.i(Tag, "UpSteam: " + c)).subscribe(r ->
+                Log.i(Tag, "DownStream: " + r));
+
+
     }
 }
