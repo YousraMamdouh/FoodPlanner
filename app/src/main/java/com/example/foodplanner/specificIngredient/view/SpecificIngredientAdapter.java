@@ -89,10 +89,10 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         Button favButton;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            mealImage=itemView.findViewById(R.id.mealImageView);
-            mealName=itemView.findViewById(R.id.favMealName);
+            mealImage=itemView.findViewById(R.id.mealImage);
+            mealName=itemView.findViewById(R.id.img_name);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
-            favButton=itemView.findViewById(R.id.favButton);
+            favButton=itemView.findViewById(R.id.fav);
 
         }
     }

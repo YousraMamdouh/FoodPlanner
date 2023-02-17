@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/favMealName"
+            android:id="@+id/img_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -31,12 +31,12 @@
             android:layout_height="19dp"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/guideline17"
-            app:layout_constraintEnd_toEndOf="@+id/favMealName"
-            app:layout_constraintStart_toStartOf="@+id/favMealName"
-            app:layout_constraintTop_toBottomOf="@+id/favMealName" />
+            app:layout_constraintEnd_toEndOf="@+id/img_name"
+            app:layout_constraintStart_toStartOf="@+id/img_name"
+            app:layout_constraintTop_toBottomOf="@+id/img_name" />
 
         <Button
-            android:id="@+id/favButton"
+            android:id="@+id/fav"
             android:layout_width="52dp"
             android:layout_height="45dp"
             android:background="@drawable/baseline_delete_outline_24"
@@ -49,7 +49,7 @@
             android:layout_height="150dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="100dp"
-            app:layout_constraintBottom_toTopOf="@+id/favMealName"
+            app:layout_constraintBottom_toTopOf="@+id/img_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
