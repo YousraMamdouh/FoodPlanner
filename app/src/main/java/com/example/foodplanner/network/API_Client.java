@@ -174,10 +174,5 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
         });
     }
 
-    public int randomNumber(){
-        Random random = new Random();
-       int randomNumber = random.nextInt((53066 - 52772) + 1) + 52772;
-        // int randomNumber = random.nextInt(52772 - 53066 );
-        return  randomNumber;
-    }
+
 }

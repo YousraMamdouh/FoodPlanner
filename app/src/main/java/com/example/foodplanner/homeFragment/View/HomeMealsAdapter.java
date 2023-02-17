@@ -10,14 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.MealsDetails;
-import com.example.foodplanner.network.NetworkDelegate;
-import com.example.foodplanner.search.View.AllMealsAdapter;
+
+
 
 import java.util.List;
 
@@ -26,11 +27,15 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
     public List<MealsDetails> youMightLikeList;
 
     private Context context;
+    private OnMealClickListener mealClickedListener;
+    private AddToFavoriteClickListener listener;
 
-    public HomeMealsAdapter(Context context, List<MealsDetails> youMightLikeList)
+    public HomeMealsAdapter(Context context, List<MealsDetails> youMightLikeList, AddToFavoriteClickListener listener, OnMealClickListener mealClickedListener)
     {
         this.context=context;
         this.youMightLikeList = youMightLikeList;
+        this.listener =listener;
+        this.mealClickedListener = mealClickedListener;
     }
 
     @NonNull
@@ -48,12 +53,31 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull HomeMealsAdapter.MyViewHolder holder, int position) {
-        MealsDetails currentProduct = youMightLikeList.get(position);
+        MealsDetails currentProduct = youMightLikeList.get(holder.getAdapterPosition());
         holder.mealName.setText(currentProduct.getStrMeal());
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
+
+        holder.fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              listener.onClick(currentProduct);
+            }
+        });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               mealClickedListener.getMeal(youMightLikeList.get(position).getStrMeal());
+                //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+
+            }
+        });
+
+        Log.i("Tag","onBindViewHolder");
     }
+
 
     @Override
     public int getItemCount() {
@@ -64,11 +88,13 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
         TextView mealName;
         Button fav;
         ImageView mealImage;
+        ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
             mealName=itemView.findViewById(R.id.img_name);
            fav=itemView.findViewById(R.id.fav);
+            layout=itemView.findViewById(R.id.layout);
 
         }
     }
