@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -47,13 +48,20 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
     CardView inspiration;
     View view;
+    MealsDetails mealsDetails;
     ImageView inspirationImage;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    AddToFavoriteClickListener addToFavoriteClickListener = this;
+    OnMealClickListener onMealClickListener;
 
     HomeMealsAdapter mealsAdapter;
     StaggeredGridLayoutManager layoutManager;
+    Button showMoreDetails;
+    Button AddToFav;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -93,13 +101,26 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
         mealsRecyclerView.setAdapter(mealsAdapter);
         inspiration = view.findViewById(R.id.inspirationCardView);
         inspirationImage = view.findViewById(R.id.inspirationImage);
+        showMoreDetails = view.findViewById(R.id.show_more_btn);
+        AddToFav = view.findViewById(R.id.fav_daily_btn);
         mealsPresenterInterface.getMeals();
         mealsPresenterInterface.getDailyInspiration();
+
+        AddToFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToFavoriteClickListener.onClickDailyInspiration();
+            }
+        });
+
         return  view;
+
+
     }
 
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
+        this.mealsDetails = mealsDetails.get(0);
         System.out.println(mealsDetails);
         mealsAdapter.youMightLikeList = mealsDetails;
         mealsAdapter.notifyDataSetChanged();
@@ -121,6 +142,12 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
     public void onClick(MealsDetails currentMeal) {
         Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
         addMealToFavorites(currentMeal);
+    }
+
+    @Override
+    public void onClickDailyInspiration() {
+        Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
+        addMealToFavorites(mealsDetails);
     }
 
     @Override
