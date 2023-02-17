@@ -8,6 +8,23 @@
     tools:context=".authentication.View.AuthenticationFragment">
 
       <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/chefAnimation2"
+          android:layout_width="357dp"
+
+          android:layout_height="79dp"
+          android:layout_marginTop="80dp"
+          android:elevation="5dp"
+          app:layout_constraintBottom_toTopOf="@+id/chefAnimation"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.629"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/cardView2"
+          app:layout_constraintVertical_bias="0.785"
+          app:lottie_autoPlay="true"
+          app:lottie_loop="true"
+          app:lottie_rawRes="@raw/welcome" />
+
+      <com.airbnb.lottie.LottieAnimationView
           android:id="@+id/chefAnimation"
           android:layout_width="372dp"
 
@@ -16,9 +33,10 @@
           android:elevation="5dp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.487"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/cardView2"
-          app:layout_constraintVertical_bias="0.597"
+          app:layout_constraintVertical_bias="0.778"
           app:lottie_autoPlay="true"
           app:lottie_loop="true"
           app:lottie_rawRes="@raw/wave" />
@@ -58,8 +76,11 @@
                       android:layout_height="wrap_content"
                       android:layout_marginTop="16dp"
                       android:layout_marginEnd="28dp"
-                      android:background="@drawable/custom_button"
+                      android:background="@color/darkGreen"
+                      android:elevation="0dp"
                       android:text="@string/skip"
+                      android:textColor="@color/darkYellow"
+                      android:fontFamily="@font/boogaloo"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,8 +106,10 @@
                       android:id="@+id/signup_txt"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="16dp"
+                      android:layout_marginTop="32dp"
+                      android:fontFamily="@font/boogaloo"
                       android:text="@string/Sign_up_txt"
+                      android:textColor="@color/darkGreen"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toTopOf="parent" />
@@ -142,8 +165,10 @@
                       android:id="@+id/textView12"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_marginBottom="16dp"
+                      android:layout_marginBottom="32dp"
+                      android:fontFamily="@font/boogaloo"
                       android:text="@string/log_in_txt"
+                      android:textColor="@color/darkGreen"
                       app:layout_constraintBottom_toBottomOf="parent"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent" />
