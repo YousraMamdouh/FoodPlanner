@@ -121,6 +121,7 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
+        repo.addToFavorites(mealsDetails);
 
     }
 }

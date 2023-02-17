@@ -3,6 +3,7 @@ package com.example.foodplanner.specificIngredient.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -30,12 +31,13 @@ import java.util.List;
  * Use the {@link SpecificIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite {
+public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite,OnMealClickedListener {
 
     RecyclerView recyclerView;
     SpecificIngredientAdapter adapter;
     StaggeredGridLayoutManager layoutManager;
     SpecificIngredientPresenterInterface specificIngredientPresenterInterface;
+    View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,10 +82,10 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_specific_ingredient, container, false);
+         view= inflater.inflate(R.layout.fragment_specific_ingredient, container, false);
         recyclerView=view.findViewById(R.id.ingredientRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this);
+        adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this,this);
         specificIngredientPresenterInterface=new SpecificIngredientPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), com.example.foodplanner.specificIngredient.view.SpecificIngredientArgs.fromBundle(getArguments()).getIngredientName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -109,5 +111,11 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
     public void addMealToFavorites(MealsDetails mealsDetails) {
        specificIngredientPresenterInterface.addToFavorites(mealsDetails);
         Toast.makeText(getActivity(), "added", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getMeal(String mealName) {
+        SpecificIngredientDirections.ActionSpecificIngredientToMealDetailsFragment action = SpecificIngredientDirections.actionSpecificIngredientToMealDetailsFragment(mealName);
+        Navigation.findNavController(view).navigate(action);
     }
 }

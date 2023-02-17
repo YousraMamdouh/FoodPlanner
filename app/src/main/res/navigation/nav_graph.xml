@@ -178,6 +178,9 @@
         <argument
             android:name="IngredientName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_specificIngredient_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/specificCuisine"

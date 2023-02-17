@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+
 import com.example.foodplanner.model.MealsDetails;
 
 
@@ -26,20 +28,22 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
     private Context context;
 
     private AddToFavorite addToFavorite;
+    private OnMealClickedListener onMealClickedListener;
 
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
     }
 
 
-    // private OnFavoriteClickListener listener;
 
 
-    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite listener)
+
+    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite addToFavorite, OnMealClickedListener onMealClickedListener)
     {
         this.context=context;
         this.allMealsList = allMealsList;
-        this.addToFavorite =listener;
+        this.addToFavorite =addToFavorite;
+        this.onMealClickedListener = onMealClickedListener;
     }
 
     @NonNull
@@ -70,11 +74,28 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                addToFavorite.onClick(currentProduct);
+            }
+        });
+        Log.i(Tag,"onBindViewHolder");
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              onMealClickedListener.getMeal(allMealsList.get(position).getStrMeal());
+                System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+            }
+        });
+        holder.favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 addToFavorite.onClick(currentProduct);
             }
         });
         Log.i(Tag,"onBindViewHolder");
     }
+
 
     @Override
     public int getItemCount() {
@@ -87,12 +108,14 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         TextView mealCountry;
         ImageView mealImage;
         Button favButton;
+        ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
             mealName=itemView.findViewById(R.id.img_name);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.fav);
+            layout=itemView.findViewById(R.id.layout);
 
         }
     }
