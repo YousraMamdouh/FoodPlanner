@@ -2,13 +2,13 @@ package com.example.foodplanner.model;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.foodplanner.dataBase.LocalSource;
 import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.network.RemoteSource;
 
 import java.util.List;
+
+import io.reactivex.Observable;
 
 public class Repository implements RepositoryInterface{
 
@@ -73,7 +73,7 @@ remoteSource.enqueueCallSpecificCuisine(networkDelegate,cuisineName);
     }
 
     @Override
-    public LiveData<List<MealsDetails>> getAllStoredMeals() {
+    public Observable<List<MealsDetails>> getAllStoredMeals() {
         return localSource.getAllStoredMeals();
     }
 

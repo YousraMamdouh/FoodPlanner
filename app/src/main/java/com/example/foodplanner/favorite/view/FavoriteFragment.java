@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +20,11 @@ import com.example.foodplanner.network.API_Client;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,14 +107,33 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
     }
 
     @Override
-    public void showMeals(LiveData<List<MealsDetails>> mealsDetails) {
-        mealsDetails.observe(this, new Observer<List<MealsDetails>>() {
-            @Override
-            public void onChanged(List<MealsDetails> mealsDetails) {
-                favoritesAdapter.setList(mealsDetails);
-                favoritesAdapter.notifyDataSetChanged();
-            }
-        });
+    public void showMeals(Observable<List<MealsDetails>> mealsDetails) {
+        mealsDetails.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new io.reactivex.Observer<List<MealsDetails>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.println("OnSubscribe Observer");
+                    }
 
+                    @Override
+                    public void onNext(List<MealsDetails> mealsDetails) {
+                        favoritesAdapter.setList(mealsDetails);
+                        favoritesAdapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("an error occurred while showing meals");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        System.out.println("Showing meals completed");
+                    }
+                });
     }
+
+
 }

@@ -2,15 +2,18 @@ package com.example.foodplanner.dataBase;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 
+import io.reactivex.CompletableObserver;
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class ConcreteLocalSource implements LocalSource{
     private MealDAO mealDAO;
-    private LiveData<List<MealsDetails>> storedMeals;
+    private Observable<List<MealsDetails>> storedMeals;
     private static ConcreteLocalSource localSource=null;
     private ConcreteLocalSource(Context context){
 
@@ -29,19 +32,36 @@ public class ConcreteLocalSource implements LocalSource{
     }
 
     @Override
-    public LiveData<List<MealsDetails>> getAllStoredMeals() {
+    public Observable<List<MealsDetails>> getAllStoredMeals() {
         return storedMeals;
     }
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
+        mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mealDAO.insertMeal(mealsDetails);
+                    }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                mealDAO.insertMeal(mealsDetails);
-            }
-        }).start();
+                    @Override
+                    public void onComplete() {
+                        System.out.println("OnComplete meal added to the database");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("An error occurred while adding the meal to database");
+                    }
+                });
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                mealDAO.insertMeal(mealsDetails);
+//            }
+//        }).start();
 
 
 
