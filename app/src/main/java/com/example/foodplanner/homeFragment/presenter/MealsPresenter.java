@@ -17,9 +17,11 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     private HomeMealsViewInterface viewInterface;
     private RepositoryInterface repo;
 
+
     public MealsPresenter(HomeMealsViewInterface viewInterface, RepositoryInterface repo) {
         this.viewInterface=viewInterface;
         this.repo = repo;
+
     }
 
     @Override
@@ -31,6 +33,11 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     @Override
     public void getDailyInspiration() {
         repo.enqueueCallDailyInspiration(this);
+    }
+
+    @Override
+    public void addToFavorites(MealsDetails mealsDetails) {
+        repo.addToFavorites(mealsDetails);
     }
 
     @Override

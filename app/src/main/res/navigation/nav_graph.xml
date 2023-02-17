@@ -46,6 +46,12 @@
         <action
             android:id="@+id/action_homeScreen_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeScreen_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+        <argument
+            android:name="Meal"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/searchScreen"

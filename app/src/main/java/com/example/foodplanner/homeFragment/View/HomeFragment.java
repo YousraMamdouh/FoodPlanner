@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -11,16 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
+import com.example.foodplanner.homeFragment.View.HomeFragmentDirections;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.homeFragment.presenter.MealsPresenterInterface;
 import com.example.foodplanner.homeFragment.presenter.MealsPresenter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +34,7 @@ import java.util.List;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements HomeMealsViewInterface {
+public class HomeFragment extends Fragment implements HomeMealsViewInterface,AddToFavoriteClickListener, OnMealClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +46,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
     private MealsDetails dailyInspiration;
 
     CardView inspiration;
+    View view;
     ImageView inspirationImage;
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -78,12 +83,12 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
+       view = inflater.inflate(R.layout.fragment_home_screen, container, false);
         mealsRecyclerView=view.findViewById(R.id.mealsRecycler);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         //todo call api for the daily inspiration then add to presenter constructor
-        mealsAdapter=new HomeMealsAdapter(this.getContext(), new ArrayList<>());
-        mealsPresenterInterface=new MealsPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
+        mealsAdapter=new HomeMealsAdapter(getActivity(),new ArrayList<>(),this,this);
+        mealsPresenterInterface=new MealsPresenter(this,Repository.getInstance(API_Client.getInstance(),ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         mealsRecyclerView.setLayoutManager(layoutManager);
         mealsRecyclerView.setAdapter(mealsAdapter);
         inspiration = view.findViewById(R.id.inspirationCardView);
@@ -107,5 +112,20 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
         Glide.with(this.getContext()).load(meal.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(inspirationImage);
+    }
+    public void addMealToFavorites(MealsDetails mealsDetails) {
+        mealsPresenterInterface.addToFavorites(mealsDetails);
+    }
+
+    @Override
+    public void onClick(MealsDetails currentMeal) {
+        Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
+        addMealToFavorites(currentMeal);
+    }
+
+    @Override
+    public void getMeal(String mealName) {
+        com.example.foodplanner.homeFragment.View.HomeFragmentDirections.ActionHomeScreenToMealDetailsFragment action = HomeFragmentDirections.actionHomeScreenToMealDetailsFragment(mealName);
+        Navigation.findNavController(view).navigate(action);
     }
 }
