@@ -50,10 +50,6 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
     public void onBindViewHolder(@NonNull HomeMealsAdapter.MyViewHolder holder, int position) {
         MealsDetails currentProduct = youMightLikeList.get(position);
         holder.mealName.setText(currentProduct.getStrMeal());
-        //Log.i(Tag,"the category: "+currentProduct.getStrCategory());
-        // System.out.println("My name is : "+currentProduct.getIdMeal());
-       // holder.mealCountry.setText(currentProduct.getStrArea());
-        holder.fav.setText(currentProduct.getStrArea());
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
@@ -72,7 +68,7 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
             mealName=itemView.findViewById(R.id.img_name);
-            fav=itemView.findViewById(R.id.fav);
+           fav=itemView.findViewById(R.id.fav);
 
         }
     }

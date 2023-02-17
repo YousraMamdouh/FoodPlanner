@@ -49,6 +49,7 @@
     <string name="forgottxt">Forgot Password? Recover</string>
     <string name="skipBtn">Skip</string>
     <string name="skip">Skip</string>
+    <string name="btnfav">"      "</string>
 
 
 </resources>

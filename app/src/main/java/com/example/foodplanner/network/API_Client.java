@@ -95,18 +95,7 @@ public class API_Client implements  RemoteSource {
             System.out.println("Mission completed successfully");
         });
 
-        Observable<DailyInspirationRoot> dailyInspiration=api_interface.getRandomMeal(String.valueOf(randomNumber()));
-        dailyInspiration.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
-            networkDelegate.onSuccessDailyInspiration(item.getMeal());
-            System.out.println("iuuu"+ item.getMeal().get(0).getIdMeal());
 
-        }, error -> {
-            networkDelegate.onFailureDailyInspiration(error.getMessage());
-            System.out.println("failed to get daily inspiration");
-        }, () -> {
-            System.out.println("Mission completed successfully");
-
-        });
 
 
     }
@@ -165,6 +154,23 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
             networkDelegate.onFailureSpecificCuisine("Failed to get required cuisine");
         }, () -> {
             System.out.println("Mission completed successfully");
+        });
+    }
+
+    @Override
+    public void enqueueCallDailyInspiration(NetworkDelegate networkDelegate) {
+        Observable<RootMeals> dailyInspiration=api_interface.getRandomMeal();
+
+        dailyInspiration.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(item -> {
+            networkDelegate.onSuccessDailyInspiration(item.getAllMeals());
+            System.out.println("iuuu"+ item.getAllMeals().get(0).getIdMeal());
+
+        }, error -> {
+            networkDelegate.onFailureDailyInspiration(error.getMessage());
+            System.out.println("failed to get daily inspiration");
+        }, () -> {
+            System.out.println("koki");
+
         });
     }
 

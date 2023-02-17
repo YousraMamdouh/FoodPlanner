@@ -30,7 +30,7 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
 
     @Override
     public void getDailyInspiration() {
-        repo.enqueueCall(this);
+        repo.enqueueCallDailyInspiration(this);
     }
 
     @Override
@@ -77,9 +77,8 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
     @Override
     public void onSuccessDailyInspiration(List<MealsDetails> meal) {
         System.out.println("presenter inspiration");
+        viewInterface.showDailyInspiration(meal.get(0));
 
-//     int randomNo=getRandomNumber(meal);
-//        viewInterface.showDailyInspiration(meal.get(meal.indexOf(randomNo)));
 
     }
 
@@ -87,6 +86,46 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
 
     @Override
     public void onFailureDailyInspiration(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCategory(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificIngredient(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessMeal(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureMeal(String errorMsg) {
+
+    }
+
+    @Override
+    public void onSuccessSpecificCuisine(List<MealsDetails> mealsDetails) {
+
+    }
+
+    @Override
+    public void onFailureSpecificCuisine(String errorMsg) {
 
     }
 

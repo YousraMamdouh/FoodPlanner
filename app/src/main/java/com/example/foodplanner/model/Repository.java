@@ -67,6 +67,12 @@ remoteSource.enqueueCallSpecificCuisine(networkDelegate,cuisineName);
     }
 
     @Override
+    public void enqueueCallDailyInspiration(NetworkDelegate networkDelegate) {
+        remoteSource.enqueueCallDailyInspiration(networkDelegate);
+        System.out.println("clara yousra");
+    }
+
+    @Override
     public LiveData<List<MealsDetails>> getAllStoredMeals() {
         return localSource.getAllStoredMeals();
     }

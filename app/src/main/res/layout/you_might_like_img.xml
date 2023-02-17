@@ -7,9 +7,11 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="206dp"
-        android:layout_height="211dp"
-        app:cardCornerRadius="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ExtraText">>
@@ -20,33 +22,38 @@
 
             <ImageView
                 android:id="@+id/mealImage"
-                android:layout_width="206dp"
-                android:layout_height="125dp"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                app:layout_constraintBottom_toTopOf="@+id/img_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.148"
                 tools:srcCompat="@tools:sample/avatars" />
-
-            <Button
-                android:id="@+id/fav"
-                android:layout_width="58dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/favourite"
-                android:backgroundTint="@color/darkGreen"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
             <TextView
                 android:id="@+id/img_name"
-                android:layout_width="98dp"
-                android:layout_height="29dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/img_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mealImage" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
+            <Button
+                android:id="@+id/fav"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:background="@drawable/favourite"
+                android:backgroundTint="@color/darkGreen"
+                android:contentDescription="@string/btnfav"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

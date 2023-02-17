@@ -59,6 +59,16 @@ public class SpecificCuisinePresenter implements SpecificCuisinePresenterInterfa
     }
 
     @Override
+    public void onSuccessDailyInspiration(List<MealsDetails> meal) {
+
+    }
+
+    @Override
+    public void onFailureDailyInspiration(String errorMsg) {
+
+    }
+
+    @Override
     public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
 
     }

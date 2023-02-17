@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
@@ -53,14 +54,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeScreen.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -89,10 +83,9 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         //todo call api for the daily inspiration then add to presenter constructor
         mealsAdapter=new HomeMealsAdapter(this.getContext(), new ArrayList<>());
-        mealsPresenterInterface=new MealsPresenter(this, Repository.getInstance(API_Client.getInstance(),getActivity()));
+        mealsPresenterInterface=new MealsPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         mealsRecyclerView.setLayoutManager(layoutManager);
         mealsRecyclerView.setAdapter(mealsAdapter);
-
         inspiration = view.findViewById(R.id.inspirationCardView);
         inspirationImage = view.findViewById(R.id.inspirationImage);
         mealsPresenterInterface.getMeals();
@@ -103,7 +96,6 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
         System.out.println(mealsDetails);
-        System.out.println("kkkkkkkkkkkk");
         mealsAdapter.youMightLikeList = mealsDetails;
         mealsAdapter.notifyDataSetChanged();
     }
@@ -111,7 +103,6 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface {
     @Override
     public void showDailyInspiration(MealsDetails meal) {
         System.out.println(meal.getStrMealThumb());
-        System.out.println("mmmmmmmmmmm");
         this.dailyInspiration = meal;
         Glide.with(this.getContext()).load(meal.getStrMealThumb())
                 .apply(new RequestOptions()

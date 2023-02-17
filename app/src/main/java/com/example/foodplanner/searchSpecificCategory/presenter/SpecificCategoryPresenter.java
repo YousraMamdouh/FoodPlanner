@@ -59,6 +59,16 @@ public class SpecificCategoryPresenter implements SpecificCategoryPresenterInter
     }
 
     @Override
+    public void onSuccessDailyInspiration(List<MealsDetails> meal) {
+
+    }
+
+    @Override
+    public void onFailureDailyInspiration(String errorMsg) {
+
+    }
+
+    @Override
     public void onSuccessSpecificCategory(List<MealsDetails> mealsDetails) {
         viewInterface.showMeals(mealsDetails);
         System.out.println("Data retrieved successfully");
