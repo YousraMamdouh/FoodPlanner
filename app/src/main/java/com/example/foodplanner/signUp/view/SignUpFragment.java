@@ -87,7 +87,7 @@ public class SignUpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        signUpButton = view.findViewById(R.id.favButton);
+        signUpButton = view.findViewById(R.id.fav);
         name = view.findViewById(R.id.nameSignuptxt);
         Email = view.findViewById(R.id.emailSigntxt);
         password = view.findViewById(R.id.passwordSignup);
