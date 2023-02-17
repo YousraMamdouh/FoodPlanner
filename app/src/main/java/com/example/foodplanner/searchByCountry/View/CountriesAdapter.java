@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.searchByCountry.model.Countries;
 
 import java.util.List;
@@ -25,25 +26,24 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
     private List<Countries> countriesList;
     private Context context;
     private GetMealsClickListener listener;
-    private List<Integer> countriesPictures;
 
 
     public void setCountriesItemsList(List<Countries> countriesList) {
         this.countriesList = countriesList;
     }
-    public void setCountriesPictures(List<Integer> countriesPictures) {
-        this.countriesPictures=countriesPictures;
-    }
+//    public void setCountriesPictures(List<Integer> countriesPictures) {
+//        this.countriesPictures=countriesPictures;
+//    }
 
 
    // private OnFavoriteClickListener listener;
 
 
-    public CountriesAdapter(Context context, List<Countries> countriesList,List<Integer> countriesPictures,GetMealsClickListener listener)
+    public CountriesAdapter(Context context, List<Countries> countriesList,GetMealsClickListener listener)
     {
         this.context=context;
         this.listener=listener;
-        this.countriesPictures=countriesPictures;
+       // this.countriesPictures=countriesPictures;
         this.countriesList=countriesList;
         System.out.println("adapter created");
       //  System.out.println("The first item category "+categoryItemsList.get(0).getStrCategory());
@@ -69,10 +69,10 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Countries current = countriesList.get(position);
         holder.countryName.setText(current.getStrArea());
-        Glide.with(context).load(countriesPictures.get(position))
-                .apply(new RequestOptions()
-                        .override(150,150)).into(holder.countryImage);
-        System.out.println("malyana: "+countriesPictures.get(position));
+//        Glide.with(context).load(countriesPictures.get(position))
+//                .apply(new RequestOptions()
+//                        .override(150,150)).into(holder.countryImage);
+
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,4 +102,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
             layout=itemView.findViewById(R.id.layout);
         }
     }
+
+
+
 }
