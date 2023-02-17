@@ -7,7 +7,7 @@ import java.util.List;
 import io.reactivex.Observable;
 
 public interface FavoritesViewInterface {
-    public void deleteMeal(MealsDetails mealsDetails);
-    public void showMeals(Observable<List<MealsDetails>> mealsDetails);
+ void deleteMeal(MealsDetails mealsDetails);
+ void showMeals(Observable<List<MealsDetails>> mealsDetails);
 
 }

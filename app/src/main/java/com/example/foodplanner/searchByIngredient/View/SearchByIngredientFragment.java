@@ -91,7 +91,7 @@ public class SearchByIngredientFragment extends Fragment implements IngredientsV
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_search_by_ingridient, container, false);
-        ingredientRecyclerView=view.findViewById(R.id.ingredientRecyclerView);
+        ingredientRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         searchView=view.findViewById(R.id.searchView);
         layoutManager=new LinearLayoutManager(getActivity());
         ingredientsAdapter=new IngredientsAdapter(getActivity(),new ArrayList<>(),this);

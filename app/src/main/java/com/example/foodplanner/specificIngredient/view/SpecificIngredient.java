@@ -31,7 +31,7 @@ import java.util.List;
  * Use the {@link SpecificIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite,OnMealClickedListener {
+public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite {
 
     RecyclerView recyclerView;
     SpecificIngredientAdapter adapter;

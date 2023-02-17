@@ -43,7 +43,10 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
                 android:text="@string/cuisine"
+                android:textColor="@color/darkYellow"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView9"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +56,9 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:textColor="@color/darkYellow"
+                android:textSize="16sp"
                 android:text="@string/category"
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"
                 app:layout_constraintEnd_toStartOf="@+id/textView11"
@@ -65,10 +71,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/boogaloo"
                 android:text="@string/ingredients"
+                android:textColor="@color/darkYellow"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
 
@@ -130,14 +138,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="52dp" />
+        app:layout_constraintGuide_begin="35dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="788dp" />
+        app:layout_constraintGuide_begin="715dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -161,6 +169,7 @@
         app:layout_constraintGuide_begin="335dp" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/darkGreen"
@@ -184,8 +193,10 @@
         android:layout_height="wrap_content"
         android:text="@string/search_title"
         android:textColor="@color/darkYellow"
+        android:textSize="20sp"
+        android:fontFamily="@font/boogaloo"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="parent" />
 

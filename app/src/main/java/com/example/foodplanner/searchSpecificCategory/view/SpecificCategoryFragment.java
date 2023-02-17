@@ -83,7 +83,7 @@ public class SpecificCategoryFragment extends Fragment implements SpecificCatego
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        view= inflater.inflate(R.layout.fragment_search_specific_category, container, false);
-       recyclerView=view.findViewById(R.id.cuisineRecyclerView);
+       recyclerView=view.findViewById(R.id.categoryRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         adapter=new SpecificCategoryAdapter(getActivity(),new ArrayList<>(),this,this);
         specificCategoryPresenterInterface=new SpecificCategoryPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()),SpecificCategoryFragmentArgs.fromBundle(getArguments()).getCategoryName());

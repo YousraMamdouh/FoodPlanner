@@ -42,6 +42,17 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     SearchView searchView;
     List<Countries> countries;
     List<Countries> filteredList;
+    List<Integer> countriesPictures=List.of(
+            R.drawable.america,R.drawable.british,R.drawable.canada,R.drawable.china,
+            R.drawable.croatian,R.drawable.dutch,R.drawable.egypt,R.drawable.french,
+            R.drawable.greek,R.drawable.indian,R.drawable.irish,
+            R.drawable.italian,R.drawable.jamaican,R.drawable.japan,R.drawable.kenya,
+            R.drawable.malaysian,R.drawable.mexico,R.drawable.moroco,R.drawable.polish,
+            R.drawable.portug,R.drawable.russian,R.drawable.spani, R.drawable.thia,
+            R.drawable.tunisian,R.drawable.turcia,R.drawable.unknown,R.drawable.vietnam
+
+
+    );
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,7 +99,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
-        countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
+        countryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         searchView=view.findViewById(R.id.searchView);
         layoutManager=new LinearLayoutManager(getActivity());
 
@@ -110,6 +121,8 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     public void showCountries(List<Countries> countries) {
         this.countries=countries;
         countriesAdapter.setCountriesItemsList(countries);
+//        countriesAdapter.setCountriesPictures(countriesPictures);
+
         countriesAdapter.notifyDataSetChanged();
     }
 
@@ -135,8 +148,8 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
 
 
                 if(newText.length()!=0)
-
                     emitter.onNext(newText);
+
                 filteredList=countries.stream().filter(r->r.getStrArea().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
                 countriesAdapter.setCountriesItemsList(filteredList);
                 countriesAdapter.notifyDataSetChanged();

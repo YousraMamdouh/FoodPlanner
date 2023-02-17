@@ -80,7 +80,7 @@ public class SpecificCuisineFragment extends Fragment implements SpecificCuisine
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_specific_cuisine, container, false);
-        recyclerView=view.findViewById(R.id.cuisineRecyclerView);
+        recyclerView=view.findViewById(R.id.categoryRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         adapter=new SpecificCuisineAdapter(getActivity(),new ArrayList<>(),this,this);
         specificCuisinePresenterInterface =new SpecificCuisinePresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), SpecificCuisineFragmentArgs.fromBundle(getArguments()).getCuisineName());

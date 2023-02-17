@@ -9,5 +9,9 @@
         <item>@font/alice</item>
         <item>@font/amaranth_bold</item>
         <item>@font/andika_new_basic</item>
+        <item>@font/arimo_bold_italic</item>
+        <item>@font/arimo_italic</item>
+        <item>@font/boogaloo</item>
+        <item>@font/cardo</item>
     </array>
 </resources>

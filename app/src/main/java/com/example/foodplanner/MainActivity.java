@@ -1,5 +1,9 @@
 package com.example.foodplanner;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,10 +13,6 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getSupportActionBar().hide();
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
       //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_graphContainer,  new AuthenticationFragment()).commit();
@@ -74,22 +79,22 @@ navController.addOnDestinationChangedListener(new NavController.OnDestinationCha
     @Override
     public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
         switch (navDestination.getId()) {
-            case R.id.homeScreen:
-            case R.id.searchScreen:
-            case R.id.favoriteFragment:
-            case R.id.calenderScreen:
-            case R.id.accountFragment:
-            case R.id.searcByhIngridientFragment:
-            case R.id.searchByCategory:
-            case R.id.searchByCountryFragment:
+            case R.id.splashScreen:
+            case R.id.authentication:
+            case R.id.loginFragment:
+            case R.id.signUpFragment:
+            case R.id.blankFragmentOnBoarding:
 
-                bottomNavigationView.setVisibility(View.VISIBLE);
+
+
+
+                bottomNavigationView.setVisibility(View.GONE);
               //  drawerButton.setVisibility(View.VISIBLE);
 
 
                 break;
             default:
-                bottomNavigationView.setVisibility(View.GONE);
+                bottomNavigationView.setVisibility(View.VISIBLE);
               //  drawerButton.setVisibility(View.GONE);
 
         }

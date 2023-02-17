@@ -2,8 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="150dp"
-    android:layout_height="250dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:elevation="6dp"
     app:cardCornerRadius="20dp"
@@ -18,7 +18,10 @@
         <TextView
             android:id="@+id/favMealCountry"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:fontFamily="@font/arimo_bold_italic"
+            android:textColor="@color/darkYellow"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/img_name"
@@ -34,7 +37,8 @@
             android:layout_marginBottom="24dp"
             android:background="@drawable/baseline_favorite_border_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favMealCountry" />
 
         <TextView
             android:id="@+id/img_name"
@@ -42,6 +46,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="TextView"
+            android:fontFamily="@font/arimo_bold_italic"
+            android:textColor="@color/darkYellow"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView3" />

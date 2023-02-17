@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favRecyclerView"
+                android:id="@+id/categoryRecyclerView"
                 android:layout_width="350dp"
                 android:layout_height="617dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -37,28 +37,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="52dp" />
+        app:layout_constraintGuide_begin="31dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="695dp" />
+        app:layout_constraintGuide_begin="715dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="31dp" />
+        app:layout_constraintGuide_begin="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="28dp" />
+        app:layout_constraintGuide_end="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -80,7 +80,7 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="match_parent"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/baseline_energy_savings_leaf_24" />
     </androidx.cardview.widget.CardView>
@@ -90,7 +90,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/favorites"
+        android:fontFamily="@font/boogaloo"
         android:textColor="@color/darkYellow"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toStartOf="@+id/guideline8"

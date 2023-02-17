@@ -19,7 +19,7 @@
 
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="message">you can sign up with the following options:</string>
+    <string name="message">You can also sign up with google</string>
     <string name="signUp">Sign Up</string>
     <string name="name">Name</string>
     <string name="daily_insp_txt">Daily Inspiration</string>
@@ -38,7 +38,7 @@
     <string name="favoriteCuisine">search your favorite cuisine</string>
     <string name="favoriteIngredient">search your favorite ingredient</string>
     <string name="favoriteCategory">search your favorite Category</string>
-    <string name="favorites">Favorites</string>
+    <string name="favorites">Your favorites</string>
     <string name="recipe">Recipe :</string>
     <string name="get_start">get start</string>
 
@@ -52,6 +52,10 @@
     <string name="btnfav">"      "</string>
     <string name="fav_daily_insp_btn">Add To Favorite</string>
     <string name="show_more_btn">Show More Details</string>
+    <string name="welcome">Welcome</string>
+    <string name="ing">Ingredients</string>
+    <string name="recipeTiltle">Recipe</string>
+    <string name="appName">𝒄𝒉𝒆𝒇𝒌𝒐</string>
 
 
 </resources>

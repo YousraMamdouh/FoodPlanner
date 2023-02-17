@@ -9,16 +9,16 @@
 
       <com.airbnb.lottie.LottieAnimationView
           android:id="@+id/chefAnimation"
-          android:layout_width="372dp"
+          android:layout_width="340dp"
 
-          android:layout_height="134dp"
+          android:layout_height="177dp"
           android:layout_marginTop="32dp"
           android:elevation="5dp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/cardView2"
-          app:layout_constraintVertical_bias="0.597"
+          app:layout_constraintVertical_bias="0.816"
           app:lottie_autoPlay="true"
           app:lottie_loop="true"
           app:lottie_rawRes="@raw/wave" />
@@ -52,30 +52,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="146dp">
 
-                  <Button
-                      android:id="@+id/skipBtn"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="16dp"
-                      android:layout_marginEnd="28dp"
-                      android:background="@drawable/custom_button"
-                      android:text="@string/skip"
+                  <TextView
+                      android:id="@+id/textView10"
+                      android:layout_width="300dp"
+                      android:layout_height="102dp"
+                      android:layout_marginTop="43dp"
+                      android:text="@string/appName"
+                      android:textAlignment="center"
+                      android:textColor="@color/white"
+                      android:textSize="80dp"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <ImageView
+                      android:id="@+id/imageView"
+                      android:layout_width="104dp"
+                      android:layout_height="70dp"
+                      android:layout_marginTop="28dp"
+                      android:layout_marginEnd="52dp"
+                      android:src="@drawable/mychef"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
       </androidx.cardview.widget.CardView>
 
       <androidx.cardview.widget.CardView
+          android:id="@+id/cardView12"
           android:layout_width="79dp"
-          android:layout_height="155dp"
 
+          android:layout_height="155dp"
           android:layout_marginStart="88dp"
           android:layout_marginTop="124dp"
           android:backgroundTint="@color/darkYellow"
           app:cardCornerRadius="70dp"
           app:cardElevation="10dp"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/cardView" >
+          app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -85,8 +99,11 @@
                       android:id="@+id/signup_txt"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="16dp"
+                      android:layout_marginTop="32dp"
+                      android:fontFamily="@font/boogaloo"
                       android:text="@string/Sign_up_txt"
+                      android:textColor="@color/darkGreen"
+                      android:textSize="16sp"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toTopOf="parent" />
@@ -96,13 +113,13 @@
                       android:layout_width="60dp"
                       android:layout_height="60dp"
                       android:layout_marginBottom="16dp"
-                      app:cardCornerRadius="1500dp"
                       android:backgroundTint="@color/darkGreen"
+                      app:cardCornerRadius="1500dp"
 
                       app:cardElevation="10dp"
                       app:layout_constraintBottom_toBottomOf="parent"
                       app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintStart_toStartOf="parent" >
+                      app:layout_constraintStart_toStartOf="parent">
 
                         <ImageView
                             android:id="@+id/signup"
@@ -121,9 +138,10 @@
           app:layout_constraintGuide_begin="-18dp" />
 
       <androidx.cardview.widget.CardView
+          android:id="@+id/cardView11"
           android:layout_width="79dp"
-          android:layout_height="155dp"
 
+          android:layout_height="155dp"
           android:layout_marginTop="90dp"
           android:layout_marginEnd="80dp"
           android:backgroundTint="@color/darkYellow"
@@ -142,8 +160,11 @@
                       android:id="@+id/textView12"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_marginBottom="16dp"
+                      android:layout_marginBottom="32dp"
+                      android:fontFamily="@font/boogaloo"
                       android:text="@string/log_in_txt"
+                      android:textColor="@color/darkGreen"
+                      android:textSize="16sp"
                       app:layout_constraintBottom_toBottomOf="parent"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent" />
@@ -156,7 +177,7 @@
                       app:cardCornerRadius="1500dp"
                       app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toTopOf="parent" >
+                      app:layout_constraintTop_toTopOf="parent">
 
 
                         <ImageView
@@ -164,12 +185,27 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@drawable/arrow__24" />
-                  </androidx.cardview.widget.CardView><![CDATA[
+                  </androidx.cardview.widget.CardView>
+                  <![CDATA[
 
                   />
             ]]>
             </androidx.constraintlayout.widget.ConstraintLayout>
       </androidx.cardview.widget.CardView>
+
+      <Button
+          android:id="@+id/skipBtn"
+          android:layout_width="89dp"
+          android:layout_height="38dp"
+          android:layout_marginEnd="28dp"
+          android:layout_marginBottom="32dp"
+          android:background="@drawable/custom_button"
+          android:elevation="0dp"
+          android:fontFamily="@font/boogaloo"
+          android:text="@string/skip"
+          android:textColor="@color/darkGreen"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

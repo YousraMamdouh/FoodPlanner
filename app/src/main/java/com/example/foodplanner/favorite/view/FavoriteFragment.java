@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
@@ -34,7 +34,7 @@ import io.reactivex.schedulers.Schedulers;
 public class FavoriteFragment extends Fragment implements OnDeleteClickListener ,FavoritesViewInterface{
     RecyclerView favRecyclerView;
     FavoritesAdapter favoritesAdapter;
-    LinearLayoutManager layoutManager;
+    StaggeredGridLayoutManager layoutManager;
     FavoritePresenterInterface favoritePresenterInterface;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,10 +83,11 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
         // Inflate the layout for this fragment
 
         View view= inflater.inflate(R.layout.fragment_favorite, container, false);
-        favRecyclerView=view.findViewById(R.id.favRecyclerView);
+        favRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         favoritePresenterInterface=new FavoritesPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         favoritesAdapter=new FavoritesAdapter(getActivity(),new ArrayList<>(),this);
-        layoutManager=new LinearLayoutManager(getActivity());
+//        layoutManager=new LinearLayoutManager(getActivity());
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         favRecyclerView.setLayoutManager(layoutManager);
         favRecyclerView.setAdapter(favoritesAdapter);
         favoritePresenterInterface.getMyFavorites();
