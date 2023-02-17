@@ -1,24 +1,21 @@
 package com.example.foodplanner.specificIngredient.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
-import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
-
-
+import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.specificIngredient.presenter.SpecificIngredientPresenter;
 import com.example.foodplanner.specificIngredient.presenter.SpecificIngredientPresenterInterface;
 
@@ -31,7 +28,7 @@ import java.util.List;
  * Use the {@link SpecificIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite {
+public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite,OnMealClickedListener {
 
     RecyclerView recyclerView;
     SpecificIngredientAdapter adapter;
@@ -83,7 +80,7 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          view= inflater.inflate(R.layout.fragment_specific_ingredient, container, false);
-        recyclerView=view.findViewById(R.id.ingredientRecyclerView);
+        recyclerView=view.findViewById(R.id.categoryRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this,this);
         specificIngredientPresenterInterface=new SpecificIngredientPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), com.example.foodplanner.specificIngredient.view.SpecificIngredientArgs.fromBundle(getArguments()).getIngredientName());
