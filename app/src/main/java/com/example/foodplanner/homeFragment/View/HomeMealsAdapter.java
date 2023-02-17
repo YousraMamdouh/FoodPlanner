@@ -70,7 +70,7 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
             public void onClick(View v) {
 
                mealClickedListener.getMeal(youMightLikeList.get(position).getStrMeal());
-                //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+
 
             }
         });

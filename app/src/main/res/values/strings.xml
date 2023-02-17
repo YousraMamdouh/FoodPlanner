@@ -50,6 +50,8 @@
     <string name="skipBtn">Skip</string>
     <string name="skip">Skip</string>
     <string name="btnfav">"      "</string>
+    <string name="fav_daily_insp_btn">Add To Favorite</string>
+    <string name="show_more_btn">Show More Details</string>
 
 
 </resources>
