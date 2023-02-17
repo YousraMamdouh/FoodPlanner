@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favRecyclerView"
+                android:id="@+id/categoryRecyclerView"
                 android:layout_width="350dp"
                 android:layout_height="617dp"
                 app:layout_constraintBottom_toBottomOf="parent"

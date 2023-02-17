@@ -8,33 +8,42 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/chefAnimation"
-        android:layout_width="263dp"
+        android:layout_width="391dp"
 
-        android:layout_height="248dp"
+        android:layout_height="382dp"
         android:layout_marginBottom="32dp"
         android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447"
+        app:layout_constraintVertical_bias="0.242"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/plate" />
+        app:lottie_rawRes="@raw/pot" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <TextView
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        android:layout_marginBottom="200dp"
+        android:text="@string/appName"
+        android:textAlignment="center"
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="368dp" />
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="67dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="120dp"
+        android:src="@drawable/mychef"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chefAnimation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

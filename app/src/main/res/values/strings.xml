@@ -42,7 +42,7 @@
     <string name="recipe">Recipe :</string>
     <string name="get_start">get start</string>
 
-    <string name="description1"> Food Will Be Having a Taste</string>
+    <string name="description1"> Eat right feel amazing </string>
     <string name="description2"> Full Of Flavor</string>
     <string name="description3">Let\'s Do It Together</string>
     <string name="logoutbtn">Logout</string>
@@ -53,6 +53,7 @@
     <string name="welcome">Welcome</string>
     <string name="ing">Ingredients</string>
     <string name="recipeTiltle">Recipe</string>
+    <string name="appName">𝒄𝒉𝒆𝒇𝒌𝒐</string>
 
 
 </resources>

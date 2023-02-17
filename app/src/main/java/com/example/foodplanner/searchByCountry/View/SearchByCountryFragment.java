@@ -99,7 +99,7 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_search_by_country, container, false);
-        countryRecyclerView=view.findViewById(R.id.countryRecyclerView);
+        countryRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         searchView=view.findViewById(R.id.searchView);
         layoutManager=new LinearLayoutManager(getActivity());
 

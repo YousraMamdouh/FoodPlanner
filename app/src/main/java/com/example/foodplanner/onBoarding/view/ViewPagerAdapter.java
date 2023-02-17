@@ -16,9 +16,9 @@ import com.example.foodplanner.R;
 public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private int images[] = {
-            R.drawable.slider1,
-            R.drawable.slider2,
-            R.drawable.slider3
+            R.drawable.slide1,
+            R.drawable.slide2,
+            R.drawable.slide3
     };
     private int description[] = {
             R.string.description1, R.string.description2, R.string.description3

@@ -72,7 +72,62 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
 //        Glide.with(context).load(countriesPictures.get(position))
 //                .apply(new RequestOptions()
 //                        .override(150,150)).into(holder.countryImage);
-
+        String area = current.getStrArea();
+        if (area.equals("American")) {
+            holder.countryImage.setImageResource(R.drawable.america);
+        } else if (area.equals("British")) {
+            holder.countryImage.setImageResource(R.drawable.british);
+        } else if (area.equals("Canadian")) {
+            holder.countryImage.setImageResource(R.drawable.canada);
+        } else if (area.equals("Chinese")) {
+            holder.countryImage.setImageResource(R.drawable.china);
+        } else if (area.equals("Croatian")) {
+            holder.countryImage.setImageResource(R.drawable.croatian);
+        } else if (area.equals("Dutch")) {
+            holder.countryImage.setImageResource(R.drawable.dutch);
+        } else if (area.equals("Egyptian")) {
+            holder.countryImage.setImageResource(R.drawable.egypt);
+        } else if (area.equals("French")) {
+            holder.countryImage.setImageResource(R.drawable.french);
+        } else if (area.equals("Greek")) {
+            holder.countryImage.setImageResource(R.drawable.greek);
+        } else if (area.equals("Indian")) {
+            holder.countryImage.setImageResource(R.drawable.indian);
+        } else if (area.equals("Irish")) {
+            holder.countryImage.setImageResource(R.drawable.croatian);
+        } else if (area.equals("Jamaican")) {
+            holder.countryImage.setImageResource(R.drawable.kenya);
+        } else if (area.equals("Japanese")) {
+            holder.countryImage.setImageResource(R.drawable.japan);
+        } else if (area.equals("Kenyan")) {
+            holder.countryImage.setImageResource(R.drawable.kenya);
+        } else if (area.equals("Malaysian")) {
+            holder.countryImage.setImageResource(R.drawable.malaysian);
+        } else if (area.equals("Mexican")) {
+            holder.countryImage.setImageResource(R.drawable.mexico);
+        } else if (area.equals("Polish")) {
+            holder.countryImage.setImageResource(R.drawable.croatian);
+        } else if (area.equals("Portuguese")) {
+            holder.countryImage.setImageResource(R.drawable.portug);
+        } else if (area.equals("Russian")) {
+            holder.countryImage.setImageResource(R.drawable.russian);
+        } else if (area.equals("Spanish")) {
+            holder.countryImage.setImageResource(R.drawable.spani);
+        } else if (area.equals("Thai")) {
+            holder.countryImage.setImageResource(R.drawable.thia);
+        } else if (area.equals("Tunisian")) {
+            holder.countryImage.setImageResource(R.drawable.tunisian);
+        } else if (area.equals("Turkish")) {
+            holder.countryImage.setImageResource(R.drawable.turcia);
+        } else if (area.equals("Unknown")) {
+            holder.countryImage.setImageResource(R.drawable.unknown);
+        } else if (area.equals("Vietnamese")) {
+            holder.countryImage.setImageResource(R.drawable.vietnam);
+        } else if (area.equals("Moroccan")) {
+            holder.countryImage.setImageResource(R.drawable.moroco);
+        } else if (area.equals("Italian")) {
+            holder.countryImage.setImageResource(R.drawable.italian);
+        }
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

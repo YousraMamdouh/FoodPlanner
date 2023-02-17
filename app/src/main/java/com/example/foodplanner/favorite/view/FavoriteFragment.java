@@ -83,7 +83,7 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
         // Inflate the layout for this fragment
 
         View view= inflater.inflate(R.layout.fragment_favorite, container, false);
-        favRecyclerView=view.findViewById(R.id.favRecyclerView);
+        favRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         favoritePresenterInterface=new FavoritesPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         favoritesAdapter=new FavoritesAdapter(getActivity(),new ArrayList<>(),this);
 //        layoutManager=new LinearLayoutManager(getActivity());
