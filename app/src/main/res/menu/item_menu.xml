@@ -17,7 +17,7 @@
         android:icon="@drawable/favourite"/>
 
 
-    <item android:id="@+id/nav_calendar"
+    <item android:id="@+id/nav_weekPlan"
         android:title="Calendar"
         android:icon="@drawable/calendar"/>
 

@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
 
-                    case R.id.nav_calendar:
-                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.calenderScreen);
+                    case R.id.nav_weekPlan:
+                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
 
 
                         break;
