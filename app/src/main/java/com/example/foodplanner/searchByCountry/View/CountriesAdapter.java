@@ -92,7 +92,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
         } else if (area.equals("Greek")) {
             holder.countryImage.setImageResource(R.drawable.greek);
         } else if (area.equals("Indian")) {
-            holder.countryImage.setImageResource(R.drawable.indian);
+           holder.countryImage.setImageResource(R.drawable.indian);
         } else if (area.equals("Irish")) {
             holder.countryImage.setImageResource(R.drawable.croatian);
         } else if (area.equals("Jamaican")) {
@@ -122,7 +122,7 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.MyVi
         } else if (area.equals("Unknown")) {
             holder.countryImage.setImageResource(R.drawable.unknown);
         } else if (area.equals("Vietnamese")) {
-            holder.countryImage.setImageResource(R.drawable.vietnam);
+            holder.countryImage.setImageResource(R.drawable.vietname);
         } else if (area.equals("Moroccan")) {
             holder.countryImage.setImageResource(R.drawable.moroco);
         } else if (area.equals("Italian")) {

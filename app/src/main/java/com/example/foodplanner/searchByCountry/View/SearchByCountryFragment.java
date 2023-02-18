@@ -42,17 +42,17 @@ public class SearchByCountryFragment extends Fragment implements CountriesViewIn
     SearchView searchView;
     List<Countries> countries;
     List<Countries> filteredList;
-    List<Integer> countriesPictures=List.of(
-            R.drawable.america,R.drawable.british,R.drawable.canada,R.drawable.china,
-            R.drawable.croatian,R.drawable.dutch,R.drawable.egypt,R.drawable.french,
-            R.drawable.greek,R.drawable.indian,R.drawable.irish,
-            R.drawable.italian,R.drawable.jamaican,R.drawable.japan,R.drawable.kenya,
-            R.drawable.malaysian,R.drawable.mexico,R.drawable.moroco,R.drawable.polish,
-            R.drawable.portug,R.drawable.russian,R.drawable.spani, R.drawable.thia,
-            R.drawable.tunisian,R.drawable.turcia,R.drawable.unknown,R.drawable.vietnam
-
-
-    );
+//    List<Integer> countriesPictures=List.of(
+//            R.drawable.america,R.drawable.british,R.drawable.canada,R.drawable.china,
+//            R.drawable.croatian,R.drawable.dutch,R.drawable.egypt,R.drawable.french,
+//            R.drawable.greek,R.drawable.indian,R.drawable.irish,
+//            R.drawable.italian,R.drawable.jamaican,R.drawable.japan,R.drawable.kenya,
+//            R.drawable.malaysian,R.drawable.mexico,R.drawable.moroco,R.drawable.polish,
+//            R.drawable.portug,R.drawable.russian,R.drawable.spani, R.drawable.thia,
+//            R.drawable.tunisian,R.drawable.turcia,R.drawable.unknown,R.drawable.vietnam
+//
+//
+//    );
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
