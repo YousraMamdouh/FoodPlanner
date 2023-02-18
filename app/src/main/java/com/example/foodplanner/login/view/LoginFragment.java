@@ -2,8 +2,10 @@ package com.example.foodplanner.login.view;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,7 +49,15 @@ public class LoginFragment extends Fragment {
     EditText txtPassword;
     TextView recoverPassTv;
     GoogleSignInClient mGoogleSingInInClient;
+    SharedPreferences preferences;
     private static final int RC_SIGN_IN = 100;
+
+    public static final String FileName = "Login";
+    public static final String UserEmail = "Email";
+    public static final String Password = "Password";
+
+
+
 
 
     private FirebaseAuth mAuth;
@@ -134,6 +144,7 @@ public class LoginFragment extends Fragment {
 
                 String email = emailLog.getText().toString().trim();
                 String passw = txtPassword.getText().toString().trim();
+
                 // validate
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     // set error focus
@@ -142,6 +153,15 @@ public class LoginFragment extends Fragment {
                 }
                 else {
                     loginUser(email,passw);
+                    preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString(UserEmail,email);
+                    editor.putString(Password,passw);
+                    editor.putBoolean("login user",true);
+                    editor.commit();
+                    Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
+
+
                 }
             }
         });
