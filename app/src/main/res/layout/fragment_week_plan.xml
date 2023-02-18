@@ -134,7 +134,7 @@
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 <TextView
-                    android:id="@+id/tuseTxt"
+                    android:id="@+id/tuesTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -144,13 +144,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/viewMon" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewTuseday"
+                    android:id="@+id/recyclerViewTuesday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tuseTxt"
+                    app:layout_constraintTop_toBottomOf="@+id/tuesTxt"
                     tools:ignore="DuplicateIds,MissingConstraints" />
 
                 <View
@@ -159,7 +159,7 @@
                     android:layout_height="2dp"
                     android:layout_marginTop="5dp"
                     android:background="@color/darkGreen"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerViewTuseday"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerViewTuesday"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="-1dp" />
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

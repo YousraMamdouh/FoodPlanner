@@ -2,6 +2,8 @@ package com.example.foodplanner.dataBase;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
@@ -13,14 +15,25 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ConcreteLocalSource implements LocalSource{
     private MealDAO mealDAO;
-    private Observable<List<MealsDetails>> storedMeals;
+    private Observable<List<MealsDetails>> storedMeals, saturdayMeals, sundayMeals, mondayMeals, tuesdayMeals,
+    wednesdayMeals, thursdayMeals, fridayMeals, plannedMeals;
+
     private static ConcreteLocalSource localSource=null;
     private ConcreteLocalSource(Context context){
 
         AppDataBase db=AppDataBase.getInstance(context.getApplicationContext());
         mealDAO= db.productsDAO();
+        plannedMeals = mealDAO.getPlannedMeals();
         storedMeals=mealDAO.getAllMeals();
+        saturdayMeals = mealDAO.getMealsByDay("saturday");
+        sundayMeals = mealDAO.getMealsByDay("sunday");
+        mondayMeals = mealDAO.getMealsByDay("monday");
+        tuesdayMeals = mealDAO.getMealsByDay("tuesday");
+        thursdayMeals = mealDAO.getMealsByDay("thursday");
+        wednesdayMeals = mealDAO.getMealsByDay("wednesday");
+        fridayMeals = mealDAO.getMealsByDay("friday");
     }
+
 
     public static ConcreteLocalSource getInstance(Context context) {
 
@@ -56,15 +69,6 @@ public class ConcreteLocalSource implements LocalSource{
                     }
                 });
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                mealDAO.insertMeal(mealsDetails);
-//            }
-//        }).start();
-
-
-
     }
 
     @Override
@@ -76,4 +80,61 @@ public class ConcreteLocalSource implements LocalSource{
             }
         }).start();
     }
+
+    @Override
+    public void addToFavorites(MealsDetails mealsDetails, String day) {
+        mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mealDAO.insertMeal(mealsDetails);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        System.out.println("OnComplete meal added to the database");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("An error occurred while adding the meal to database");
+                    }
+                });
+
+
+    }
+
+    @Override
+    public Observable<List<MealsDetails>> getStoredMealsByDay(String day) {
+        switch (day) {
+            case "saturday":
+                return saturdayMeals;
+            case "sunday":
+                return sundayMeals;
+            case "monday":
+                return mondayMeals;
+            case "tuesday":
+                return tuesdayMeals;
+            case "wednesday":
+                return wednesdayMeals;
+            case "thursday":
+                return thursdayMeals;
+            case "friday":
+                return fridayMeals;
+            default:
+                return null;
+
+        }
+    }
+
+    @Override
+    public Observable<List<MealsDetails>> getPlannedMeals() {
+        return null;
+    }
+
+    @Override
+    public void deleteMealFromPlan(MealsDetails mealsDetails) {
+
+    }
+
 }

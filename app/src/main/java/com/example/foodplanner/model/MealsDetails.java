@@ -1,36 +1,37 @@
 package com.example.foodplanner.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.foodplanner.dataBase.MealDAO;
+
 import java.io.Serializable;
+import java.util.List;
 
-@Entity(tableName = "MealDetails")
+@Entity(tableName = "MealDetails", primaryKeys ={"idMeal","day"})
 public class MealsDetails implements Serializable {
-
     @NonNull
-@PrimaryKey
+
     private String idMeal ;
     private String strMeal;
     private String strDrinkAlternate;
     private String strCategory;
+    private boolean isFav;
 
-//  public MealsDetails( String strMeal, String strArea, String strMealThumb, String strInstructions,
-//  String strYoutube,String strIngerdient1,String strIngerdient2,String strIngerdient3,
-//                       String strIngerdient4,String strIngerdient5,String strIngerdient6,
-//                       String strIngerdient7,String strIngerdient8,String strIngerdient9,
-//                       String strIngerdient10,String strIngerdient11,String strIngerdient12,
-//                       String strIngerdient13,String strIngerdient14,String strIngerdient15,
-//                       String strIngerdient16,String strIngerdient17,String strIngerdient18,
-//                       String strIngerdient19,String strIngerdient20
-//
-//                       ){
-//
-//      this.strMeal = strMeal;
-//      this.strArea = strArea;
+    @ColumnInfo(name = "day", defaultValue = "temp")
+    @NonNull
+    private String day;
 
-    public MealsDetails(String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19, String strIngredient20) {
+
+
+    public MealsDetails(String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strYoutube, String strIngredient1,
+                        String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7,
+                        String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13,
+                        String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19,
+                        String strIngredient20,Boolean isFav) {
         this.strMeal = strMeal;
         this.strCategory = strCategory;
         this.strArea = strArea;
@@ -57,14 +58,9 @@ public class MealsDetails implements Serializable {
         this.strIngredient18 = strIngredient18;
         this.strIngredient19 = strIngredient19;
         this.strIngredient20 = strIngredient20;
+        this.isFav = isFav;
     }
-//      this.strMealThumb = strMealThumb;
-//      this.strInstructions = strInstructions;
-//      this.strYoutube= strYoutube;
-//
-//
-//
-//  }
+
 
 
     private String strArea;
@@ -74,6 +70,25 @@ public class MealsDetails implements Serializable {
     private String strYoutube;
 
     private String strIngredient1;
+
+    @Ignore
+  private List<MealsDetails> plannedList;
+    public List<MealsDetails> getPlannedList() {
+        return plannedList;
+    }
+
+    public void setPlannedList(List<MealsDetails> plannedList) {
+        this.plannedList = plannedList;
+    }
+
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
+    }
 
     public String getStrCategory() {
         return strCategory;
@@ -538,6 +553,14 @@ public class MealsDetails implements Serializable {
 
     public void setDateModified(String dateModified) {
         this.dateModified = dateModified;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
 
