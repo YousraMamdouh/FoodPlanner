@@ -41,9 +41,6 @@
             android:id="@+id/action_homeScreen_to_searchScreen"
             app:destination="@id/searchScreen" />
         <action
-            android:id="@+id/action_homeScreen_to_calenderScreen"
-            app:destination="@id/calenderScreen" />
-        <action
             android:id="@+id/action_homeScreen_to_accountFragment"
             app:destination="@id/accountFragment" />
         <action
@@ -52,6 +49,9 @@
         <argument
             android:name="Meal"
             app:argType="string" />
+        <action
+            android:id="@+id/action_homeScreen_to_weekPlan"
+            app:destination="@id/weekPlan" />
     </fragment>
     <fragment
         android:id="@+id/searchScreen"
@@ -71,11 +71,6 @@
             android:id="@+id/action_searchScreen_to_mealDetailsFragment"
             app:destination="@id/mealDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/calenderScreen"
-        android:name="com.example.foodplanner.calender.View.CalenderFragment"
-        android:label="fragment_calender_screen"
-        tools:layout="@layout/fragment_calender_screen" />
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.foodplanner.favorite.view.FavoriteFragment"
@@ -194,4 +189,9 @@
             android:name="cuisineName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/weekPlan"
+        android:name="com.example.foodplanner.weekPlan"
+        android:label="fragment_week_plan"
+        tools:layout="@layout/fragment_week_plan" />
 </navigation>

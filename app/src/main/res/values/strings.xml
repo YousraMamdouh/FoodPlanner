@@ -56,6 +56,15 @@
     <string name="ing">Ingredients</string>
     <string name="recipeTiltle">Recipe</string>
     <string name="appName">𝒄𝒉𝒆𝒇𝒌𝒐</string>
+    <string name="Scroll_Plan">PlanScroll</string>
+    <string name="planTopTxt">Plan Your Meals</string>
+    <string name="sat_txt">Saturday</string>
+    <string name="sun_txt">Sunday</string>
+    <string name="mon_txt">Monday</string>
+    <string name="tus_txt">Tuseday</string>
+    <string name="wed_txt">Wednesday</string>
+    <string name="Thu_txt">Thursday</string>
+    <string name="Fri_txt">Friday</string>
 
 
 </resources>
