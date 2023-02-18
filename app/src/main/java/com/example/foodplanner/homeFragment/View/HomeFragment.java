@@ -1,13 +1,6 @@
 package com.example.foodplanner.homeFragment.View;
 
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +8,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
-import com.example.foodplanner.homeFragment.View.HomeFragmentDirections;
+import com.example.foodplanner.homeFragment.presenter.MealsPresenter;
+import com.example.foodplanner.homeFragment.presenter.MealsPresenterInterface;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
-import com.example.foodplanner.homeFragment.presenter.MealsPresenterInterface;
-import com.example.foodplanner.homeFragment.presenter.MealsPresenter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +98,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
         mealsRecyclerView.setAdapter(mealsAdapter);
         inspiration = view.findViewById(R.id.inspirationCardView);
         inspirationImage = view.findViewById(R.id.inspirationImage);
-        showMoreDetails = view.findViewById(R.id.show_more_btn);
+       // showMoreDetails = view.findViewById(R.id.show_more_btn);
         AddToFav = view.findViewById(R.id.fav_daily_btn);
         mealsPresenterInterface.getMeals();
         mealsPresenterInterface.getDailyInspiration();

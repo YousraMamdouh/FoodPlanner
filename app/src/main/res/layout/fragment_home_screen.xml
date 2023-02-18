@@ -7,6 +7,15 @@
     android:background="@color/darkGreen"
     android:visibility="visible">
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="49dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mychef" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/mainCardView"
         android:layout_width="0dp"
@@ -27,8 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/arimo_bold_italic"
                 android:text="@string/daily_insp_txt"
+                android:textColor="@color/darkYellow"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,16 +49,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/arimo_bold_italic"
                 android:text="@string/you_might_like_txt"
+                android:textColor="@color/darkYellow"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inspirationCardView"
+                app:layout_constraintTop_toBottomOf="@+id/fav_daily_btn"
                 tools:ignore="MissingConstraints" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mealsRecycler"
-                android:layout_width="351dp"
-                android:layout_height="328dp"
+                android:layout_width="327dp"
+                android:layout_height="242dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,55 +72,30 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/inspirationCardView"
-                android:layout_width="355dp"
-                android:layout_height="152dp"
-                android:layout_marginTop="19dp"
-                android:layout_marginBottom="32dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
+                android:layout_width="235dp"
+                android:layout_height="235dp"
+                app:cardCornerRadius="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
                 tools:ignore="MissingConstraints">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <ImageView
+                    android:id="@+id/inspirationImage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-                    <ImageView
-                        android:id="@+id/inspirationImage"
-                        android:layout_width="170dp"
-                        android:layout_height="142dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <Button
-                        android:id="@+id/fav_daily_btn"
-                        android:layout_width="142dp"
-                        android:layout_height="38dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/custom_button"
-                        android:text="@string/fav_daily_insp_btn"
-                        app:layout_constraintStart_toEndOf="@+id/inspirationImage"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/show_more_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="16dp"
-                        android:background="@drawable/custom_button"
-                        android:text="@string/show_more_btn"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/inspirationImage"
-                        app:layout_constraintTop_toBottomOf="@+id/fav_daily_btn"
-                        app:layout_constraintVertical_bias="0.0" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/fav_daily_btn"
+                android:layout_width="39dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="50dp"
+                android:background="@drawable/baseline_favorite_border_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inspirationCardView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -145,11 +135,12 @@
         app:layout_constraintGuide_begin="335dp" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView13"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
         android:background="@color/darkGreen"
         android:backgroundTint="@color/darkGreen"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
@@ -166,13 +157,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:text="@string/appName"
         android:textColor="@color/darkYellow"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="parent"
-       />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
