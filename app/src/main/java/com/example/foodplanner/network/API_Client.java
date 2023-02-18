@@ -1,17 +1,12 @@
 package com.example.foodplanner.network;
 
 
-
-import com.example.foodplanner.model.DailyInspirationRoot;
 import com.example.foodplanner.model.RootMeals;
 import com.example.foodplanner.searchByCategory.model.RootCategories;
 import com.example.foodplanner.searchByCountry.model.RootCountries;
 import com.example.foodplanner.searchByIngredient.model.RootIngredients;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-
-import java.util.Random;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -55,6 +50,7 @@ public class API_Client implements  RemoteSource {
             networkDelegate.onSuccessAllCategories(item.getCategoryItems());
             System.out.println("Categories are here");
         }, error -> {
+            networkDelegate.onFailureAllCategories("No connection");
             System.out.println("An error occurs while accessing the all categories API");
         }, () -> {
             System.out.println("Mission completed successfully");
@@ -67,6 +63,7 @@ public class API_Client implements  RemoteSource {
             System.out.println("Meals are here");
             System.out.println(item.getAllMeals());
         }, error -> {
+            networkDelegate.onFailureAllMeals("No connection");
             System.out.println("An error occurs while accessing the all categories API");
         }, () -> {
             System.out.println("Mission completed successfully");
@@ -80,6 +77,7 @@ public class API_Client implements  RemoteSource {
             System.out.println(item.getCountries());
         }, error -> {
             System.out.println("An error occurs while accessing the all countries  API");
+            networkDelegate.onFailureAllCountries("No connection");
         }, () -> {
             System.out.println("Mission completed successfully");
         });
@@ -91,6 +89,7 @@ public class API_Client implements  RemoteSource {
             System.out.println(item.getIngredients());
         }, error -> {
             System.out.println("An error occurs while accessing the all Ingredients  API");
+            networkDelegate.onFailureAllIngredients("No connection");
         }, () -> {
             System.out.println("Mission completed successfully");
         });
@@ -110,6 +109,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
     System.out.println(item.getAllMeals());
 }, error -> {
     System.out.println("An error occurs while accessing specific category");
+    networkDelegate.onFailureSpecificCategory("No connection");
 }, () -> {
     System.out.println("Mission completed successfully");
 });
@@ -125,6 +125,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
             System.out.println("Specific meal");
             System.out.println(item.getAllMeals());
         }, error -> {
+            networkDelegate.onFailureSpecificIngredient("No connection");
             System.out.println("An error occurs while accessing specific ingredient");
         });
     }
@@ -138,6 +139,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
             System.out.println(item.getAllMeals());
         }, error -> {
             System.out.println("An error while getting meal ");
+           networkDelegate.onFailureMeal("No connection");
         }, () -> {
             System.out.println("Mission completed successfully");
         });
@@ -152,6 +154,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
            System.out.println("ana hena "+item.getAllMeals().get(0).getStrMeal());
         }, error -> {
             networkDelegate.onFailureSpecificCuisine("Failed to get required cuisine");
+           networkDelegate.onFailureSpecificCuisine("No connection");
         }, () -> {
             System.out.println("Mission completed successfully");
         });
@@ -168,6 +171,7 @@ mealsOfSelectedCountryObservable.subscribeOn(Schedulers.io()).observeOn(AndroidS
         }, error -> {
             networkDelegate.onFailureDailyInspiration(error.getMessage());
             System.out.println("failed to get daily inspiration");
+            networkDelegate.onFailureDailyInspiration("No connection");
         }, () -> {
             System.out.println("koki");
 

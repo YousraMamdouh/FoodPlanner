@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.model.MealsDetails;
@@ -47,6 +48,7 @@ SearchView searchView;
 List<MealsDetails> mealList;
 List<MealsDetails> filteredMealsList;
 AllMealsPresenterInterface allMealsPresenterInterface;
+    LottieAnimationView errorAnimation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,6 +96,8 @@ AllMealsPresenterInterface allMealsPresenterInterface;
         // Inflate the layout for this fragment
        view=inflater.inflate(R.layout.fragment_search_screen, container, false);
 searchView=view.findViewById(R.id.searchView);
+errorAnimation=view.findViewById(R.id.errorAnimation);
+errorAnimation.setVisibility(View.GONE);
        cuisineButton=view.findViewById(R.id.cuisineButton);
        categoryButton=view.findViewById(R.id.categoryButton);
        ingredientButton=view.findViewById(R.id.ingredientsButton);
@@ -118,9 +122,17 @@ searchView=view.findViewById(R.id.searchView);
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
         mealList=mealsDetails;
+        System.out.println("wsalna");
         allMealsAdapter.setAllMealsItemList(mealsDetails);
         allMealsAdapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void showError() {
+        errorAnimation.setVisibility(View.VISIBLE);
+        System.out.println("show error");
+        allMealsRecyclerView.setVisibility(View.GONE);
     }
 
     @Override
@@ -156,7 +168,6 @@ addMealToFavorites(currentMeal);
 
 
                 if(newText.length()!=0)
-
                     emitter.onNext(newText);
                     filteredMealsList=mealList.stream().filter(r->r.getStrMeal().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
                     allMealsAdapter.setAllMealsItemList(filteredMealsList);

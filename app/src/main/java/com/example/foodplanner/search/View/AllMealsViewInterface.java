@@ -7,6 +7,7 @@ import java.util.List;
 public interface AllMealsViewInterface {
 
     void showMeals(List<MealsDetails> mealsDetails);
+    void showError();
    void addMealToFavorites(MealsDetails mealsDetails);
 
 }
