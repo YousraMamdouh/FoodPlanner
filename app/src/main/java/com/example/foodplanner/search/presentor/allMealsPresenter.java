@@ -30,7 +30,7 @@ public class allMealsPresenter implements AllMealsPresenterInterface, NetworkDel
 
     @Override
     public void onFailureAllMeals(String errorMsg) {
-        System.out.println("Failed to get Meals ");
+        viewInterface.showError();
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -31,9 +32,10 @@ import io.reactivex.schedulers.Schedulers;
  * Use the {@link FavoriteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FavoriteFragment extends Fragment implements OnDeleteClickListener ,FavoritesViewInterface{
+public class FavoriteFragment extends Fragment implements OnDeleteClickListener ,FavoritesViewInterface,OnMealClicked{
     RecyclerView favRecyclerView;
     FavoritesAdapter favoritesAdapter;
+    View view;
     StaggeredGridLayoutManager layoutManager;
     FavoritePresenterInterface favoritePresenterInterface;
 
@@ -82,10 +84,10 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view= inflater.inflate(R.layout.fragment_favorite, container, false);
+        view= inflater.inflate(R.layout.fragment_favorite, container, false);
         favRecyclerView=view.findViewById(R.id.categoryRecyclerView);
         favoritePresenterInterface=new FavoritesPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
-        favoritesAdapter=new FavoritesAdapter(getActivity(),new ArrayList<>(),this);
+        favoritesAdapter=new FavoritesAdapter(getActivity(),new ArrayList<>(),this,this);
 //        layoutManager=new LinearLayoutManager(getActivity());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         favRecyclerView.setLayoutManager(layoutManager);
@@ -137,4 +139,10 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
     }
 
 
+    @Override
+    public void getMeal(String mealName) {
+        FavoriteFragmentDirections.ActionFavoriteFragmentToMealDetailsFragment action=FavoriteFragmentDirections.actionFavoriteFragmentToMealDetailsFragment(mealName);
+        Navigation.findNavController(view).navigate(action);
+
+    }
 }

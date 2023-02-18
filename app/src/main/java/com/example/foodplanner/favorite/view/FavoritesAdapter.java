@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -25,13 +26,14 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
     private List<MealsDetails> favoriteMealsList;
     private Context context;
     private OnDeleteClickListener onDeleteClickListener;
+private OnMealClicked listener;
 
 
 
-
-    public FavoritesAdapter(Context context, List<MealsDetails> favoriteMealsList,OnDeleteClickListener listener)
+    public FavoritesAdapter(Context context, List<MealsDetails> favoriteMealsList,OnDeleteClickListener listener,OnMealClicked onMealClickedListener)
     {
         this.context=context;
+        this.listener=onMealClickedListener;
         this.favoriteMealsList = favoriteMealsList;
         this.onDeleteClickListener=listener;
     }
@@ -67,6 +69,16 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
               onDeleteClickListener.onClick(currentProduct);
             }
         });
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                listener.getMeal(favoriteMealsList.get(position).getStrMeal());
+                //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+
+            }
+        });
         Log.i(Tag,"onBindViewHolder");
     }
 
@@ -85,12 +97,14 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         TextView mealCountry;
         ImageView mealImage;
         Button deleteButton;
+        ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.favImageView);
             mealName=itemView.findViewById(R.id.img_name);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             deleteButton=itemView.findViewById(R.id.fav);
+            layout=itemView.findViewById(R.id.layout);
 
         }
     }
