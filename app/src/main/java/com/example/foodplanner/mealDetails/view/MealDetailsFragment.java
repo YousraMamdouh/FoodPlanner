@@ -30,6 +30,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -156,15 +157,19 @@ List<String> ingredientsList=new ArrayList<>();
 
 
         getLifecycle().addObserver(youTubePlayerView);
-
-       // System.out.println("yarab "+ingredientsList.get(0));
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+     youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = mealObject.getStrYoutube();
-                System.out.println("URL:"+mealObject.getStrYoutube());
-                youTubePlayer.loadVideo(videoId, 0);
-                youTubePlayer.play();
+                super.onReady(youTubePlayer);
+                final String[] videoUrl = {mealObject.getStrYoutube()};
+
+                if(videoUrl[0] !=null&&!videoUrl[0].equals("")){
+                    videoUrl[0] = videoUrl[0].substring(videoUrl[0].indexOf("=") + 1);
+                    StringTokenizer str = new StringTokenizer(videoUrl[0], "&");
+                    videoUrl[0] = str.nextToken();
+                    youTubePlayer.loadVideo(videoUrl[0],0);
+                    youTubePlayer.pause();
+                }
             }
         });
 

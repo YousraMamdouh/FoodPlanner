@@ -84,6 +84,7 @@ navController.addOnDestinationChangedListener(new NavController.OnDestinationCha
             case R.id.loginFragment:
             case R.id.signUpFragment:
             case R.id.blankFragmentOnBoarding:
+//            case R.id.mealDetailsFragment:
 
 
 
