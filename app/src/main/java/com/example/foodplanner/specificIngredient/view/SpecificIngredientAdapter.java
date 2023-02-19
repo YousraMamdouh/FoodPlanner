@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -22,13 +23,14 @@ import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 
-public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder>{
+public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder> implements SingleChoiceDialogFragment.SingleChoiceListener{
     private static final String Tag="Specific ingredient Adapter";
     private List<MealsDetails> allMealsList;
     private Context context;
 
     private AddToFavorite addToFavorite;
     private OnMealClickedListener onMealClickedListener;
+
 
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
@@ -94,12 +96,31 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             }
         });
         Log.i(Tag,"onBindViewHolder");
+        holder.calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
+                singleChoiceDialog.setCancelable(false);
+                singleChoiceDialog.setTargetFragment(holder.calender);
+                singleChoiceDialog.show();
+            }
+        });
     }
 
 
     @Override
     public int getItemCount() {
         return allMealsList.size();
+    }
+
+    @Override
+    public void onPositiveButtonClicked(String[] list, int position) {
+
+    }
+
+    @Override
+    public void onNegativeButtonClicked() {
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -109,6 +130,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         ImageView mealImage;
         Button favButton;
         ConstraintLayout layout;
+        Button calender;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
@@ -116,6 +138,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.fav);
             layout=itemView.findViewById(R.id.layout);
+            calender = itemView.findViewById(R.id.calenderbtn);
 
         }
     }

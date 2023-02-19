@@ -87,6 +87,7 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         specificIngredientPresenterInterface.getMeals();
+
         return view;
 
     }
