@@ -90,7 +90,23 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
                 mBuilder.setSingleChoiceItems(days, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.dismiss();
+                    }
+                });
+                mBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // show dialog
+                        AlertDialog mDialog = mBuilder.create();
+                        mDialog.show();
+                    }
+                });
+                mBuilder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // show dialog
+                        AlertDialog mDialog = mBuilder.create();
+                        mDialog.show();
                     }
                 });
             }
