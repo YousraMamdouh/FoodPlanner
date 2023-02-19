@@ -11,13 +11,9 @@ import com.example.foodplanner.network.RemoteSource;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -29,6 +25,8 @@ public class Repository implements RepositoryInterface{
     private LocalSource localSource;
     private static Repository repository=null;
     private boolean isInMyFavorites=false;
+
+
 
 
     private Repository(RemoteSource remoteSource,LocalSource localSource , Context context)
@@ -103,20 +101,20 @@ localSource.deleteMealFromFavorites(mealsDetails);
 
     @Override
     public void backupUserData() {
-
+        Observable<List<MealsDetails>> mealObject=getAllStoredMeals();
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null)
         {
             Toast.makeText(context, "You must login first", Toast.LENGTH_SHORT).show();
         }
 else {
-    long timestamp=System.currentTimeMillis();
+
 
             //Save to database
-            DatabaseReference db= FirebaseDatabase.getInstance().getReference("users");
+            DatabaseReference db= FirebaseDatabase.getInstance().getReference();
 
-db.child(firebaseAuth.getUid()).child("favorites").child(mealId)
-        .setValue(meal)
+db.child(firebaseAuth.getUid()).child("favorites")
+        .setValue(mealObject)
         .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
