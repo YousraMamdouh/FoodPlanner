@@ -29,6 +29,8 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
 
     private AddToFavorite addToFavorite;
     private OnMealClickedListener onMealClickedListener;
+    private AddToCalendar addToCalendar;
+
 
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
@@ -38,12 +40,13 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
 
 
 
-    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite addToFavorite, OnMealClickedListener onMealClickedListener)
+    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite addToFavorite, OnMealClickedListener onMealClickedListener,AddToCalendar addToCalendar)
     {
         this.context=context;
         this.allMealsList = allMealsList;
         this.addToFavorite =addToFavorite;
         this.onMealClickedListener = onMealClickedListener;
+        this.addToCalendar = addToCalendar;
     }
 
     @NonNull
@@ -79,6 +82,12 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             }
         });
         Log.i(Tag,"onBindViewHolder");
+        holder.calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToCalendar.onClick();
+            }
+        });
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +118,8 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         ImageView mealImage;
         Button favButton;
         ConstraintLayout layout;
+        Button calender;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
@@ -116,6 +127,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.fav);
             layout=itemView.findViewById(R.id.layout);
+            calender = itemView.findViewById(R.id.calenderbtn);
 
         }
     }
