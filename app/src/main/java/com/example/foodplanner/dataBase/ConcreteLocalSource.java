@@ -81,4 +81,9 @@ public class ConcreteLocalSource implements LocalSource{
     public void backupUserData() {
 
     }
+
+    @Override
+    public void checkIsFavorite() {
+
+    }
 }

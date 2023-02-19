@@ -103,8 +103,7 @@ localSource.deleteMealFromFavorites(mealsDetails);
 
     @Override
     public void backupUserData() {
-        MealsDetails meal = null;
-        String mealId=meal.getIdMeal();
+
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null)
         {
@@ -112,15 +111,12 @@ localSource.deleteMealFromFavorites(mealsDetails);
         }
 else {
     long timestamp=System.currentTimeMillis();
-            HashMap<String,Object> hashMap =new HashMap<>();
-            hashMap.put("mealID",""mealId);
-            hashMap.put("timestamp",""+timestamp);
 
             //Save to database
             DatabaseReference db= FirebaseDatabase.getInstance().getReference("users");
 
 db.child(firebaseAuth.getUid()).child("favorites").child(mealId)
-        .setValue(hashMap)
+        .setValue(meal)
         .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -139,40 +135,45 @@ db.child(firebaseAuth.getUid()).child("favorites").child(mealId)
 
     @Override
     public void checkIsFavorite() {
-        FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser()==null)
-        {
-            Toast.makeText(context, "You must login first", Toast.LENGTH_SHORT).show();
-        }
-        else {
-
-            DatabaseReference reference=FirebaseDatabase.getInstance().getReference("users");
-            reference.child(firebaseAuth.getUid()).child("favorites").child(mealID)
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                isInMyFavorites=snapshot.exists();
-                                if (isInMyFavorites)//true if exist, false if not exist
-                                {
-                                    Toast.makeText(context, "already exists", Toast.LENGTH_SHORT).show();
-
-                                }
-                                else {
-                                    Toast.makeText(context, "backup succeeded", Toast.LENGTH_SHORT).show();
-                                }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-        }
 
     }
+
+//    @Override
+//    public void checkIsFavorite() {
+//        FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+//
+//        if(firebaseAuth.getCurrentUser()==null)
+//        {
+//            Toast.makeText(context, "You must login first", Toast.LENGTH_SHORT).show();
+//        }
+//        else {
+//
+//            DatabaseReference reference=FirebaseDatabase.getInstance().getReference("users");
+//            reference.child(firebaseAuth.getUid()).child("favorites").child(mealID)
+//                    .addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                                isInMyFavorites=snapshot.exists();
+//                                if (isInMyFavorites)//true if exist, false if not exist
+//                                {
+//                                    Toast.makeText(context, "already exists", Toast.LENGTH_SHORT).show();
+//
+//                                }
+//                                else {
+//                                    Toast.makeText(context, "backup succeeded", Toast.LENGTH_SHORT).show();
+//                                }
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
+//        }
+//
+//    }
 
 
 }
