@@ -1,6 +1,7 @@
 package com.example.foodplanner.specificIngredient.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,6 +87,12 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             public void onClick(View v) {
                 days = new String[]{"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(v.getContext());
+                mBuilder.setSingleChoiceItems(days, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
             }
         });
 
