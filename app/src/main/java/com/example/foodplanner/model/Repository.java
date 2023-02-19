@@ -80,6 +80,7 @@ remoteSource.enqueueCallSpecificCuisine(networkDelegate,cuisineName);
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
         localSource.addToFavorites(mealsDetails);
+        System.out.println("www");
 
     }
 
@@ -91,6 +92,7 @@ localSource.deleteMealFromFavorites(mealsDetails);
     @Override
     public void addToFavorites(MealsDetails mealsDetails, String day) {
         localSource.addToFavorites(mealsDetails, day);
+        System.out.println("bbbbb");
     }
 
     @Override

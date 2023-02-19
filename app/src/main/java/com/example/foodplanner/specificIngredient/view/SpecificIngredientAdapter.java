@@ -31,6 +31,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
     private AddToFavorite addToFavorite;
     private OnMealClickedListener onMealClickedListener;
     private AddToCalender addToCalender;
+   public MealsDetails plannedProduct ;
 
 
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
@@ -91,17 +92,13 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
                 System.out.println("Click:"+allMealsList.get(position).getStrMeal());
             }
         });
-        holder.favButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToFavorite.onClick(currentProduct);
-            }
-        });
+
         Log.i(Tag,"onBindViewHolder");
         holder.calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              addToCalender.onClick();
+                plannedProduct = currentProduct;
+                addToCalender.onClick();
             }
         });
     }

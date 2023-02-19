@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.favorite.view.OnDeleteClickListener;
 import com.example.foodplanner.model.MealsDetails;
+import com.example.foodplanner.searchSpecificCategory.view.SpecificCategoryAdapter;
 
 import java.util.List;
 
@@ -44,14 +45,17 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.fragment_week_plan, parent, false);
+        View view = inflater.inflate(R.layout.search_all_meals, parent, false);
         Log.i("onCreateViewHolder: ", viewType + "");
-        return new WeekPlanAdapter.ViewHolder(view);
+      ViewHolder ViewHolder=new ViewHolder(view);
+        Log.i(Tag,"OnCreateViewHolder");
+        return ViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MealsDetails meal = planMealsList.get(position);
+        System.out.println(holder+"holder"+meal.getStrMeal());
         holder.mealNameTxt.setText(meal.getStrMeal());
         holder.mealCountryTxt.setText(meal.getStrArea());
         Glide.with(context).load(meal.getStrMealThumb())
@@ -83,7 +87,7 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
         public ViewHolder(View itemView) {
             super(itemView);
            deleteBtn = itemView.findViewById(R.id.fav);
-            mealImageViewPlannerCard = itemView.findViewById(R.id.favImageView);
+            mealImageViewPlannerCard = itemView.findViewById(R.id.mealImage);
             mealNameTxt = itemView.findViewById(R.id.img_name);
             mealCountryTxt = itemView.findViewById(R.id.favMealCountry);
             layout = itemView.findViewById(R.id.layout);

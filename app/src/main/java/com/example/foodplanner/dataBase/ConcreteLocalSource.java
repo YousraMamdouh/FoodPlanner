@@ -51,11 +51,14 @@ public class ConcreteLocalSource implements LocalSource{
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
+        mealsDetails.setIsFav("1");
         mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
                 .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mealDAO.insertMeal(mealsDetails);
+                        System.out.println("yyyyyy"+mealsDetails.getIsFav());
+
                     }
 
                     @Override
@@ -83,11 +86,15 @@ public class ConcreteLocalSource implements LocalSource{
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails, String day) {
+        mealsDetails.setDay( day);
         mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
+
+
                 .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mealDAO.insertMeal(mealsDetails);
+                        System.out.println("day wsl");
                     }
 
                     @Override

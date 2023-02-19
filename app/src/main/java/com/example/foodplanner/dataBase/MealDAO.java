@@ -16,11 +16,12 @@ import io.reactivex.Observable;
 @Dao
 public interface MealDAO {
 
-    @Query("SELECT * FROM MealDetails")
+    @Query("SELECT * FROM MealDetails where isFav = 1 ")
     Observable<List<MealsDetails>> getAllMeals();
     @Insert(onConflict = OnConflictStrategy.IGNORE) //law el element mawgood abl keda may7tohosh fl database
 
     Completable insertMeal(MealsDetails mealsDetails);
+
     @Delete
   void  deleteMeal(MealsDetails mealsDetails);
 
@@ -30,4 +31,6 @@ public interface MealDAO {
     @Query("SELECT * FROM MealDetails where isFav = 0  and day !='temp'")
 
     Observable<List<MealsDetails>> getPlannedMeals();
+
+
 }

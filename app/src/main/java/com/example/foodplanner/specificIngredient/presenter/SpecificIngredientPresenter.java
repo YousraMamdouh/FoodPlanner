@@ -124,4 +124,9 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
         repo.addToFavorites(mealsDetails);
 
     }
+
+    @Override
+    public void addToCalender(MealsDetails mealsDetails, String day) {
+        repo.addToFavorites(mealsDetails,day);
+    }
 }

@@ -124,10 +124,13 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
         singleChoiceDialog.setCancelable(false);
         singleChoiceDialog.show(getParentFragmentManager(),"Single Choice Dialog");
         singleChoiceDialog.setTargetFragment(SpecificIngredient.this,1);
+
     }
 
     @Override
     public void onPositiveButtonClicked(String[] list, int position) {
+        System.out.println(list[position]+"ffff");
+        specificIngredientPresenterInterface.addToCalender(adapter.plannedProduct,list[position]);
 
     }
 

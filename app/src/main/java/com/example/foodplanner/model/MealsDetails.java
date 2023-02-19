@@ -19,7 +19,8 @@ public class MealsDetails implements Serializable {
     private String strMeal;
     private String strDrinkAlternate;
     private String strCategory;
-    private boolean isFav;
+    @ColumnInfo(name = "isFav", defaultValue = "0")
+    private String isFav;
 
     @ColumnInfo(name = "day", defaultValue = "temp")
     @NonNull
@@ -31,7 +32,7 @@ public class MealsDetails implements Serializable {
                         String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7,
                         String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13,
                         String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19,
-                        String strIngredient20,Boolean isFav) {
+                        String strIngredient20,String isFav) {
         this.strMeal = strMeal;
         this.strCategory = strCategory;
         this.strArea = strArea;
@@ -82,11 +83,11 @@ public class MealsDetails implements Serializable {
     }
 
 
-    public boolean isFav() {
+    public String getIsFav() {
         return isFav;
     }
 
-    public void setFav(boolean fav) {
+    public void setIsFav(String fav) {
         isFav = fav;
     }
 

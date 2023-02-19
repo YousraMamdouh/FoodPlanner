@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
     private WeekPlanAdapter wednesdayAdapter, saturdayAdapter, sundayAdapter, mondayAdapter, tuesdayAdapter, thursdayAdapter, fridayAdapter;
     private List<MealsDetails> allMeals;
     private String day;
+    StaggeredGridLayoutManager layoutManager1,layoutManager2,layoutManager3,layoutManager4,layoutManager5,layoutManager6,layoutManager7;
     private WeekPlanPresenterInterface weekPlanPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,6 +113,23 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
         thursdayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
         wednesdayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
         fridayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
+
+        layoutManager1 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        saturdayRecyclerView.setLayoutManager(layoutManager1);
+        layoutManager2 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        sundayRecyclerView.setLayoutManager(layoutManager2);
+        layoutManager3 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mondayRecyclerView.setLayoutManager(layoutManager3);
+        layoutManager4 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        tuesdayRecyclerView.setLayoutManager(layoutManager4);
+        layoutManager5 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        wednesdayRecyclerView.setLayoutManager(layoutManager5);
+        layoutManager6 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        thursdayRecyclerView.setLayoutManager(layoutManager6);
+        layoutManager7 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        fridayRecyclerView.setLayoutManager(layoutManager7);
+
+
         weekPlanPresenterInterface.getMyPlannedMeals("saturday").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<MealsDetails>>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -119,18 +138,23 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
+                System.out.println("rrrr"+mealsDetails);
                 saturdayAdapter.setAllMeals(mealsDetails);
                 saturdayRecyclerView.setAdapter(saturdayAdapter);
+
                 saturdayAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onError(Throwable e) {
+                System.out.println("error sat"+e);
 
             }
 
             @Override
             public void onComplete() {
+                System.out.println("complete sat");
 
             }
 
@@ -143,9 +167,11 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+                sundayAdapter.setAllMeals(mealsDetails);
+
+                sundayRecyclerView.setAdapter(sundayAdapter);
+                sundayAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -167,9 +193,9 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+                mondayAdapter.setAllMeals(mealsDetails);
+                mondayRecyclerView.setAdapter(mondayAdapter);
+               mondayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -192,9 +218,9 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+                tuesdayAdapter.setAllMeals(mealsDetails);
+                tuesdayRecyclerView.setAdapter(tuesdayAdapter);
+                tuesdayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -216,9 +242,9 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+               wednesdayAdapter.setAllMeals(mealsDetails);
+                wednesdayRecyclerView.setAdapter(wednesdayAdapter);
+                wednesdayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -240,9 +266,9 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+              thursdayAdapter.setAllMeals(mealsDetails);
+                thursdayRecyclerView.setAdapter(thursdayAdapter);
+                thursdayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -264,9 +290,9 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                saturdayAdapter.setAllMeals(mealsDetails);
-                saturdayRecyclerView.setAdapter(saturdayAdapter);
-                saturdayAdapter.notifyDataSetChanged();
+               fridayAdapter.setAllMeals(mealsDetails);
+                fridayRecyclerView.setAdapter(fridayAdapter);
+                fridayAdapter.notifyDataSetChanged();
             }
 
             @Override
