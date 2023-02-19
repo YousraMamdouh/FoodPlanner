@@ -1,14 +1,7 @@
 package com.example.foodplanner.signUp.view;
 
-import static android.app.ProgressDialog.show;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.example.foodplanner.R;
+import com.example.foodplanner.signUp.ReadWriteUserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -110,6 +108,8 @@ public class SignUpFragment extends Fragment {
                 String confirmPassword = password2.getText().toString().trim();
                 String userName = name.getText().toString().trim();
 
+
+
                 // validate
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     // set error focus
@@ -128,6 +128,10 @@ public class SignUpFragment extends Fragment {
 
                 else {
                     registerUser(email, String.valueOf(password)); // register user
+
+                    //Enter user data into the firebase realtime database
+
+                    ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(userName,email,Password);
                 }
 
 

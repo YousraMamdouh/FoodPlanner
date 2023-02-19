@@ -165,8 +165,6 @@ addMealToFavorites(currentMeal);
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-
                 if(newText.length()!=0)
                     emitter.onNext(newText);
                     filteredMealsList=mealList.stream().filter(r->r.getStrMeal().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());

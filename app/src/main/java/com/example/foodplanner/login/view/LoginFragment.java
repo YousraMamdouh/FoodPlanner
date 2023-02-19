@@ -7,25 +7,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.text.InputType;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.foodplanner.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.example.foodplanner.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -125,6 +121,8 @@ public class LoginFragment extends Fragment {
            public void onClick(View v) {
                showRecoverPasswordDialog();
            }
+
+
        });
 
        // handle google click btn
@@ -287,6 +285,7 @@ public class LoginFragment extends Fragment {
                 if(task.isSuccessful()){
                 // sign in success update ui with the signed in user's information
                     FirebaseUser user = mAuth.getCurrentUser();
+
                     // show user email in toat
                     Toast.makeText(getContext(), ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                     // go to home after logged in

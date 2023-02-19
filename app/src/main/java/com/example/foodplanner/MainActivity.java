@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-      //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_graphContainer,  new AuthenticationFragment()).commit();
+      //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new AuthenticationFragment()).addToBackStack(null).commit();
         //navigationView.setSelectedItemId(R.id.nav_home);
         navController=Navigation.findNavController(this,R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
@@ -41,17 +41,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                  case R.id.nav_home:
                      Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
+                    // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
 
                      break;
 
                     case R.id.nav_search:
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
+                      //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
 
 
                         break;
 
                     case R.id.nav_weekPlan:
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
+                   //     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new Cal).addToBackStack(null).commit();
 
 
                         break;
