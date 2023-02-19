@@ -14,5 +14,8 @@ public interface LocalSource {
     void addToFavorites(MealsDetails mealsDetails);
 
     void deleteMealFromFavorites(MealsDetails mealsDetails);
+
+    //firebase
     void backupUserData();
+    void checkIsFavorite();
 }

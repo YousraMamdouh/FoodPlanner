@@ -57,9 +57,11 @@
 
                 android:layout_height="69dp"
 
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="32dp"
                 app:cardCornerRadius="1500dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="83dp">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
                     android:id="@+id/acccard"
