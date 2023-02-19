@@ -27,7 +27,7 @@ public class SingleChoiceDialogFragment extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            mListener = (SingleChoiceListener) context;
+            mListener = (SingleChoiceListener) getTargetFragment();
         } catch (Exception e) {
             throw new ClassCastException(getActivity().toString() + " SingleChoiceListener must implemented");
         }

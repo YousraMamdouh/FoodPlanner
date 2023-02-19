@@ -102,7 +102,8 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
                 DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
                 singleChoiceDialog.setCancelable(false);
 
-                singleChoiceDialog.show(singleChoiceDialog.getActivity().getSupportFragmentManager(),"Single Choice Dialog");
+                singleChoiceDialog.show(singleChoiceDialog.getParentFragmentManager(), "clara");
+                singleChoiceDialog.setTargetFragment(SpecificIngredient.);
             }
         });
     }
