@@ -24,6 +24,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
 
     private static final String Tag="Favorites Adapter";
     private List<MealsDetails> favoriteMealsList;
+
+
     private Context context;
     private OnDeleteClickListener onDeleteClickListener;
 private OnMealClicked listener;
