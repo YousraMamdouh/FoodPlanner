@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -131,7 +133,7 @@ public class SignUpFragment extends Fragment {
 
                     //Enter user data into the firebase realtime database
 
-                    ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(userName,email,Password);
+
                 }
 
 
@@ -152,8 +154,26 @@ public class SignUpFragment extends Fragment {
                         if(task.isSuccessful()){
 
                             progressDialog.dismiss();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getContext(), "Registered "+user.getEmail(), Toast.LENGTH_SHORT).show();
+                            FirebaseUser firebaseuser = mAuth.getCurrentUser();
+
+//Database backup
+                            //*****************************
+                            ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(email,password);
+                            DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered users");
+                            referenceProfile.child(firebaseuser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    firebaseuser.sendEmailVerification();
+                                    Toast.makeText(getContext(), "User registered successfully, please verify", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+                            Toast.makeText(getContext(), "Registered "+firebaseuser.getEmail(), Toast.LENGTH_SHORT).show();
+
+
+                            //******************************
                             navigateToHome();
 
                         }else {

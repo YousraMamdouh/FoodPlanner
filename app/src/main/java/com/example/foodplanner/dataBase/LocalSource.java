@@ -14,4 +14,5 @@ public interface LocalSource {
     void addToFavorites(MealsDetails mealsDetails);
 
     void deleteMealFromFavorites(MealsDetails mealsDetails);
+    void backupUserData();
 }

@@ -65,21 +65,13 @@ private OnMealClicked listener;
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              onDeleteClickListener.onClick(currentProduct);
-            }
-        });
+        holder.deleteButton.setOnClickListener(v -> onDeleteClickListener.onClick(currentProduct));
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.layout.setOnClickListener(v -> {
 
-                listener.getMeal(favoriteMealsList.get(position).getStrMeal());
-                //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+            listener.getMeal(favoriteMealsList.get(position).getStrMeal());
+            //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
 
-            }
         });
         Log.i(Tag,"onBindViewHolder");
     }
