@@ -82,6 +82,7 @@ public class AccountFragment extends Fragment {
           public void onClick(View v) {
                mAuth.signOut();
                checkUserStatus();
+               System.out.println("account fragment");
            }
         });
 
