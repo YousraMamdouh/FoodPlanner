@@ -23,4 +23,11 @@ public interface MealDAO {
     Completable insertMeal(MealsDetails mealsDetails);
     @Delete
   void  deleteMeal(MealsDetails mealsDetails);
+
+    @Query("SELECT * FROM MealDetails where day = :day")
+    Observable<List<MealsDetails>> getMealsByDay(String day);
+
+    @Query("SELECT * FROM MealDetails where isFav = 0  and day !='temp'")
+
+    Observable<List<MealsDetails>> getPlannedMeals();
 }

@@ -88,6 +88,23 @@ remoteSource.enqueueCallSpecificCuisine(networkDelegate,cuisineName);
 localSource.deleteMealFromFavorites(mealsDetails);
     }
 
+    @Override
+    public void addToFavorites(MealsDetails mealsDetails, String day) {
+        localSource.addToFavorites(mealsDetails, day);
+    }
 
+    @Override
+    public Observable<List<MealsDetails>> getStoredMealsByDay(String day) {
+        return localSource.getStoredMealsByDay(day);
+    }
 
+    @Override
+    public Observable<List<MealsDetails>> getPlannedMeals() {
+        return localSource.getPlannedMeals();
+    }
+
+    @Override
+    public void deleteMealFromPlan(MealsDetails mealsDetails) {
+         localSource.deleteMealFromPlan(mealsDetails);
+    }
 }

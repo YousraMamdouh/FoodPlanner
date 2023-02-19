@@ -75,11 +75,16 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/custom_button"
         android:fontFamily="@font/boogaloo"
         android:text="@string/logoutbtn"
-        android:background="@drawable/custom_button"
         android:textColor="@color/darkGreen"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="312dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomcard"
+        app:layout_constraintVertical_bias="0.156" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
