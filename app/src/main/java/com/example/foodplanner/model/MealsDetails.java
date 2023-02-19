@@ -4,10 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 @Entity(tableName = "MealDetails")
 public class MealsDetails implements Serializable {
+
+    public MealsDetails() {
+    }
+
+    public MealsDetails(@NonNull String idMeal, String strMeal) {
+        this.idMeal = idMeal;
+        this.strMeal = strMeal;
+    }
 
     @NonNull
 @PrimaryKey

@@ -1,6 +1,7 @@
 package com.example.foodplanner.model;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class Repository implements RepositoryInterface{
 
@@ -25,7 +29,7 @@ public class Repository implements RepositoryInterface{
     private LocalSource localSource;
     private static Repository repository=null;
     private boolean isInMyFavorites=false;
-
+    private static final String Tag="observable";
 
 
 
@@ -34,8 +38,6 @@ public class Repository implements RepositoryInterface{
         this.context=context;
         this.remoteSource = remoteSource;
         this.localSource=localSource;
-      //  this.localSource=localSource;
-
     }
 
     public static Repository getInstance(RemoteSource remoteSource, LocalSource localSource,Context context){
@@ -101,40 +103,66 @@ localSource.deleteMealFromFavorites(mealsDetails);
 
     @Override
     public void backupUserData() {
-        Observable<List<MealsDetails>> mealObject=getAllStoredMeals();
+    RootMeals rootMeals=new RootMeals();
+    getAllStoredMeals().subscribeOn(Schedulers.io()).subscribe(new Observer<List<MealsDetails>>() {
+        @Override
+        public void onSubscribe(Disposable d) {
+            Log.i(Tag,"onSubscribe");
+        }
+
+        @Override
+        public void onNext(List<MealsDetails> mealsDetails) {
+    rootMeals.setMeals(mealsDetails);
+
+    checkFirebase(rootMeals);
+
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            Log.i(Tag,"onError");
+        }
+
+        @Override
+        public void onComplete() {
+            Log.i(Tag,"onComplete");
+
+        }
+    });
+
+
+
+    }
+    public void checkFirebase(RootMeals rootMeals){
         FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null)
         {
             Toast.makeText(context, "You must login first", Toast.LENGTH_SHORT).show();
         }
-else {
+        else {
 
 
             //Save to database
-            DatabaseReference db= FirebaseDatabase.getInstance().getReference();
+            DatabaseReference db= FirebaseDatabase.getInstance().getReference("Registered users");
+            db.child(firebaseAuth.getUid()).child("favorites")
+                    .setValue(rootMeals)
 
-db.child(firebaseAuth.getUid()).child("favorites")
-        .setValue(mealObject)
-        .addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(context, "backup succeeded ", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, "backup failed,please try again later", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(context, "backup succeeded ", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "backup failed,please try again later", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
-
-
     }
 
-    @Override
-    public void checkIsFavorite() {
 
-    }
 
 //    @Override
 //    public void checkIsFavorite() {

@@ -14,6 +14,9 @@ import io.reactivex.schedulers.Schedulers;
 public class ConcreteLocalSource implements LocalSource{
     private MealDAO mealDAO;
     private Observable<List<MealsDetails>> storedMeals;
+
+
+
     private static ConcreteLocalSource localSource=null;
     private ConcreteLocalSource(Context context){
 
@@ -82,8 +85,5 @@ public class ConcreteLocalSource implements LocalSource{
 
     }
 
-    @Override
-    public void checkIsFavorite() {
 
-    }
 }

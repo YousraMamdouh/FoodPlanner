@@ -17,5 +17,5 @@ public interface LocalSource {
 
     //firebase
     void backupUserData();
-    void checkIsFavorite();
+
 }
