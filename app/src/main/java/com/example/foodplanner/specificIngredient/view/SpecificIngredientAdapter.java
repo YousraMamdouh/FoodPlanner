@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +31,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
     private AddToFavorite addToFavorite;
     private OnMealClickedListener onMealClickedListener;
 
+    String [] days;
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
         this.allMealsList =allMealsList;
     }
@@ -79,6 +81,13 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             }
         });
         Log.i(Tag,"onBindViewHolder");
+        holder.calButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                days = new String[]{"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(v.getContext());
+            }
+        });
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +117,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         TextView mealCountry;
         ImageView mealImage;
         Button favButton;
+        Button calButton;
         ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,6 +125,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
             mealName=itemView.findViewById(R.id.img_name);
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.fav);
+            calButton=itemView.findViewById(R.id.calenderbtn);
             layout=itemView.findViewById(R.id.layout);
 
         }
