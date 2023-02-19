@@ -23,13 +23,14 @@ import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
 
-public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder> implements SingleChoiceDialogFragment.SingleChoiceListener{
+public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder> {
     private static final String Tag="Specific ingredient Adapter";
     private List<MealsDetails> allMealsList;
     private Context context;
 
     private AddToFavorite addToFavorite;
     private OnMealClickedListener onMealClickedListener;
+    private AddToCalender addToCalender;
 
 
     public void setIngredientItemList(List<MealsDetails> allMealsList) {
@@ -40,12 +41,13 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
 
 
 
-    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite addToFavorite, OnMealClickedListener onMealClickedListener)
+    public SpecificIngredientAdapter(Context context, List<MealsDetails> allMealsList, AddToFavorite addToFavorite, OnMealClickedListener onMealClickedListener, AddToCalender add)
     {
         this.context=context;
         this.allMealsList = allMealsList;
         this.addToFavorite =addToFavorite;
         this.onMealClickedListener = onMealClickedListener;
+        this.addToCalender=add;
     }
 
     @NonNull
@@ -99,10 +101,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         holder.calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
-                singleChoiceDialog.setCancelable(false);
-
-                singleChoiceDialog.show(singleChoiceDialog.getActivity().getSupportFragmentManager(),"Single Choice Dialog");
+              addToCalender.onClick();
             }
         });
     }
@@ -113,15 +112,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
         return allMealsList.size();
     }
 
-    @Override
-    public void onPositiveButtonClicked(String[] list, int position) {
 
-    }
-
-    @Override
-    public void onNegativeButtonClicked() {
-
-    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

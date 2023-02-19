@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +29,7 @@ import java.util.List;
  * Use the {@link SpecificIngredient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite,OnMealClickedListener {
+public class SpecificIngredient extends Fragment implements SpecificIngredientViewInterface, AddToFavorite, OnMealClickedListener, AddToCalender, SingleChoiceDialogFragment.SingleChoiceListener {
 
     RecyclerView recyclerView;
     SpecificIngredientAdapter adapter;
@@ -82,7 +83,7 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
          view= inflater.inflate(R.layout.fragment_specific_ingredient, container, false);
         recyclerView=view.findViewById(R.id.categoryRecyclerView);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this,this);
+        adapter=new SpecificIngredientAdapter(getActivity(),new ArrayList<>(),this,this,this);
         specificIngredientPresenterInterface=new SpecificIngredientPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()), com.example.foodplanner.specificIngredient.view.SpecificIngredientArgs.fromBundle(getArguments()).getIngredientName());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -115,5 +116,23 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
     public void getMeal(String mealName) {
         SpecificIngredientDirections.ActionSpecificIngredientToMealDetailsFragment action = SpecificIngredientDirections.actionSpecificIngredientToMealDetailsFragment(mealName);
         Navigation.findNavController(view).navigate(action);
+    }
+
+    @Override
+    public void onClick() {
+        DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
+        singleChoiceDialog.setCancelable(false);
+        singleChoiceDialog.show(getParentFragmentManager(),"Single Choice Dialog");
+        singleChoiceDialog.setTargetFragment(SpecificIngredient.this,1);
+    }
+
+    @Override
+    public void onPositiveButtonClicked(String[] list, int position) {
+
+    }
+
+    @Override
+    public void onNegativeButtonClicked() {
+
     }
 }
