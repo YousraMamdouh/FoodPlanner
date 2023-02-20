@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
 
-    @Override
-    protected void onStart() {
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(changeNetworkListener,filter);
-        super.onStart();
-    }
+//    @Override
+//    protected void onStart() {
+//        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(changeNetworkListener,filter);
+//        super.onStart();
+//    }
 
     @Override
     protected void onStop() {
@@ -70,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
                     // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
 
                      break;
-
                     case R.id.nav_search:
+                        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+                        registerReceiver(changeNetworkListener,filter);
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
                       //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
+
 
 
                         break;
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_account:
+
                         if (AuthenticationFragment.isAuthChecker())
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.accountFragment);
