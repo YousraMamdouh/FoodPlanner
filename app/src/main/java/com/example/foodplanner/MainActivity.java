@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static NavController navController;
 
     ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+    IntentFilter filter;
 
 //    @Override
 //    protected void onStart() {
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new AuthenticationFragment()).addToBackStack(null).commit();
         //navigationView.setSelectedItemId(R.id.nav_home);
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.nav_home:
+                        registerReceiver(changeNetworkListener, filter);
+
 
 
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_search:
-                        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+
                         registerReceiver(changeNetworkListener, filter);
 
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_account:
+                        registerReceiver(changeNetworkListener, filter);
+
                         if (LoginFragment.getmAuth().getCurrentUser() != null)
 
 
