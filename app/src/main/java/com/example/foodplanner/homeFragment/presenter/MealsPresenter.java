@@ -136,11 +136,7 @@ public class MealsPresenter implements MealsPresenterInterface, NetworkDelegate 
 
     }
 
-//    public int getRandomNumber(List<MealsDetails> meal){
-//
-//        Random random = new Random();
-//        int randomNumber = random.nextInt(0 - meal.size() );
-//        return  randomNumber;
-//    }
+
+
 
 }
