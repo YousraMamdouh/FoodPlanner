@@ -126,4 +126,9 @@ public class MealPresenter implements MealPresenterInterface, NetworkDelegate {
     public void addToFavorites(MealsDetails mealsDetails) {
         repo.addToFavorites(mealsDetails);
     }
+
+    @Override
+    public void addToCalender(MealsDetails mealsDetails, String day) {
+        repo.addToFavorites(mealsDetails,day);
+    }
 }
