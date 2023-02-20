@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.signUp.ReadWriteUserDetails;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -37,6 +38,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginFragment extends Fragment {
@@ -234,7 +237,20 @@ public class LoginFragment extends Fragment {
                         if(task.isSuccessful()){
 
 
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+
+                            ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(email,Password);
+                            DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered users");
+                            referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    firebaseUser.sendEmailVerification();
+                                    Toast.makeText(getContext(), "User registered successfully, please verify", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
 
                             navigationToHome();
 

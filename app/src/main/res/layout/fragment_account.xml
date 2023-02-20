@@ -5,8 +5,21 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userDetails.AccountFragment">
+    tools:context=".userDetails.view.AccountFragment">
 
+
+    <Button
+        android:id="@+id/backupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/boogaloo"
+        android:text="@string/backup"
+        android:textColor="@color/darkGreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomcard"
@@ -44,9 +57,11 @@
 
                 android:layout_height="69dp"
 
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="32dp"
                 app:cardCornerRadius="1500dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="83dp">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
                     android:id="@+id/acccard"
@@ -75,11 +90,13 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
         android:fontFamily="@font/boogaloo"
         android:text="@string/logoutbtn"
-        android:background="@drawable/custom_button"
         android:textColor="@color/darkGreen"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="312dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomcard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

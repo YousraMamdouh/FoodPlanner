@@ -61,10 +61,25 @@
     <string name="sat_txt">Saturday</string>
     <string name="sun_txt">Sunday</string>
     <string name="mon_txt">Monday</string>
-    <string name="tus_txt">Tuseday</string>
+    <string name="tus_txt">Tuesday</string>
     <string name="wed_txt">Wednesday</string>
     <string name="Thu_txt">Thursday</string>
     <string name="Fri_txt">Friday</string>
+    <string name="backup">Backup</string>
+
+    <string-array name="calendar">
+        <item>saturday</item>
+        <item>sunday</item>
+        <item>monday</item>
+        <item>tuesday</item>
+        <item>wednesday</item>
+        <item>thursday</item>
+        <item>friday</item>
+
+
+
+    </string-array>
+
 
 
 </resources>

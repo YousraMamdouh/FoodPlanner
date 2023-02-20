@@ -15,16 +15,23 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ConcreteLocalSource implements LocalSource{
     private MealDAO mealDAO;
+<<<<<<< HEAD
     private Observable<List<MealsDetails>> storedMeals, saturdayMeals, sundayMeals, mondayMeals, tuesdayMeals,
     wednesdayMeals, thursdayMeals, fridayMeals, plannedMeals;
+=======
+    private Observable<List<MealsDetails>> storedMeals;
+
+
+>>>>>>> 2eeed89413bc7c419238e9e3d42ff51a29679049
 
     private static ConcreteLocalSource localSource=null;
     private ConcreteLocalSource(Context context){
 
         AppDataBase db=AppDataBase.getInstance(context.getApplicationContext());
         mealDAO= db.productsDAO();
+<<<<<<< HEAD
         plannedMeals = mealDAO.getPlannedMeals();
-        storedMeals=mealDAO.getAllMeals("0");
+        storedMeals=mealDAO.getAllMeals();
         saturdayMeals = mealDAO.getMealsByDay("saturday");
         sundayMeals = mealDAO.getMealsByDay("sunday");
         mondayMeals = mealDAO.getMealsByDay("monday");
@@ -32,6 +39,9 @@ public class ConcreteLocalSource implements LocalSource{
         thursdayMeals = mealDAO.getMealsByDay("thursday");
         wednesdayMeals = mealDAO.getMealsByDay("wednesday");
         fridayMeals = mealDAO.getMealsByDay("friday");
+=======
+        storedMeals=mealDAO.getAllMeals("0");
+>>>>>>> 2eeed89413bc7c419238e9e3d42ff51a29679049
     }
 
 
@@ -51,12 +61,13 @@ public class ConcreteLocalSource implements LocalSource{
 
     @Override
     public void addToFavorites(MealsDetails mealsDetails) {
+        mealsDetails.setIsFav("1");
         mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
                 .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mealDAO.insertMeal(mealsDetails);
-
+                        System.out.println("yyyyyy"+mealsDetails.getIsFav());
 
                     }
 
@@ -84,6 +95,7 @@ public class ConcreteLocalSource implements LocalSource{
     }
 
     @Override
+<<<<<<< HEAD
     public void addToFavorites(MealsDetails mealsDetails, String day) {
         mealsDetails.setDay( day);
         mealDAO.insertMeal(mealsDetails).subscribeOn(Schedulers.io())
@@ -142,12 +154,11 @@ public class ConcreteLocalSource implements LocalSource{
     public void deleteMealFromPlan(MealsDetails mealsDetails) {
 
     }
-
-
-    @Override
+=======
     public void backupUserData() {
 
     }
 
+>>>>>>> 2eeed89413bc7c419238e9e3d42ff51a29679049
 
 }

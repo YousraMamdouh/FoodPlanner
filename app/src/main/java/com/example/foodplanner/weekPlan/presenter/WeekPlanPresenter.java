@@ -1,4 +1,4 @@
-package com.example.foodplanner.specificIngredient.presenter;
+package com.example.foodplanner.weekPlan.presenter;
 
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.RepositoryInterface;
@@ -6,22 +6,23 @@ import com.example.foodplanner.network.NetworkDelegate;
 import com.example.foodplanner.searchByCategory.model.Categories;
 import com.example.foodplanner.searchByCountry.model.Countries;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
-import com.example.foodplanner.specificIngredient.view.SpecificIngredientViewInterface;
+import com.example.foodplanner.weekPlan.view.WeekPlanViewInterface;
 
 import java.util.List;
 
-public class SpecificIngredientPresenter implements SpecificIngredientPresenterInterface, NetworkDelegate {
+import io.reactivex.Observable;
 
-    private SpecificIngredientViewInterface  viewInterface;
+public class WeekPlanPresenter implements NetworkDelegate,WeekPlanPresenterInterface {
+
+    private static final String TAG = "PlanPresenter";
+
+    private WeekPlanViewInterface weekPlanViewInterface;
     private RepositoryInterface repo;
-    private String ingredient;
-    public SpecificIngredientPresenter(SpecificIngredientViewInterface viewInterface, RepositoryInterface repo, String ingredient) {
-        this.viewInterface=viewInterface;
-        this.repo = repo;
-        this.ingredient=ingredient;
+
+    public  WeekPlanPresenter(WeekPlanViewInterface weekPlanViewInterface, RepositoryInterface repo){
+    this.weekPlanViewInterface= weekPlanViewInterface;
+    this.repo = repo;
     }
-
-
     @Override
     public void onSuccessAllMeals(List<MealsDetails> mealsDetails) {
 
@@ -84,8 +85,7 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
 
     @Override
     public void onSuccessSpecificIngredient(List<MealsDetails> mealsDetails) {
-        viewInterface.showMeals(mealsDetails);
-        System.out.println("Data retrieved successfully");
+
     }
 
     @Override
@@ -113,20 +113,18 @@ public class SpecificIngredientPresenter implements SpecificIngredientPresenterI
 
     }
 
+//    @Override
+//    public Observable<List<MealsDetails>> getMyPlannedMeals(String day) {
+//        return repo.getStoredMealsByDay(day);
+//    }
+
     @Override
-    public void getMeals() {
-        System.out.println("ingredient");
-        repo.enqueueCallSpecificIngredient(this,ingredient);
+    public Observable<List<MealsDetails>> getMyPlannedMeals(String day) {
+        return repo.getStoredMealsByDay(day);
     }
 
     @Override
-    public void addToFavorites(MealsDetails mealsDetails) {
-        repo.addToFavorites(mealsDetails);
-
-    }
-
-    @Override
-    public void addToCalender(MealsDetails mealsDetails, String day) {
-        repo.addToFavorites(mealsDetails,day);
+    public void removeMealFromPlannedMeal(MealsDetails mealsDetails) {
+        repo.deleteMealFromPlan(mealsDetails);
     }
 }
