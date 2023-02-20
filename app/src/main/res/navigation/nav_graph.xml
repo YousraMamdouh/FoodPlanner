@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashScreen_to_blankFragmentOnBoarding"
             app:destination="@id/blankFragmentOnBoarding" />
+        <action
+            android:id="@+id/action_splashScreen_to_authentication"
+            app:destination="@id/authentication" />
     </fragment>
     <fragment
         android:id="@+id/authentication"

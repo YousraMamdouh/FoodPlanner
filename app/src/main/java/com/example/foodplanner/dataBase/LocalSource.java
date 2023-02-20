@@ -3,6 +3,7 @@ package com.example.foodplanner.dataBase;
 import androidx.lifecycle.LiveData;
 
 import com.example.foodplanner.model.MealsDetails;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -26,5 +27,8 @@ public interface LocalSource {
 
     //firebase
     void backupUserData();
+    void retrieveFavFromFirebase(String userEmail);
+
+
 
 }

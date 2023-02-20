@@ -1,11 +1,15 @@
 package com.example.foodplanner.login.view;
 
+
+import com.example.foodplanner.utilities.ChangeNetworkListener;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Patterns;
@@ -25,6 +29,7 @@ import androidx.navigation.Navigation;
 import com.example.foodplanner.R;
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
+import com.example.foodplanner.utilities.ChangeNetworkListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -50,6 +55,7 @@ public class LoginFragment extends Fragment {
     TextView recoverPassTv;
     GoogleSignInClient mGoogleSingInInClient;
     SharedPreferences preferences;
+    ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
 
 
     private static final int RC_SIGN_IN = 100;
@@ -57,12 +63,12 @@ public class LoginFragment extends Fragment {
     public static final String FileName = "Login";
     public static final String UserEmail = "Email";
     public static final String Password = "Password";
+    private static FirebaseAuth mAuth;
 
+    public static  FirebaseAuth getmAuth() {
+        return mAuth;
+    }
 
-
-
-
-    private FirebaseAuth mAuth;
     ProgressDialog progressDialog;
     SignInButton mGoogleLoginBtn;
 
@@ -166,7 +172,7 @@ public class LoginFragment extends Fragment {
                     editor.putString(Password,passw);
                     editor.putBoolean("login user",true);
                     editor.commit();
-                    Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
                     navigationToHome();
 
 
@@ -223,17 +229,28 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Email Sent", Toast.LENGTH_SHORT).show();
 
             }
-            else {
-                Toast.makeText(getContext(), "failed...", Toast.LENGTH_SHORT).show();
-            }
+//            else {
+//                Toast.makeText(getContext(), "failed...", Toast.LENGTH_SHORT).show();
+//            }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
             // get and show proper error msg
-                Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+
+        if(mAuth.getCurrentUser()!=null)
+        {
+            Toast.makeText(getContext(), "Already logged in ", Toast.LENGTH_SHORT).show();
+            navigationToHome();
+        }
+        super.onStart();
     }
 
     private void loginUser(String email, String passw) {
@@ -241,8 +258,11 @@ public class LoginFragment extends Fragment {
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+
                         if(task.isSuccessful()) {
 
+                            IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
 
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
@@ -278,7 +298,8 @@ public class LoginFragment extends Fragment {
     }
 
     public void navigationToHome(){
-        AuthenticationFragment.setAuthChecker(true);
+
+       // AuthenticationFragment.setAuthChecker(true);
         Navigation.findNavController(this.getView()).navigate(R.id.action_loginFragment_to_homeScreen);
 
     }

@@ -66,6 +66,7 @@
     <string name="Thu_txt">Thursday</string>
     <string name="Fri_txt">Friday</string>
     <string name="backup">Backup</string>
+    <string name="warning">Something went wrong, please check your connection and try again!</string>
 
     <string-array name="calendar">
         <item>saturday</item>

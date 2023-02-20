@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.login.view.LoginFragment;
 import com.example.foodplanner.utilities.ChangeNetworkListener;
 import com.example.foodplanner.utilities.NetworkChecker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,13 +31,22 @@ public class MainActivity extends AppCompatActivity {
     public static NavController navController;
 
     ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+    IntentFilter filter;
 
-    @Override
-    protected void onStart() {
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(changeNetworkListener,filter);
-        super.onStart();
-    }
+//    @Override
+//    protected void onStart() {
+//        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(changeNetworkListener,filter);
+//        super.onStart();
+//    }
+
+
+//    @Override
+//    public void onStart() {
+//
+
+//        super.onStart();
+//    }
 
     @Override
     protected void onStop() {
@@ -53,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-      //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new AuthenticationFragment()).addToBackStack(null).commit();
+        //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new AuthenticationFragment()).addToBackStack(null).commit();
         //navigationView.setSelectedItemId(R.id.nav_home);
-        navController=Navigation.findNavController(this,R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
         //  getWindow().addFlags(window);
@@ -65,42 +76,56 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
-                 case R.id.nav_home:
-                     Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
-                    // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
+                    case R.id.nav_home:
+                        registerReceiver(changeNetworkListener, filter);
 
-                     break;
+
+
+                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
+                        // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
+
+                        break;
 
                     case R.id.nav_search:
+
+                        registerReceiver(changeNetworkListener, filter);
+
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
-                      //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
+                        //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
 
 
                         break;
 
                     case R.id.nav_weekPlan:
-                        if (AuthenticationFragment.isAuthChecker())
+
+                        if (LoginFragment.getmAuth().getCurrentUser() != null)
+
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
-                          else
-                        showDialogue();
-                   //     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new Cal).addToBackStack(null).commit();
+                        else
+                            showDialogue();
+
+                        //     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new Cal).addToBackStack(null).commit();
 
 
                         break;
 
                     case R.id.nav_fav:
-                        if (AuthenticationFragment.isAuthChecker())
-                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.favoriteFragment);
+                        if (LoginFragment.getmAuth().getCurrentUser() != null)
+
+                            Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.favoriteFragment);
                         else
-                         showDialogue();
+                            showDialogue();
 
 
                         break;
 
 
                     case R.id.nav_account:
-                        if (AuthenticationFragment.isAuthChecker())
+                        registerReceiver(changeNetworkListener, filter);
+
+                        if (LoginFragment.getmAuth().getCurrentUser() != null)
+
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.accountFragment);
                         else
@@ -116,37 +141,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-    @Override
-    public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-        switch (navDestination.getId()) {
-            case R.id.splashScreen:
-            case R.id.authentication:
-            case R.id.loginFragment:
-            case R.id.signUpFragment:
-            case R.id.blankFragmentOnBoarding:
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                switch (navDestination.getId()) {
+                    case R.id.splashScreen:
+                    case R.id.authentication:
+                    case R.id.loginFragment:
+                    case R.id.signUpFragment:
+                    case R.id.blankFragmentOnBoarding:
 //            case R.id.mealDetailsFragment:
 
 
+                        bottomNavigationView.setVisibility(View.GONE);
+                        //  drawerButton.setVisibility(View.VISIBLE);
 
 
-                bottomNavigationView.setVisibility(View.GONE);
-              //  drawerButton.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        bottomNavigationView.setVisibility(View.VISIBLE);
+                        //  drawerButton.setVisibility(View.GONE);
 
-
-                break;
-            default:
-                bottomNavigationView.setVisibility(View.VISIBLE);
-              //  drawerButton.setVisibility(View.GONE);
-
-        }
-    }
-});
+                }
+            }
+        });
 
     }
 
-    public void showDialogue()
-    {
+    public void showDialogue() {
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Alert")
