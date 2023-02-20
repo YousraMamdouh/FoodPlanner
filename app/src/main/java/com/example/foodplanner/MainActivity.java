@@ -2,9 +2,14 @@ package com.example.foodplanner;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,11 +21,29 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.utilities.ChangeNetworkListener;
+import com.example.foodplanner.utilities.NetworkChecker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public static NavController navController;
+
+    ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(changeNetworkListener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(changeNetworkListener);
+        super.onStop();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                  case R.id.nav_home:
-
-
                      Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
                     // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
 
@@ -93,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
 navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
     @Override
     public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
