@@ -165,6 +165,7 @@ public class SignUpFragment extends Fragment {
 
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                //    if(task.getResult().)
                                     firebaseuser.sendEmailVerification();
                                     Toast.makeText(getContext(), "User registered successfully, please verify", Toast.LENGTH_SHORT).show();
 

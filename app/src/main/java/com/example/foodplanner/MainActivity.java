@@ -28,8 +28,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public static NavController navController;
+    private IntentFilter filter ;
 
-    ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+  private   ChangeNetworkListener changeNetworkListener ;
 
 //    @Override
 //    protected void onStart() {
@@ -44,9 +45,12 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        changeNetworkListener = new ChangeNetworkListener();
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        getSupportActionBar().hide();
@@ -66,12 +70,13 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                  case R.id.nav_home:
+
+                    registerReceiver(changeNetworkListener,filter);
                      Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
                     // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
 
                      break;
                     case R.id.nav_search:
-                        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
                         registerReceiver(changeNetworkListener,filter);
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
                       //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_weekPlan:
+
                         if (AuthenticationFragment.isAuthChecker())
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);

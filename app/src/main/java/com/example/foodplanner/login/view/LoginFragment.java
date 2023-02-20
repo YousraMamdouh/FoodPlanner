@@ -1,6 +1,7 @@
 package com.example.foodplanner.login.view;
 
 
+import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.utilities.ChangeNetworkListener;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -22,7 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -55,7 +58,11 @@ public class LoginFragment extends Fragment {
     TextView recoverPassTv;
     GoogleSignInClient mGoogleSingInInClient;
     SharedPreferences preferences;
-    ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+   // ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+
+    private IntentFilter filter ;
+
+    private   ChangeNetworkListener changeNetworkListener ;
 
 
     private static final int RC_SIGN_IN = 100;
@@ -64,11 +71,9 @@ public class LoginFragment extends Fragment {
     public static final String UserEmail = "Email";
     public static final String Password = "Password";
 
-
-
-
-
     private FirebaseAuth mAuth;
+
+
     ProgressDialog progressDialog;
     SignInButton mGoogleLoginBtn;
 
@@ -121,10 +126,14 @@ public class LoginFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_login, container, false);
+        filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        changeNetworkListener = new ChangeNetworkListener();
         loginButton=view.findViewById(R.id.btnLogin);
        emailLog = view.findViewById(R.id.emailTxt);
         txtPassword = view.findViewById(R.id.txtPassword);
         recoverPassTv = view.findViewById(R.id.forgotxt);
+
+
         mGoogleLoginBtn = view.findViewById(R.id.googleLoginBtn);
 
         // recover pass text
@@ -165,6 +174,9 @@ public class LoginFragment extends Fragment {
                     txtPassword.setFocusable(true);
                 }
                 else  {
+
+
+
                     loginUser(email,passw);
                     preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
