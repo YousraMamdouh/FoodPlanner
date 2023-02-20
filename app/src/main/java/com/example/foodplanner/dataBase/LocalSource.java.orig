@@ -17,14 +17,16 @@ public interface LocalSource {
 
     void deleteMealFromFavorites(MealsDetails mealsDetails);
 
+<<<<<<< HEAD
     void addToFavorites(MealsDetails mealsDetails, String day);
 
     Observable<List<MealsDetails>> getStoredMealsByDay(String day);
 
     Observable<List<MealsDetails>> getPlannedMeals();
     void deleteMealFromPlan(MealsDetails mealsDetails);
-
+=======
     //firebase
     void backupUserData();
 
+>>>>>>> 2eeed89413bc7c419238e9e3d42ff51a29679049
 }

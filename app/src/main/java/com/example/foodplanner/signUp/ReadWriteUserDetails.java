@@ -3,8 +3,7 @@ package com.example.foodplanner.signUp;
 public class ReadWriteUserDetails {
     private String name,email,pass;
 
-    public ReadWriteUserDetails(String name, String email, String pass) {
-        this.name = name;
+    public ReadWriteUserDetails(String email, String pass) {
         this.email = email;
         this.pass = pass;
     }

@@ -65,6 +65,7 @@
     <string name="wed_txt">Wednesday</string>
     <string name="Thu_txt">Thursday</string>
     <string name="Fri_txt">Friday</string>
+    <string name="backup">Backup</string>
 
     <string-array name="calendar">
         <item>saturday</item>

@@ -103,26 +103,12 @@ localSource.deleteMealFromFavorites(mealsDetails);
     }
 
     @Override
+<<<<<<< HEAD
     public void addToFavorites(MealsDetails mealsDetails, String day) {
         localSource.addToFavorites(mealsDetails, day);
         System.out.println("bbbbb");
     }
-
-    @Override
-    public Observable<List<MealsDetails>> getStoredMealsByDay(String day) {
-        return localSource.getStoredMealsByDay(day);
-    }
-
-    @Override
-    public Observable<List<MealsDetails>> getPlannedMeals() {
-        return localSource.getPlannedMeals();
-    }
-
-    @Override
-    public void deleteMealFromPlan(MealsDetails mealsDetails) {
-         localSource.deleteMealFromPlan(mealsDetails);
-    }
-    @Override
+=======
     public void backupUserData() {
     RootMeals rootMeals=new RootMeals();
     getAllStoredMeals().subscribeOn(Schedulers.io()).subscribe(new Observer<List<MealsDetails>>() {
@@ -221,6 +207,20 @@ localSource.deleteMealFromFavorites(mealsDetails);
 //        }
 //
 //    }
+>>>>>>> 2eeed89413bc7c419238e9e3d42ff51a29679049
 
+    @Override
+    public Observable<List<MealsDetails>> getStoredMealsByDay(String day) {
+        return localSource.getStoredMealsByDay(day);
+    }
 
+    @Override
+    public Observable<List<MealsDetails>> getPlannedMeals() {
+        return localSource.getPlannedMeals();
+    }
+
+    @Override
+    public void deleteMealFromPlan(MealsDetails mealsDetails) {
+         localSource.deleteMealFromPlan(mealsDetails);
+    }
 }

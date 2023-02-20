@@ -1,4 +1,4 @@
-package com.example.foodplanner.userDetails;
+package com.example.foodplanner.userDetails.view;
 
 import android.os.Bundle;
 
@@ -12,6 +12,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.dataBase.ConcreteLocalSource;
+import com.example.foodplanner.model.Repository;
+import com.example.foodplanner.network.API_Client;
+import com.example.foodplanner.userDetails.presenter.AccountSettingsPresenterInterface;
+import com.example.foodplanner.userDetails.presenter.AccountSettingsPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,11 +25,13 @@ import com.google.firebase.auth.FirebaseUser;
  * Use the {@link AccountFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements AccountSettingsViewInterface {
 
     private FirebaseAuth mAuth;
     TextView mProfileTv;
     Button logout;
+    Button backup;
+    private AccountSettingsPresenterInterface accountSettingsPresenterInterface;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +83,15 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         mProfileTv = view.findViewById(R.id.profileTv);
         logout = view.findViewById(R.id.logoutBtn);
+        accountSettingsPresenterInterface =new AccountSettingsPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
+        backup=view.findViewById(R.id.backupButton);
+
+        backup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountSettingsPresenterInterface.backupUserData();
+            }
+        });
 
      logout.setOnClickListener(new View.OnClickListener() {
            @Override
