@@ -33,7 +33,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/boogaloo"
                     android:text="@string/planTopTxt"
+                    android:textColor="@color/darkYellow"
+
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +48,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="26dp"
+                    android:fontFamily="@font/boogaloo"
                     android:text="@string/sat_txt"
+                    android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -74,9 +81,11 @@
                     android:id="@+id/sunTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/boogaloo"
                     android:text="@string/sun_txt"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewSat" />
 
@@ -108,6 +117,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
                     android:text="@string/mon_txt"
+                    android:textSize="16sp"
+
+                    android:fontFamily="@font/boogaloo"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewSun" />
 
@@ -140,6 +153,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
                     android:text="@string/tus_txt"
+                    android:textSize="16sp"
+
+                    android:fontFamily="@font/boogaloo"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewMon" />
 
@@ -171,6 +188,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
                     android:text="@string/wed_txt"
+                    android:textSize="16sp"
+
+                    android:fontFamily="@font/boogaloo"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewTus" />
 
@@ -204,6 +225,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
                     android:text="@string/Thu_txt"
+                    android:textSize="16sp"
+
+                    android:fontFamily="@font/boogaloo"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewWed" />
 
@@ -236,6 +261,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
                     android:text="@string/Fri_txt"
+                    android:textSize="16sp"
+
+                    android:fontFamily="@font/boogaloo"
+                    android:textColor="@color/darkYellow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewThurs" />
 
