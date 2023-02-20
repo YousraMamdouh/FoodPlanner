@@ -66,13 +66,17 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                  case R.id.nav_home:
+
+
                      Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.homeScreen);
                     // getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new HomeFragment()).addToBackStack(null).commit();
 
                      break;
+
                     case R.id.nav_search:
                         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
                         registerReceiver(changeNetworkListener,filter);
+
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
                       //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
 
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_weekPlan:
+
                         if (AuthenticationFragment.isAuthChecker())
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
@@ -102,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_account:
-
                         if (AuthenticationFragment.isAuthChecker())
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.accountFragment);
