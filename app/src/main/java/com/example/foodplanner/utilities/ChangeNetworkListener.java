@@ -31,8 +31,9 @@ public class ChangeNetworkListener extends BroadcastReceiver {
             btnRetry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialog.dismiss();
-                    onReceive(context, intent);
+                  //  dialog.dismiss();
+                    dialog.cancel();
+                    //onReceive(context, intent);
                 }
             });
         }
