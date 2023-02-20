@@ -137,8 +137,8 @@
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" >
         <action
-            android:id="@+id/action_accountFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_accountFragment_to_authentication"
+            app:destination="@id/authentication" />
     </fragment>
     <fragment
         android:id="@+id/mealDetailsFragment"

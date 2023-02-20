@@ -115,7 +115,7 @@ public class AccountFragment extends Fragment implements AccountSettingsViewInte
         }
         else{
             // user not signed in, go to signup fragment
-            Navigation.findNavController(this.getView()).navigate(R.id.action_accountFragment_to_signUpFragment);
+            Navigation.findNavController(this.getView()).navigate(R.id.action_accountFragment_to_authentication);
 
         }
     }
