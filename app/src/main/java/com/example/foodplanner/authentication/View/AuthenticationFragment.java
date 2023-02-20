@@ -1,5 +1,7 @@
 package com.example.foodplanner.authentication.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -21,6 +23,7 @@ import com.example.foodplanner.R;
 public class AuthenticationFragment extends Fragment {
 CardView signUpView;
 CardView loginView;
+    View view;
 
 Button skip;
     // TODO: Rename parameter arguments, choose names that match
@@ -68,7 +71,7 @@ Button skip;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view=inflater.inflate(R.layout.fragment_authentication, container, false);
+        view=inflater.inflate(R.layout.fragment_authentication, container, false);
         signUpView=view.findViewById(R.id.signupButton);
         loginView=view.findViewById(R.id.loginButton);
         skip = view.findViewById(R.id.skipBtn);
@@ -76,7 +79,8 @@ Button skip;
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_authentication_to_homeScreen);
+showDialogue();
+
             }
         });
 
@@ -94,5 +98,28 @@ Button skip;
             }
         });
         return view;
+    }
+
+    public void showDialogue()
+    {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("confirm")
+                .setMessage("some features need you to \n sign up or login first,\n are you sure you want to skip?")
+                .setCancelable(true)
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Navigation.findNavController(view).navigate(R.id.action_authentication_to_homeScreen);
+
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 }

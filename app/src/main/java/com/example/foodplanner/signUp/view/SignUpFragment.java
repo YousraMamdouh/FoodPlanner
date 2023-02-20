@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.signUp.ReadWriteUserDetails;
+import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

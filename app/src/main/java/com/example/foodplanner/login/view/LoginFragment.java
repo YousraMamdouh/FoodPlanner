@@ -23,7 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.signUp.ReadWriteUserDetails;
+import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -164,6 +164,7 @@ public class LoginFragment extends Fragment {
                     editor.putBoolean("login user",true);
                     editor.commit();
                     Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
+                    navigationToHome();
 
 
                 }
@@ -237,14 +238,14 @@ public class LoginFragment extends Fragment {
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if(task.isSuccessful()) {
 
 
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
 
-                            ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(email,Password);
-                            DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered users");
+                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(email, Password);
+                            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
                             referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -256,8 +257,9 @@ public class LoginFragment extends Fragment {
                             });
 
                             navigationToHome();
+                        }
 
-                        }else {
+                        else {
 
                             Toast.makeText(getContext(), "Fail to log in ", Toast.LENGTH_SHORT).show();
                         }
