@@ -237,7 +237,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
             // get and show proper error msg
-                Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
