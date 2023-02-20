@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "MealDetails")
+@Entity(tableName = "MealDetails" ,primaryKeys = {"idMeal","day"})
 public class MealsDetails implements Serializable {
 
     public MealsDetails() {
@@ -20,12 +20,22 @@ public class MealsDetails implements Serializable {
     }
 
     @NonNull
-@PrimaryKey
+
     private String idMeal ;
     private String strMeal;
     private String strDrinkAlternate;
     private String strCategory;
+    @NonNull
+    private String day="0";
 
+    @NonNull
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(@NonNull String day) {
+        this.day = day;
+    }
 //  public MealsDetails( String strMeal, String strArea, String strMealThumb, String strInstructions,
 //  String strYoutube,String strIngerdient1,String strIngerdient2,String strIngerdient3,
 //                       String strIngerdient4,String strIngerdient5,String strIngerdient6,

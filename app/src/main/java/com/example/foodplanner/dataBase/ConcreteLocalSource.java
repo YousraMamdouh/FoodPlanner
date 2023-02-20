@@ -22,7 +22,7 @@ public class ConcreteLocalSource implements LocalSource{
 
         AppDataBase db=AppDataBase.getInstance(context.getApplicationContext());
         mealDAO= db.productsDAO();
-        storedMeals=mealDAO.getAllMeals();
+        storedMeals=mealDAO.getAllMeals("0");
     }
 
     public static ConcreteLocalSource getInstance(Context context) {

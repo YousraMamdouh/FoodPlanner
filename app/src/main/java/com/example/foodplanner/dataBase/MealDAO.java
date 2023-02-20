@@ -16,8 +16,8 @@ import io.reactivex.Observable;
 @Dao
 public interface MealDAO {
 
-    @Query("SELECT * FROM MealDetails")
-    Observable<List<MealsDetails>> getAllMeals();
+    @Query("SELECT * FROM MealDetails where day like:day" )
+    Observable<List<MealsDetails>> getAllMeals(String day);
     @Insert(onConflict = OnConflictStrategy.IGNORE) //law el element mawgood abl keda may7tohosh fl database
 
     Completable insertMeal(MealsDetails mealsDetails);
