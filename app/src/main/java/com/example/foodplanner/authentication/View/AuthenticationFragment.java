@@ -24,17 +24,17 @@ public class AuthenticationFragment extends Fragment {
 CardView signUpView;
 CardView loginView;
 
-    public static void setAuthChecker(boolean authChecker) {
-        AuthenticationFragment.authChecker = authChecker;
-    }
+//    public static void setAuthChecker(boolean authChecker) {
+//        AuthenticationFragment.authChecker = authChecker;
+//    }
 
     View view;
 
-    public static boolean isAuthChecker() {
-        return authChecker;
-    }
+//    public static boolean isAuthChecker() {
+//        return authChecker;
+//    }
 
-    private static boolean authChecker=true;
+  //  private static boolean authChecker=true;
 
 Button skip;
     // TODO: Rename parameter arguments, choose names that match
@@ -90,7 +90,7 @@ Button skip;
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-showDialogue();
+   showDialogue();
 
             }
         });
@@ -121,7 +121,7 @@ showDialogue();
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        authChecker=false;
+                        //authChecker=false;
                         Navigation.findNavController(view).navigate(R.id.action_authentication_to_homeScreen);
 
                     }

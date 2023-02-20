@@ -63,12 +63,12 @@ public class LoginFragment extends Fragment {
     public static final String FileName = "Login";
     public static final String UserEmail = "Email";
     public static final String Password = "Password";
+    private static FirebaseAuth mAuth;
 
+    public static  FirebaseAuth getmAuth() {
+        return mAuth;
+    }
 
-
-
-
-    private FirebaseAuth mAuth;
     ProgressDialog progressDialog;
     SignInButton mGoogleLoginBtn;
 
@@ -242,11 +242,24 @@ public class LoginFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onStart() {
+
+        if(mAuth.getCurrentUser()!=null)
+        {
+            Toast.makeText(getContext(), "Already logged in ", Toast.LENGTH_SHORT).show();
+            navigationToHome();
+        }
+        super.onStart();
+    }
+
     private void loginUser(String email, String passw) {
         mAuth.signInWithEmailAndPassword(email,passw)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+
                         if(task.isSuccessful()) {
 
                             IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -286,7 +299,7 @@ public class LoginFragment extends Fragment {
 
     public void navigationToHome(){
 
-        AuthenticationFragment.setAuthChecker(true);
+       // AuthenticationFragment.setAuthChecker(true);
         Navigation.findNavController(this.getView()).navigate(R.id.action_loginFragment_to_homeScreen);
 
     }

@@ -15,6 +15,7 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.favorite.presenter.FavoritePresenterInterface;
 import com.example.foodplanner.favorite.presenter.FavoritesPresenter;
+import com.example.foodplanner.login.view.LoginFragment;
 import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
@@ -95,6 +96,8 @@ public class FavoriteFragment extends Fragment implements OnDeleteClickListener 
         favoritePresenterInterface.getMyFavorites();
         return view;
     }
+
+
 
     @Override
     public void onClick(MealsDetails mealsDetails) {

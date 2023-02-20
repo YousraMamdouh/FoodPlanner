@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.login.view.LoginFragment;
 import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -165,6 +166,7 @@ public class SignUpFragment extends Fragment {
 
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+
                                     firebaseuser.sendEmailVerification();
                                     Toast.makeText(getContext(), "User registered successfully, please verify", Toast.LENGTH_SHORT).show();
 
@@ -193,8 +195,9 @@ public class SignUpFragment extends Fragment {
 
  }
  public void navigateToHome(){
-     AuthenticationFragment.setAuthChecker(true);
-     Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_homeScreen);
+     //if (LoginFragment.getmAuth().getCurrentUser() != null)
+
+         Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_homeScreen);
 
  }
 
