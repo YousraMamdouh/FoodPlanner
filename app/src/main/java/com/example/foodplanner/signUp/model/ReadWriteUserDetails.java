@@ -1,4 +1,4 @@
-package com.example.foodplanner.signUp;
+package com.example.foodplanner.signUp.model;
 
 public class ReadWriteUserDetails {
     private String name,email,pass;

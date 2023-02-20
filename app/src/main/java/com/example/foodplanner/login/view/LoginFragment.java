@@ -23,7 +23,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
-import com.example.foodplanner.signUp.ReadWriteUserDetails;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -49,6 +50,8 @@ public class LoginFragment extends Fragment {
     TextView recoverPassTv;
     GoogleSignInClient mGoogleSingInInClient;
     SharedPreferences preferences;
+
+
     private static final int RC_SIGN_IN = 100;
 
     public static final String FileName = "Login";
@@ -151,8 +154,11 @@ public class LoginFragment extends Fragment {
                     // set error focus
                     emailLog.setError("Invalid Email");
                     emailLog.setFocusable(true);
+                }else if(passw.isEmpty() || passw==null){
+                   txtPassword.setError("Invalid password");
+                    txtPassword.setFocusable(true);
                 }
-                else {
+                else  {
                     loginUser(email,passw);
                     preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -161,6 +167,7 @@ public class LoginFragment extends Fragment {
                     editor.putBoolean("login user",true);
                     editor.commit();
                     Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
+                    navigationToHome();
 
 
                 }
@@ -234,14 +241,14 @@ public class LoginFragment extends Fragment {
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if(task.isSuccessful()) {
 
 
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
 
-                            ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(email,Password);
-                            DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered users");
+                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(email, Password);
+                            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
                             referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -253,8 +260,9 @@ public class LoginFragment extends Fragment {
                             });
 
                             navigationToHome();
+                        }
 
-                        }else {
+                        else {
 
                             Toast.makeText(getContext(), "Fail to log in ", Toast.LENGTH_SHORT).show();
                         }
@@ -270,6 +278,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void navigationToHome(){
+        AuthenticationFragment.setAuthChecker(true);
         Navigation.findNavController(this.getView()).navigate(R.id.action_loginFragment_to_homeScreen);
 
     }

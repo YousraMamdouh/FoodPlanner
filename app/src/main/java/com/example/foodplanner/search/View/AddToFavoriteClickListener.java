@@ -4,4 +4,5 @@ import com.example.foodplanner.model.MealsDetails;
 
 public interface AddToFavoriteClickListener {
     void onClick(MealsDetails currentMeal);
+    void showDialogue();
 }

@@ -59,12 +59,7 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
 
-        holder.fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              listener.onClick(currentProduct);
-            }
-        });
+
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +81,14 @@ public class HomeMealsAdapter extends RecyclerView.Adapter<HomeMealsAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView mealName;
-        Button fav;
+
         ImageView mealImage;
         ConstraintLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
             mealName=itemView.findViewById(R.id.img_name);
-           fav=itemView.findViewById(R.id.fav);
+
             layout=itemView.findViewById(R.id.layout);
 
         }

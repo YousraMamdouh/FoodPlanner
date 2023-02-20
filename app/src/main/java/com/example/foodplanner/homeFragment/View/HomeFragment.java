@@ -1,5 +1,7 @@
 package com.example.foodplanner.homeFragment.View;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +45,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
     private MealsDetails dailyInspiration;
 
+    OnMealClickListener onMealClickListener;
     CardView inspiration;
     View view;
     MealsDetails mealsDetails;
@@ -51,7 +54,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
     private String mParam1;
     private String mParam2;
     AddToFavoriteClickListener addToFavoriteClickListener = this;
-    OnMealClickListener onMealClickListener;
+
 
     HomeMealsAdapter mealsAdapter;
     StaggeredGridLayoutManager layoutManager;
@@ -102,11 +105,19 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
         AddToFav = view.findViewById(R.id.fav_daily_btn);
         mealsPresenterInterface.getMeals();
         mealsPresenterInterface.getDailyInspiration();
+        inspirationImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    getMeal(dailyInspiration.getStrMeal());
+            }
+        });
 
         AddToFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToFavoriteClickListener.onClickDailyInspiration();
+
+               mealsPresenterInterface.addToFavorites(dailyInspiration);
+                Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,6 +125,19 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
 
     }
+
+//    @Override
+//    public void onStop() {
+//        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(changeNetworkListener,filter);
+//
+//        super.onStop();
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//    }
 
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {

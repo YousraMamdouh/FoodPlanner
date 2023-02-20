@@ -1,5 +1,7 @@
 package com.example.foodplanner.mealDetails.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
 import com.example.foodplanner.mealDetails.presenter.MealPresenter;
 import com.example.foodplanner.mealDetails.presenter.MealPresenterInterface;
@@ -24,11 +29,14 @@ import com.example.foodplanner.model.MealsDetails;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.API_Client;
 import com.example.foodplanner.searchByIngredient.model.Ingredients;
+import com.example.foodplanner.specificIngredient.view.SingleChoiceDialogFragment;
+import com.example.foodplanner.specificIngredient.view.SpecificIngredient;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -37,7 +45,7 @@ import java.util.StringTokenizer;
  * Use the {@link MealDetailsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MealDetailsFragment extends Fragment implements AddToFavorites,MealViewInterface{
+public class MealDetailsFragment extends Fragment implements AddToFavorites,MealViewInterface,SingleChoiceDialogFragment.SingleChoiceListener {
 
     RecyclerView recyclerView;
     MealAdapter adapter;
@@ -50,6 +58,9 @@ public class MealDetailsFragment extends Fragment implements AddToFavorites,Meal
     YouTubePlayerView youTubePlayerView;
    Button addToFavButton;
    View view;
+   Button calender;
+
+
  MealsDetails mealObject;
 List<String> ingredientsList=new ArrayList<>();
     private AddToFavorites addToFavorites=this;
@@ -103,7 +114,10 @@ List<String> ingredientsList=new ArrayList<>();
        view= inflater.inflate(R.layout.fragment_meal_details, container, false);
        mealName=view.findViewById(R.id.myName);
        mealImage=view.findViewById(R.id.myImage);
-       youTubePlayerView =view.findViewById(R.id.videoView);
+        calender=view.findViewById(R.id.calenderbtn);
+
+
+        youTubePlayerView =view.findViewById(R.id.videoView);
        recipeView=view.findViewById(R.id.recipeView);
        recyclerView=view.findViewById(R.id.myRecyclerView);
        addToFavButton=view.findViewById(R.id.addToFavButton);
@@ -115,11 +129,27 @@ List<String> ingredientsList=new ArrayList<>();
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setAdapter(adapter);
         mealPresenterInterface.getMeal();
+        calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AuthenticationFragment.isAuthChecker()) {
+                    DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
+                    singleChoiceDialog.setCancelable(false);
+                    singleChoiceDialog.show(getParentFragmentManager(), "Single Choice Dialog");
+                    singleChoiceDialog.setTargetFragment(MealDetailsFragment.this, 1);
+                }
+
+                else showDialogue();
+            }
+        });
 
         addToFavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToFavorites.onClick(mealObject);
+                if(AuthenticationFragment.isAuthChecker())
+                    addToFavorites.onClick(mealObject);
+                else showDialogue();
+
             }
         });
 
@@ -233,5 +263,38 @@ List<String> ingredientsList=new ArrayList<>();
             ingredientsList.add(mealObject.getStrIngredient20());
 
 return ingredientsList;
+    }
+
+    @Override
+    public void onPositiveButtonClicked(String[] list, int position) {
+       mealPresenterInterface.addToCalender(mealObject,list[position]);
+    }
+
+    @Override
+    public void onNegativeButtonClicked() {
+
+    }
+
+
+    public   void showDialogue()
+    {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Alert")
+                .setMessage("You can't use this feature \n unless you have an an account \n do you want to create an account?")
+                .setCancelable(true).setPositiveButton("create account", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Navigation.findNavController(view).navigate(R.id.action_mealDetailsFragment_to_authentication);
+
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 }

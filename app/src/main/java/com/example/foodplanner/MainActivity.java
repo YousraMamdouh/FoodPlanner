@@ -1,8 +1,15 @@
 package com.example.foodplanner;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +20,30 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.utilities.ChangeNetworkListener;
+import com.example.foodplanner.utilities.NetworkChecker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public static NavController navController;
+
+    ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(changeNetworkListener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(changeNetworkListener);
+        super.onStop();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,22 +79,32 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_weekPlan:
-                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
+                        if (AuthenticationFragment.isAuthChecker())
+
+                            Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);
+                          else
+                        showDialogue();
                    //     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new Cal).addToBackStack(null).commit();
 
 
                         break;
 
                     case R.id.nav_fav:
+                        if (AuthenticationFragment.isAuthChecker())
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.favoriteFragment);
+                        else
+                         showDialogue();
 
 
                         break;
 
 
                     case R.id.nav_account:
-                        Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.accountFragment);
+                        if (AuthenticationFragment.isAuthChecker())
 
+                            Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.accountFragment);
+                        else
+                            showDialogue();
 
                         break;
 
@@ -78,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
 navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
     @Override
     public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
@@ -105,6 +143,22 @@ navController.addOnDestinationChangedListener(new NavController.OnDestinationCha
     }
 });
 
+    }
+
+    public void showDialogue()
+    {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert")
+                .setMessage("You can't use this feature \n unless you have an an account ")
+                .setCancelable(true)
+                .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
 
 

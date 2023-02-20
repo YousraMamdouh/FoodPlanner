@@ -2,6 +2,8 @@ package com.example.foodplanner.search.View;
 
 import static com.example.foodplanner.network.API_Client.Tag;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,6 +48,7 @@ AllMealsAdapter allMealsAdapter;
 StaggeredGridLayoutManager layoutManager;
 SearchView searchView;
 List<MealsDetails> mealList;
+
 List<MealsDetails> filteredMealsList;
 AllMealsPresenterInterface allMealsPresenterInterface;
     LottieAnimationView errorAnimation;
@@ -177,4 +180,28 @@ addMealToFavorites(currentMeal);
                 Log.i(Tag, "DownStream: " + r));
 
     }
+
+
+    public   void showDialogue()
+    {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Alert")
+                .setMessage("You can't use this feature \n unless you have an an account \n do you want to create an account?")
+                .setCancelable(true).setPositiveButton("create account", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_authentication);
+
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }
+
 }
