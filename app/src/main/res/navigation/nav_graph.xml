@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_homeScreen_to_weekPlan"
             app:destination="@id/weekPlan" />
+        <action
+            android:id="@+id/action_homeScreen_to_authentication"
+            app:destination="@id/authentication" />
     </fragment>
     <fragment
         android:id="@+id/searchScreen"
@@ -70,6 +73,9 @@
         <action
             android:id="@+id/action_searchScreen_to_mealDetailsFragment"
             app:destination="@id/mealDetailsFragment" />
+        <action
+            android:id="@+id/action_searchScreen_to_authentication"
+            app:destination="@id/authentication" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -142,6 +148,9 @@
         <argument
             android:name="mealName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_mealDetailsFragment_to_authentication"
+            app:destination="@id/authentication" />
     </fragment>
     <fragment
         android:id="@+id/searchForMealFragment"

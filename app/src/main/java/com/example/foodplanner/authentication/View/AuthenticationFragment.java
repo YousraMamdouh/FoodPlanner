@@ -23,7 +23,18 @@ import com.example.foodplanner.R;
 public class AuthenticationFragment extends Fragment {
 CardView signUpView;
 CardView loginView;
+
+    public static void setAuthChecker(boolean authChecker) {
+        AuthenticationFragment.authChecker = authChecker;
+    }
+
     View view;
+
+    public static boolean isAuthChecker() {
+        return authChecker;
+    }
+
+    private static boolean authChecker=true;
 
 Button skip;
     // TODO: Rename parameter arguments, choose names that match
@@ -110,6 +121,7 @@ showDialogue();
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        authChecker=false;
                         Navigation.findNavController(view).navigate(R.id.action_authentication_to_homeScreen);
 
                     }

@@ -1,6 +1,8 @@
 package com.example.foodplanner.search.View;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
@@ -68,10 +71,21 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
         Glide.with(context).load(currentProduct.getStrMealThumb())
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
+
+        holder.calenderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!AuthenticationFragment.isAuthChecker())
+                    addToFavoriteClickListener.showDialogue();
+            }
+        });
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(AuthenticationFragment.isAuthChecker())
                 addToFavoriteClickListener.onClick(currentProduct);
+                else
+                    addToFavoriteClickListener.showDialogue();
             }
         });
         holder.layout.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +113,7 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
         ImageView mealImage;
         Button favButton;
         ConstraintLayout layout;
+        Button calenderButton;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mealImage=itemView.findViewById(R.id.mealImage);
@@ -106,7 +121,11 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
             mealCountry=itemView.findViewById(R.id.favMealCountry);
             favButton=itemView.findViewById(R.id.fav);
             layout=itemView.findViewById(R.id.layout);
+            calenderButton=itemView.findViewById(R.id.calenderbtn);
 
         }
     }
+
+
+
 }

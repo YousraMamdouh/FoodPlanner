@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.signUp.model.ReadWriteUserDetails;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -49,6 +50,8 @@ public class LoginFragment extends Fragment {
     TextView recoverPassTv;
     GoogleSignInClient mGoogleSingInInClient;
     SharedPreferences preferences;
+
+
     private static final int RC_SIGN_IN = 100;
 
     public static final String FileName = "Login";
@@ -275,6 +278,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void navigationToHome(){
+        AuthenticationFragment.setAuthChecker(true);
         Navigation.findNavController(this.getView()).navigate(R.id.action_loginFragment_to_homeScreen);
 
     }

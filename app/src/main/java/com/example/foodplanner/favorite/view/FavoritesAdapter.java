@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
+import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
@@ -71,6 +72,8 @@ private OnMealClicked listener;
 
             listener.getMeal(favoriteMealsList.get(position).getStrMeal());
             //  System.out.println("Click:"+allMealsList.get(position).getStrMeal());
+
+
 
         });
         Log.i(Tag,"onBindViewHolder");
