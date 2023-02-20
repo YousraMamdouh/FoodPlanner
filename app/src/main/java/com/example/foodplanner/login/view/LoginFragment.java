@@ -151,8 +151,11 @@ public class LoginFragment extends Fragment {
                     // set error focus
                     emailLog.setError("Invalid Email");
                     emailLog.setFocusable(true);
+                }else if(passw.isEmpty() || passw==null){
+                   txtPassword.setError("Invalid password");
+                    txtPassword.setFocusable(true);
                 }
-                else {
+                else  {
                     loginUser(email,passw);
                     preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
