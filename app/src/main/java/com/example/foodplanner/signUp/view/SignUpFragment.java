@@ -40,7 +40,7 @@ public class SignUpFragment extends Fragment {
     EditText password2;
 
     ProgressDialog progressDialog;
-    private FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -197,7 +197,7 @@ public class SignUpFragment extends Fragment {
  public void navigateToHome(){
      //if (LoginFragment.getmAuth().getCurrentUser() != null)
 
-         Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_homeScreen);
+         Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_loginFragment);
 
  }
 

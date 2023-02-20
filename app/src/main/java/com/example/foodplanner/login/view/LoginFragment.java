@@ -53,6 +53,11 @@ public class LoginFragment extends Fragment {
     EditText emailLog;
     EditText txtPassword;
     TextView recoverPassTv;
+
+    public static void setmAuth(FirebaseAuth mAuth) {
+        LoginFragment.mAuth = mAuth;
+    }
+
     GoogleSignInClient mGoogleSingInInClient;
     SharedPreferences preferences;
     ChangeNetworkListener changeNetworkListener = new ChangeNetworkListener();
@@ -172,6 +177,7 @@ public class LoginFragment extends Fragment {
                     editor.putString(Password,passw);
                     editor.putBoolean("login user",true);
                     editor.commit();
+                    System.out.println("test "+LoginFragment.getmAuth().getCurrentUser());
                    Toast.makeText(getContext(), "Successfully login", Toast.LENGTH_SHORT).show();
                     navigationToHome();
 
@@ -259,12 +265,16 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
+                      //  System.out.println("on complete ");
+
 
                         if(task.isSuccessful()) {
+                          //  System.out.println("is success?");
 
                             IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
 
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                            System.out.println("login user "+mAuth.getCurrentUser());
 
 
                             ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(email, Password);
@@ -279,12 +289,12 @@ public class LoginFragment extends Fragment {
                                 }
                             });
 
-                            navigationToHome();
+                      //      navigationToHome();
                         }
 
                         else {
 
-                            Toast.makeText(getContext(), "Fail to log in ", Toast.LENGTH_SHORT).show();
+                         //   Toast.makeText(getContext(), "Fail to log in ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -292,7 +302,7 @@ public class LoginFragment extends Fragment {
                     public void onFailure(@NonNull Exception e) {
                         // error get and error msg.
                       // progressDialog.dismiss();
-                        Toast.makeText(getContext(), "Failure"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getContext(), "Failure"+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

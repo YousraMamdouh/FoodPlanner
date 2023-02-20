@@ -133,6 +133,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
