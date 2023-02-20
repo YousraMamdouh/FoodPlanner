@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                      break;
 
                     case R.id.nav_search:
+
                         Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.searchScreen);
                       //  getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,  new SearchFragment()).addToBackStack(null).commit();
 
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_weekPlan:
+
                         if (AuthenticationFragment.isAuthChecker())
 
                             Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment).navigate(R.id.weekPlan);

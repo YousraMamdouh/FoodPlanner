@@ -38,20 +38,20 @@ import io.reactivex.Observable;
  * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchFragment extends Fragment implements AllMealsViewInterface , AddToFavoriteClickListener, OnMealClickListener {
-Button cuisineButton;
-    View view;
-Button categoryButton;
-Button ingredientButton;
-RecyclerView allMealsRecyclerView;
-AllMealsAdapter allMealsAdapter;
-StaggeredGridLayoutManager layoutManager;
-SearchView searchView;
-List<MealsDetails> mealList;
+public class SearchFragment extends Fragment implements AllMealsViewInterface, AddToFavoriteClickListener, OnMealClickListener {
+    private Button cuisineButton;
+    private View view;
+    private Button categoryButton;
+    private Button ingredientButton;
+    private RecyclerView allMealsRecyclerView;
+    private AllMealsAdapter allMealsAdapter;
+    private StaggeredGridLayoutManager layoutManager;
+    private SearchView searchView;
+    private List<MealsDetails> mealList;
 
-List<MealsDetails> filteredMealsList;
-AllMealsPresenterInterface allMealsPresenterInterface;
-    LottieAnimationView errorAnimation;
+    private List<MealsDetails> filteredMealsList;
+    private AllMealsPresenterInterface allMealsPresenterInterface;
+    private LottieAnimationView errorAnimation;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,34 +97,34 @@ AllMealsPresenterInterface allMealsPresenterInterface;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       view=inflater.inflate(R.layout.fragment_search_screen, container, false);
-searchView=view.findViewById(R.id.searchView);
-errorAnimation=view.findViewById(R.id.errorAnimation);
-errorAnimation.setVisibility(View.GONE);
-       cuisineButton=view.findViewById(R.id.cuisineButton);
-       categoryButton=view.findViewById(R.id.categoryButton);
-       ingredientButton=view.findViewById(R.id.ingredientsButton);
-       allMealsRecyclerView=view.findViewById(R.id.allMealsRecyclerView);
-    //   layoutManager=new LinearLayoutManager(getActivity());
+        view = inflater.inflate(R.layout.fragment_search_screen, container, false);
+        searchView = view.findViewById(R.id.searchView);
+        errorAnimation = view.findViewById(R.id.errorAnimation);
+        errorAnimation.setVisibility(View.GONE);
+        cuisineButton = view.findViewById(R.id.cuisineButton);
+        categoryButton = view.findViewById(R.id.categoryButton);
+        ingredientButton = view.findViewById(R.id.ingredientsButton);
+        allMealsRecyclerView = view.findViewById(R.id.allMealsRecyclerView);
+        //   layoutManager=new LinearLayoutManager(getActivity());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-       allMealsAdapter=new AllMealsAdapter(getActivity(),new ArrayList<>(),this,this);
-       allMealsPresenterInterface=new allMealsPresenter(this,Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
-       allMealsRecyclerView.setLayoutManager(layoutManager);
-       allMealsRecyclerView.setAdapter(allMealsAdapter);
-       allMealsPresenterInterface.getMeals();
+        allMealsAdapter = new AllMealsAdapter(getActivity(), new ArrayList<>(), this, this);
+        allMealsPresenterInterface = new allMealsPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()), getActivity()));
+        allMealsRecyclerView.setLayoutManager(layoutManager);
+        allMealsRecyclerView.setAdapter(allMealsAdapter);
+        allMealsPresenterInterface.getMeals();
         filterMeals();
 
-       cuisineButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCountryFragment));
+        cuisineButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCountryFragment));
 
         categoryButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searchByCategoryFragment));
 
-       ingredientButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searcByhIngridientFragment));
-       return view;
+        ingredientButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_searchScreen_to_searcByhIngridientFragment));
+        return view;
     }
 
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
-        mealList=mealsDetails;
+        mealList = mealsDetails;
         System.out.println("wsalna");
         allMealsAdapter.setAllMealsItemList(mealsDetails);
         allMealsAdapter.notifyDataSetChanged();
@@ -140,24 +140,23 @@ errorAnimation.setVisibility(View.GONE);
 
     @Override
     public void addMealToFavorites(MealsDetails mealsDetails) {
-allMealsPresenterInterface.addToFavorites(mealsDetails);
+        allMealsPresenterInterface.addToFavorites(mealsDetails);
     }
 
     @Override
     public void onClick(MealsDetails currentMeal) {
         Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
-addMealToFavorites(currentMeal);
+        addMealToFavorites(currentMeal);
     }
 
     @Override
     public void getMeal(String mealName) {
-       com.example.foodplanner.search.View.SearchFragmentDirections.ActionSearchScreenToMealDetailsFragment action=SearchFragmentDirections.actionSearchScreenToMealDetailsFragment(mealName);
+        com.example.foodplanner.search.View.SearchFragmentDirections.ActionSearchScreenToMealDetailsFragment action = SearchFragmentDirections.actionSearchScreenToMealDetailsFragment(mealName);
         Navigation.findNavController(view).navigate(action);
 
     }
 
-    public void filterMeals()
-    {
+    public void filterMeals() {
         Observable.create(emitter -> searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -168,11 +167,11 @@ addMealToFavorites(currentMeal);
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.length()!=0)
+                if (newText.length() != 0)
                     emitter.onNext(newText);
-                    filteredMealsList=mealList.stream().filter(r->r.getStrMeal().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
-                    allMealsAdapter.setAllMealsItemList(filteredMealsList);
-                    allMealsAdapter.notifyDataSetChanged();
+                filteredMealsList = mealList.stream().filter(r -> r.getStrMeal().toLowerCase().contains(newText.toLowerCase())).collect(Collectors.toList());
+                allMealsAdapter.setAllMealsItemList(filteredMealsList);
+                allMealsAdapter.notifyDataSetChanged();
 
                 return false;
             }
@@ -182,8 +181,7 @@ addMealToFavorites(currentMeal);
     }
 
 
-    public   void showDialogue()
-    {
+    public void showDialogue() {
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Alert")
