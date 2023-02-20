@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
     private MealsDetails dailyInspiration;
 
+    OnMealClickListener onMealClickListener;
     CardView inspiration;
     View view;
     MealsDetails mealsDetails;
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
     private String mParam1;
     private String mParam2;
     AddToFavoriteClickListener addToFavoriteClickListener = this;
-    OnMealClickListener onMealClickListener;
+
 
     HomeMealsAdapter mealsAdapter;
     StaggeredGridLayoutManager layoutManager;
@@ -102,11 +103,19 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
         AddToFav = view.findViewById(R.id.fav_daily_btn);
         mealsPresenterInterface.getMeals();
         mealsPresenterInterface.getDailyInspiration();
+        inspirationImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    getMeal(dailyInspiration.getStrMeal());
+            }
+        });
 
         AddToFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addToFavoriteClickListener.onClickDailyInspiration();
+
+               mealsPresenterInterface.addToFavorites(dailyInspiration);
+                Toast.makeText(getActivity(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
             }
         });
 
