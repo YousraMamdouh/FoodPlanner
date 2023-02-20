@@ -23,6 +23,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
+import com.example.foodplanner.login.view.LoginFragment;
 import com.example.foodplanner.mealDetails.presenter.MealPresenter;
 import com.example.foodplanner.mealDetails.presenter.MealPresenterInterface;
 import com.example.foodplanner.model.MealsDetails;
@@ -132,7 +133,8 @@ List<String> ingredientsList=new ArrayList<>();
         calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AuthenticationFragment.isAuthChecker()) {
+                if (LoginFragment.getmAuth().getCurrentUser() != null)
+                {
                     DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
                     singleChoiceDialog.setCancelable(false);
                     singleChoiceDialog.show(getParentFragmentManager(), "Single Choice Dialog");
@@ -146,7 +148,8 @@ List<String> ingredientsList=new ArrayList<>();
         addToFavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AuthenticationFragment.isAuthChecker())
+                if (LoginFragment.getmAuth().getCurrentUser() != null)
+
                     addToFavorites.onClick(mealObject);
                 else showDialogue();
 

@@ -154,5 +154,10 @@ public class ConcreteLocalSource implements LocalSource{
 
     }
 
+    @Override
+    public void retrieveFavFromFirebase(String userEmail) {
+
+    }
+
 
 }

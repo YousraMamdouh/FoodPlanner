@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.authentication.View.AuthenticationFragment;
+import com.example.foodplanner.login.view.LoginFragment;
 import com.example.foodplanner.model.MealsDetails;
 
 import java.util.List;
@@ -75,15 +76,17 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
         holder.calenderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!AuthenticationFragment.isAuthChecker())
+                if (LoginFragment.getmAuth().getCurrentUser() != null)
+
                     addToFavoriteClickListener.showDialogue();
             }
         });
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AuthenticationFragment.isAuthChecker())
-                addToFavoriteClickListener.onClick(currentProduct);
+                if (LoginFragment.getmAuth().getCurrentUser() != null)
+
+                    addToFavoriteClickListener.onClick(currentProduct);
                 else
                     addToFavoriteClickListener.showDialogue();
             }
