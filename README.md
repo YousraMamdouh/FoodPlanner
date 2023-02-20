@@ -31,7 +31,8 @@ This application is developed by students of ITI intake#43, Native Mobile Applic
 In this case, you can only see the displayed recipes in the home screen and also search for meals.
 # Special Features for Authenitcated users
 ![Screenshot (431)](https://user-images.githubusercontent.com/91179363/220161965-9912ea7a-be08-4b67-bfec-908384d1a027.png)
-![image](https://user-images.githubusercontent.com/91179363/220162114-ae6a1c20-c94b-4366-9e89-0b11c7221b6e.png)
+![Screenshot (432)](https://user-images.githubusercontent.com/91179363/220163088-367e4ae4-3086-4824-8433-9520c500a14d.png)
+
 
 
 - Add recipes to favorite.
