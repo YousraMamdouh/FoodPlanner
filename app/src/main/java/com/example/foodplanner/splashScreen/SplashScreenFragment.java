@@ -1,5 +1,7 @@
 package com.example.foodplanner.splashScreen;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -72,7 +74,22 @@ public class SplashScreenFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_blankFragmentOnBoarding);
+
+                SharedPreferences preferences= getActivity().getSharedPreferences("PREFRENCE", Context.MODE_PRIVATE);
+                String firstTime=preferences.getString("FirstTimeInstall","");
+                if(firstTime.equals("Yes")) {
+
+                    Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_authentication);
+
+                }
+                else {
+
+                    SharedPreferences.Editor editor=preferences.edit();
+                    editor.putString("FirstTimeInstall","Yes");
+                    editor.apply();
+                    Navigation.findNavController(view).navigate(R.id.action_splashScreen_to_blankFragmentOnBoarding);
+
+                }
 
             }
         },3000);
