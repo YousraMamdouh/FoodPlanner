@@ -1,5 +1,7 @@
 package com.example.foodplanner.homeFragment.View;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,6 +125,19 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
 
     }
+
+//    @Override
+//    public void onStop() {
+//        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(changeNetworkListener,filter);
+//
+//        super.onStop();
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//    }
 
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
