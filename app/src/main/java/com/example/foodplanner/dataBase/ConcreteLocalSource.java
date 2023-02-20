@@ -140,7 +140,12 @@ public class ConcreteLocalSource implements LocalSource{
 
     @Override
     public void deleteMealFromPlan(MealsDetails mealsDetails) {
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mealDAO.deleteMeal(mealsDetails);
+            }
+        }).start();
     }
 
 

@@ -28,11 +28,17 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
     private List<MealsDetails> planMealsList;
     private Context context;
     private OnMealClickedListener onMealClickedListener;
+    public static  final int INVISIBLE = 0;
 
 
     public WeekPlanAdapter (Context context, OnMealClickedListener OnMealsClickListener) {
         super();
         this.context = context;
+        this.onMealClickedListener = onMealClickedListener;
+
+
+    }
+    public void setOnMealClickedListener(OnMealClickedListener onMealClickedListener){
         this.onMealClickedListener = onMealClickedListener;
     }
 
@@ -62,13 +68,25 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
                 .apply(new RequestOptions().override(150, 150))
                 .into(holder.mealImageViewPlannerCard);
 
-        holder. deleteBtn.setOnClickListener(new View.OnClickListener() {
+        holder.favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+
+        });
+      holder.favBtn.setVisibility(View.INVISIBLE);
+        Log.i(Tag,"onBindViewHolder");
+
+        holder.calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onMealClickedListener.deleteMealFromDay(meal);
             }
         });
-        Log.i(Tag,"onBindViewHolder");
+      //  holder.calendar.setVisibility(View.INVISIBLE);
     }
 
 
@@ -81,16 +99,18 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
         TextView mealNameTxt;
         TextView mealCountryTxt;
         ImageView  mealImageViewPlannerCard;
-        Button deleteBtn;
+        Button favBtn;
+        Button calendar;
         ConstraintLayout layout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-           deleteBtn = itemView.findViewById(R.id.fav);
+          favBtn = itemView.findViewById(R.id.fav);
             mealImageViewPlannerCard = itemView.findViewById(R.id.mealImage);
             mealNameTxt = itemView.findViewById(R.id.img_name);
             mealCountryTxt = itemView.findViewById(R.id.favMealCountry);
             layout = itemView.findViewById(R.id.layout);
+            calendar = itemView.findViewById(R.id.calenderbtn);
 
 
         }

@@ -306,10 +306,18 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
             }
 
         });
+        saturdayAdapter.setOnMealClickedListener(this);
+        sundayAdapter.setOnMealClickedListener(this);
+        mondayAdapter.setOnMealClickedListener(this);
+        tuesdayAdapter.setOnMealClickedListener(this);
+        wednesdayAdapter.setOnMealClickedListener(this);
+        thursdayAdapter.setOnMealClickedListener(this);
+       fridayAdapter.setOnMealClickedListener(this);
     }
 
     @Override
     public void deleteMealFromDay(MealsDetails mealsDetails) {
+        System.out.println("delete now");
         weekPlanPresenterInterface.removeMealFromPlannedMeal(mealsDetails);
         saturdayAdapter.notifyDataSetChanged();
         sundayAdapter.notifyDataSetChanged();
