@@ -1,7 +1,6 @@
 # CHEFKO
 # A Recipe mobile application
 ![Screenshot (418)](https://user-images.githubusercontent.com/91179363/220161217-89ee7a42-86db-46a5-bd72-c15f0f7051b9.png)
-
 ![Screenshot (435)](https://user-images.githubusercontent.com/91179363/220162490-8b899060-a6d1-4d88-8db8-2a0b7a45cdb3.png)
 
 -It help the user to plan his meal through out the upcoming week by adding a recipe to a specific day.
