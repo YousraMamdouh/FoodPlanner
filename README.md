@@ -10,6 +10,12 @@
 This application is developed by students of ITI intake#43, Native Mobile Application Development track.
 # Usage
 # Registeration
+
+![Screenshot (419)](https://user-images.githubusercontent.com/91179363/220161364-8b32317a-2970-4055-a84f-52218bbe4500.png)
+![Screenshot (420)](https://user-images.githubusercontent.com/91179363/220161414-6ceede1b-9f57-49cb-b982-82ab3234f53c.png)
+![Screenshot (421)](https://user-images.githubusercontent.com/91179363/220161483-b8f93d94-aad5-447c-be32-29350d9947f3.png)
+
+
 -User can register to benefit from all the feature provided by the app.
 - Using E-mail and Password.
 # If user have an account 
