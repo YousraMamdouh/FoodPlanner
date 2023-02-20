@@ -6,4 +6,6 @@ public interface MealPresenterInterface {
 
     void getMeal();
     void addToFavorites(MealsDetails mealsDetails);
+    void addToCalender(MealsDetails mealsDetails,String day);
+
 }
