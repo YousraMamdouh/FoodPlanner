@@ -68,8 +68,8 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="381dp"
-                android:layout_height="1583dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textView19"
@@ -295,20 +295,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/boogaloo"
 
                     android:text="@string/Fri_txt"
                     android:textColor="@color/darkYellow"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewThurs" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewFri"
-                    android:layout_width="872dp"
-                    android:layout_height="19dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

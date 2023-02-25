@@ -60,10 +60,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mealsRecycler"
-                android:layout_width="327dp"
-                android:layout_height="242dp"
+                android:layout_width="324dp"
+                android:layout_height="295dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,8 +89,8 @@
 
             <Button
                 android:id="@+id/fav_daily_btn"
-                android:layout_width="39dp"
-                android:layout_height="31dp"
+                android:layout_width="28dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="50dp"
                 android:background="@drawable/baseline_favorite_border_24"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="695dp" />
+        app:layout_constraintGuide_begin="733dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"

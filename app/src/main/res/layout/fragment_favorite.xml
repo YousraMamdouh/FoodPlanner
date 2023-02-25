@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="715dp" />
+        app:layout_constraintGuide_begin="738dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -68,11 +68,12 @@
         app:layout_constraintGuide_begin="335dp" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView14"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
         android:background="@color/darkGreen"
         android:backgroundTint="@color/darkGreen"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
@@ -80,7 +81,7 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="75dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/baseline_energy_savings_leaf_24" />
     </androidx.cardview.widget.CardView>
@@ -89,12 +90,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/favorites"
         android:fontFamily="@font/boogaloo"
+        android:text="@string/favorites"
         android:textColor="@color/darkYellow"
-        android:textSize="20sp"
+        android:textSize="26dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

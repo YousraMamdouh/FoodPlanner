@@ -95,6 +95,7 @@
                 android:background="@drawable/custom_button"
                 android:fontFamily="@font/boogaloo"
                 android:text="@string/signUp"
+                android:textColor="@color/darkGreen"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
