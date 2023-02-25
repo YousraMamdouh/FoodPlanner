@@ -69,13 +69,13 @@
     <string name="warning">Something went wrong, please check your connection and try again!</string>
 
     <string-array name="calendar">
-        <item>saturday</item>
-        <item>sunday</item>
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
 
 
 
