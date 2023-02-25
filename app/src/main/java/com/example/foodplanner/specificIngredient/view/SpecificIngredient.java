@@ -129,7 +129,6 @@ public class SpecificIngredient extends Fragment implements SpecificIngredientVi
 
     @Override
     public void onPositiveButtonClicked(String[] list, int position) {
-        System.out.println(list[position]+"ffff");
         specificIngredientPresenterInterface.addToCalender(adapter.plannedProduct,list[position]);
 
     }

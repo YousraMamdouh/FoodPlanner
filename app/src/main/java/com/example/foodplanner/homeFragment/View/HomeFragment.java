@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
 
 
     HomeMealsAdapter mealsAdapter;
-    StaggeredGridLayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
     Button showMoreDetails;
     Button AddToFav;
 
@@ -93,12 +94,15 @@ public class HomeFragment extends Fragment implements HomeMealsViewInterface,Add
         // Inflate the layout for this fragment
        view = inflater.inflate(R.layout.fragment_home_screen, container, false);
         mealsRecyclerView=view.findViewById(R.id.mealsRecycler);
-        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager=new LinearLayoutManager(getActivity());
+
         //todo call api for the daily inspiration then add to presenter constructor
         mealsAdapter=new HomeMealsAdapter(getActivity(),new ArrayList<>(),this,this);
         mealsPresenterInterface=new MealsPresenter(this,Repository.getInstance(API_Client.getInstance(),ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         mealsRecyclerView.setLayoutManager(layoutManager);
         mealsRecyclerView.setAdapter(mealsAdapter);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+
         inspiration = view.findViewById(R.id.inspirationCardView);
         inspirationImage = view.findViewById(R.id.inspirationImage);
        // showMoreDetails = view.findViewById(R.id.show_more_btn);

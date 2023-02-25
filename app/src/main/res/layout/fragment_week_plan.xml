@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -87,7 +87,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewsat"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="500dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"

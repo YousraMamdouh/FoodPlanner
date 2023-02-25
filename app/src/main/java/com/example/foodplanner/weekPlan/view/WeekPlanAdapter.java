@@ -51,7 +51,7 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.search_all_meals, parent, false);
+        View view = inflater.inflate(R.layout.favorite_items, parent, false);
         Log.i("onCreateViewHolder: ", viewType + "");
       ViewHolder ViewHolder=new ViewHolder(view);
         Log.i(Tag,"OnCreateViewHolder");

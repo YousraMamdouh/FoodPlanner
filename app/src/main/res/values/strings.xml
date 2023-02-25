@@ -42,7 +42,7 @@
     <string name="recipe">Recipe :</string>
     <string name="get_start">get start</string>
 
-    <string name="description1"> Food Will Be Having a Taste</string>
+    <string name="description1"> "You'll find every recipe you need"</string>
     <string name="description2"> Full Of Flavor</string>
     <string name="description3">Let\'s Do It Together</string>
     <string name="logoutbtn">Logout</string>
@@ -69,13 +69,13 @@
     <string name="warning">Something went wrong, please check your connection and try again!</string>
 
     <string-array name="calendar">
-        <item>Saturday</item>
-        <item>Sunday</item>
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
+        <item>saturday</item>
+        <item>sunday</item>
+        <item>monday</item>
+        <item>tuesday</item>
+        <item>wednesday</item>
+        <item>thursday</item>
+        <item>friday</item>
 
 
 
