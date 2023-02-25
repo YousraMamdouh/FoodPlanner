@@ -13,52 +13,82 @@
         android:layout_height="match_parent">
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="335dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/darkGreen"
+            android:backgroundTint="@color/darkGreen"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/baseline_energy_savings_leaf_24" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/boogaloo"
+            android:text="@string/planTopTxt"
+            android:textColor="@color/darkYellow"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/mainCardView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
             android:background="@color/white"
             app:cardCornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView16">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="1720dp">
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/boogaloo"
-                    android:text="@string/planTopTxt"
-                    android:textColor="@color/darkYellow"
-
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="381dp"
+                android:layout_height="1583dp">
 
                 <TextView
                     android:id="@+id/textView19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/boogaloo"
                     android:text="@string/sat_txt"
                     android:textColor="@color/darkYellow"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewsat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +123,7 @@
                     android:id="@+id/recyclerViewSun"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -116,11 +147,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:text="@string/mon_txt"
-                    android:textSize="16sp"
-
                     android:fontFamily="@font/boogaloo"
+                    android:text="@string/mon_txt"
+
                     android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewSun" />
 
@@ -129,6 +160,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -152,11 +184,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:text="@string/tus_txt"
-                    android:textSize="16sp"
-
                     android:fontFamily="@font/boogaloo"
+                    android:text="@string/tus_txt"
+
                     android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewMon" />
 
@@ -164,6 +196,7 @@
                     android:id="@+id/recyclerViewTuesday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -187,11 +220,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:text="@string/wed_txt"
-                    android:textSize="16sp"
-
                     android:fontFamily="@font/boogaloo"
+                    android:text="@string/wed_txt"
+
                     android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewTus" />
 
@@ -200,6 +233,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -224,11 +258,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:text="@string/Thu_txt"
-                    android:textSize="16sp"
-
                     android:fontFamily="@font/boogaloo"
+                    android:text="@string/Thu_txt"
+
                     android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewWed" />
 
@@ -236,6 +270,7 @@
                     android:id="@+id/recyclerViewThurs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -260,11 +295,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="21dp"
-                    android:text="@string/Fri_txt"
-                    android:textSize="16sp"
-
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/boogaloo"
+
+                    android:text="@string/Fri_txt"
                     android:textColor="@color/darkYellow"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewThurs" />
 
