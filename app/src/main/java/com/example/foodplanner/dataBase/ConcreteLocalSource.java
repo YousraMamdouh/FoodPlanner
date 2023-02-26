@@ -25,13 +25,13 @@ public class ConcreteLocalSource implements LocalSource{
         mealDAO= db.productsDAO();
         plannedMeals = mealDAO.getPlannedMeals();
         storedMeals=mealDAO.getAllMeals("0");
-        saturdayMeals = mealDAO.getMealsByDay("saturday");
-        sundayMeals = mealDAO.getMealsByDay("sunday");
-        mondayMeals = mealDAO.getMealsByDay("monday");
-        tuesdayMeals = mealDAO.getMealsByDay("tuesday");
-        thursdayMeals = mealDAO.getMealsByDay("thursday");
-        wednesdayMeals = mealDAO.getMealsByDay("wednesday");
-        fridayMeals = mealDAO.getMealsByDay("friday");
+        saturdayMeals = mealDAO.getMealsByDay("Saturday");
+        sundayMeals = mealDAO.getMealsByDay("Sunday");
+        mondayMeals = mealDAO.getMealsByDay("Monday");
+        tuesdayMeals = mealDAO.getMealsByDay("Tuesday");
+        thursdayMeals = mealDAO.getMealsByDay("Thursday");
+        wednesdayMeals = mealDAO.getMealsByDay("Wednesday");
+        fridayMeals = mealDAO.getMealsByDay("Friday");
     }
 
 

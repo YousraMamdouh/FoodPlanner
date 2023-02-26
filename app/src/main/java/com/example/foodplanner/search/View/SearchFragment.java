@@ -125,7 +125,6 @@ public class SearchFragment extends Fragment implements AllMealsViewInterface, A
     @Override
     public void showMeals(List<MealsDetails> mealsDetails) {
         mealList = mealsDetails;
-        System.out.println("wsalna");
         allMealsAdapter.setAllMealsItemList(mealsDetails);
         allMealsAdapter.notifyDataSetChanged();
 

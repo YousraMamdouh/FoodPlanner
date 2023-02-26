@@ -73,14 +73,14 @@ public class AllMealsAdapter extends RecyclerView.Adapter<AllMealsAdapter.MyView
                 .apply(new RequestOptions()
                         .override(150,150)).into(holder.mealImage);
 
-        holder.calenderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (LoginFragment.getmAuth().getCurrentUser() != null)
-
-                    addToFavoriteClickListener.showDialogue();
-            }
-        });
+//        holder.calenderButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (LoginFragment.getmAuth().getCurrentUser() != null)
+//
+//                    addToFavoriteClickListener.showDialogue();
+//            }
+//        });
         holder.favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

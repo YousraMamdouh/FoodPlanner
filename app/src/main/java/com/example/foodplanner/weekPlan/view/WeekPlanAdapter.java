@@ -68,16 +68,16 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
                 .apply(new RequestOptions().override(150, 150))
                 .into(holder.mealImageViewPlannerCard);
 
-        holder.favBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-            }
-
-        });
-      holder.favBtn.setVisibility(View.INVISIBLE);
+//        holder.favBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//            }
+//
+//        });
+      //holder.favBtn.setVisibility(View.INVISIBLE);
         Log.i(Tag,"onBindViewHolder");
 
         holder.calendar.setOnClickListener(new View.OnClickListener() {
@@ -105,12 +105,12 @@ public class WeekPlanAdapter  extends RecyclerView.Adapter<WeekPlanAdapter.ViewH
 
         public ViewHolder(View itemView) {
             super(itemView);
-          favBtn = itemView.findViewById(R.id.fav);
-            mealImageViewPlannerCard = itemView.findViewById(R.id.mealImage);
+         // favBtn = itemView.findViewById(R.id.fav);
+            mealImageViewPlannerCard = itemView.findViewById(R.id.favImageView);
             mealNameTxt = itemView.findViewById(R.id.img_name);
             mealCountryTxt = itemView.findViewById(R.id.favMealCountry);
             layout = itemView.findViewById(R.id.layout);
-            calendar = itemView.findViewById(R.id.calenderbtn);
+            calendar = itemView.findViewById(R.id.fav);
 
 
         }

@@ -12,29 +12,32 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
 
         <TextView
             android:id="@+id/img_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/arimo_bold_italic"
             android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@id/card"
+            android:textAlignment="center"
             android:textColor="@color/darkYellow"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+            tools:layout_editor_absoluteY="174dp" />
 
         <TextView
             android:id="@+id/favMealCountry"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/arimo_bold_italic"
             android:text="TextView"
+            android:textAlignment="center"
             android:textColor="@color/darkYellow"
             android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -44,8 +47,9 @@
 
         <Button
             android:id="@+id/fav"
-            android:layout_width="52dp"
-            android:layout_height="45dp"
+            android:layout_width="45dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/baseline_delete_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +57,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_margin="10dp"
@@ -81,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="227dp" />
+            app:layout_constraintGuide_begin="220dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

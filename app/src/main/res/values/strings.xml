@@ -43,8 +43,8 @@
     <string name="get_start">get start</string>
 
     <string name="description1"> "You'll find every recipe you need"</string>
-    <string name="description2"> Full Of Flavor</string>
-    <string name="description3">Let\'s Do It Together</string>
+    <string name="description2"> Explore different cuisines</string>
+    <string name="description3">Let\'s do It together</string>
     <string name="logoutbtn">Logout</string>
     <string name="forgottxt">Forgot Password? Recover</string>
     <string name="skipBtn">Skip</string>
@@ -57,7 +57,7 @@
     <string name="recipeTiltle">Recipe</string>
     <string name="appName">𝒄𝒉𝒆𝒇𝒌𝒐</string>
     <string name="Scroll_Plan">PlanScroll</string>
-    <string name="planTopTxt">Plan Your Meals</string>
+    <string name="planTopTxt">Your planned meals</string>
     <string name="sat_txt">Saturday</string>
     <string name="sun_txt">Sunday</string>
     <string name="mon_txt">Monday</string>
@@ -69,13 +69,13 @@
     <string name="warning">Something went wrong, please check your connection and try again!</string>
 
     <string-array name="calendar">
-        <item>saturday</item>
-        <item>sunday</item>
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
 
 
 

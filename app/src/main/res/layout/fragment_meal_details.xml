@@ -72,8 +72,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="20dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/baseline_favorite_border_24"
                     app:layout_constraintStart_toStartOf="@+id/guideline12"
                     app:layout_constraintTop_toTopOf="@+id/guideline13" />
@@ -83,9 +83,10 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="40dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/calendar"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addToFavButton"
                     app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
                 <TextView
@@ -99,25 +100,27 @@
                     android:textSize="20dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline13"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardView5" />
+                    app:layout_constraintStart_toStartOf="@+id/guideline12" />
 
                 <TextView
                     android:id="@+id/myCountry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/arimo_bold_italic"
                     android:text="TextView"
                     android:textColor="@color/darkYellow"
                     android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/myName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline12"
                     app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView5"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"

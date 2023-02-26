@@ -6,12 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.dataBase.ConcreteLocalSource;
@@ -38,11 +40,19 @@ import io.reactivex.schedulers.Schedulers;
 public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPlanViewInterface {
 
     private static final String TAG = "Week Plan";
+    private boolean showSatMeals=false;
+    private boolean showSunMeals=false;
+    private boolean showMonMeals=false;
+    private boolean showTuesMeals=false;
+    private boolean showWedMeals=false;
+    private boolean showThuMeals=false;
+    private boolean showFriMeals=false;
+    private TextView saturdayView,sundayView,mondayView,tuesdayView,wednesdayView,thursdayView,fridayView;
     private RecyclerView saturdayRecyclerView, sundayRecyclerView, mondayRecyclerView, tuesdayRecyclerView, wednesdayRecyclerView, thursdayRecyclerView, fridayRecyclerView;
     private WeekPlanAdapter wednesdayAdapter, saturdayAdapter, sundayAdapter, mondayAdapter, tuesdayAdapter, thursdayAdapter, fridayAdapter;
     private List<MealsDetails> allMeals;
     private String day;
-    StaggeredGridLayoutManager layoutManager1,layoutManager2,layoutManager3,layoutManager4,layoutManager5,layoutManager6,layoutManager7;
+    LinearLayoutManager layoutManager1,layoutManager2,layoutManager3,layoutManager4,layoutManager5,layoutManager6,layoutManager7;
     private WeekPlanPresenterInterface weekPlanPresenterInterface;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,13 +98,118 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_week_plan, container, false);
+View view= inflater.inflate(R.layout.fragment_week_plan, container, false);
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         init(view);
+        saturdayRecyclerView.setVisibility(view.GONE);
+        sundayRecyclerView.setVisibility(view.GONE);
+        mondayRecyclerView.setVisibility(view.GONE);
+        tuesdayRecyclerView.setVisibility(view.GONE);
+        wednesdayRecyclerView.setVisibility(view.GONE);
+        thursdayRecyclerView.setVisibility(view.GONE);
+        fridayRecyclerView.setVisibility(view.GONE);
+
+        saturdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showSatMeals){
+                saturdayRecyclerView.setVisibility(view.VISIBLE);
+                showSatMeals=true;
+                }
+                else {
+                    saturdayRecyclerView.setVisibility(view.GONE);
+                    showSatMeals=false;
+                }
+
+            }
+        });
+        sundayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!showSunMeals){
+                    sundayRecyclerView.setVisibility(view.VISIBLE);
+                    showSunMeals=true;
+                }
+                else {
+                    sundayRecyclerView.setVisibility(view.GONE);
+                    showSunMeals=false;
+                }
+            }
+        });
+       mondayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showMonMeals) {
+                    mondayRecyclerView.setVisibility(view.VISIBLE);
+                    showMonMeals=true;
+                }
+                else {
+                    mondayRecyclerView.setVisibility(view.GONE);
+                    showMonMeals=false;
+                }
+            }
+        });
+       tuesdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showTuesMeals) {
+                    tuesdayRecyclerView.setVisibility(view.VISIBLE);
+                    showTuesMeals=true;
+                }
+                else {
+                  tuesdayRecyclerView.setVisibility(view.GONE);
+                    showTuesMeals=false;
+                }
+            }
+        });
+     wednesdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showWedMeals) {
+                    wednesdayRecyclerView.setVisibility(view.VISIBLE);
+                    showWedMeals=true;
+                }
+                else {
+                   wednesdayRecyclerView.setVisibility(view.GONE);
+                    showWedMeals=false;
+                }
+            }
+        });
+     thursdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showThuMeals) {
+                   thursdayRecyclerView.setVisibility(view.VISIBLE);
+                    showThuMeals=true;
+                }
+                else {
+                   thursdayRecyclerView.setVisibility(view.GONE);
+                    showThuMeals=false;
+                }
+            }
+        });
+     fridayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showFriMeals) {
+                   fridayRecyclerView.setVisibility(view.VISIBLE);
+                    showFriMeals=true;
+                }
+                else {
+                    fridayRecyclerView.setVisibility(view.GONE);
+                    showFriMeals=false;
+                }
+            }
+        });
 
       weekPlanPresenterInterface= new WeekPlanPresenter(this, Repository.getInstance(API_Client.getInstance(), ConcreteLocalSource.getInstance(getActivity()),getActivity()));
         if( weekPlanPresenterInterface == null){
@@ -113,20 +228,26 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
         thursdayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
         wednesdayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
         fridayAdapter = new WeekPlanAdapter(getContext(), WeekPlan.this);
-
-        layoutManager1 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager1 = new LinearLayoutManager(getActivity());
+        layoutManager1.setOrientation(RecyclerView.HORIZONTAL);
         saturdayRecyclerView.setLayoutManager(layoutManager1);
-        layoutManager2 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager2 = new LinearLayoutManager(getActivity());
+        layoutManager2.setOrientation(RecyclerView.HORIZONTAL);
         sundayRecyclerView.setLayoutManager(layoutManager2);
-        layoutManager3 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager3 = new LinearLayoutManager(getActivity());
+        layoutManager3.setOrientation(RecyclerView.HORIZONTAL);
         mondayRecyclerView.setLayoutManager(layoutManager3);
-        layoutManager4 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager4 = new LinearLayoutManager(getActivity());
+        layoutManager4.setOrientation(RecyclerView.HORIZONTAL);
         tuesdayRecyclerView.setLayoutManager(layoutManager4);
-        layoutManager5 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager5 = new LinearLayoutManager(getActivity());
+        layoutManager5.setOrientation(RecyclerView.HORIZONTAL);
         wednesdayRecyclerView.setLayoutManager(layoutManager5);
-        layoutManager6 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager6 = new LinearLayoutManager(getActivity());
+        layoutManager6.setOrientation(RecyclerView.HORIZONTAL);
         thursdayRecyclerView.setLayoutManager(layoutManager6);
-        layoutManager7 = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager7 =new LinearLayoutManager(getActivity());
+        layoutManager7.setOrientation(RecyclerView.HORIZONTAL);
         fridayRecyclerView.setLayoutManager(layoutManager7);
 
 
@@ -138,10 +259,8 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
 
             @Override
             public void onNext(List<MealsDetails> mealsDetails) {
-                System.out.println("rrrr"+mealsDetails);
                 saturdayAdapter.setAllMeals(mealsDetails);
                 saturdayRecyclerView.setAdapter(saturdayAdapter);
-
                 saturdayAdapter.notifyDataSetChanged();
 
             }
@@ -346,6 +465,14 @@ public class WeekPlan extends Fragment implements OnMealClickedListener, WeekPla
         wednesdayRecyclerView = view.findViewById(R.id.recyclerViewWed);
         thursdayRecyclerView = view.findViewById(R.id.recyclerViewThurs);
         fridayRecyclerView = view.findViewById(R.id.recyclerViewFri);
+        saturdayView=view.findViewById(R.id.satTxt);
+        sundayView=view.findViewById(R.id.sunTxt);
+        mondayView=view.findViewById(R.id.monTxt);
+        tuesdayView=view.findViewById(R.id.tuesTxt);
+        wednesdayView=view.findViewById(R.id.wedTxt);
+        thursdayView=view.findViewById(R.id.ThuTxt);
+        fridayView=view.findViewById(R.id.FriTxt);
+
      }
 
 }
