@@ -132,7 +132,7 @@ public class SignUpFragment extends Fragment {
 
                 else {
                     registerUser(email, String.valueOf(password)); // register user
-
+                    navigateToLogin();
                     //Enter user data into the firebase realtime database
 
 
@@ -158,6 +158,7 @@ public class SignUpFragment extends Fragment {
                             progressDialog.dismiss();
                             FirebaseUser firebaseuser = mAuth.getCurrentUser();
 
+
 //Database backup
                             //*****************************
                             ReadWriteUserDetails writeUserDetails=new ReadWriteUserDetails(email,password);
@@ -177,7 +178,8 @@ public class SignUpFragment extends Fragment {
 
 
                             //******************************
-                            navigateToHome();
+
+
 
                         }else {
                             progressDialog.dismiss();
@@ -194,7 +196,7 @@ public class SignUpFragment extends Fragment {
 });
 
  }
- public void navigateToHome(){
+ public void navigateToLogin(){
      //if (LoginFragment.getmAuth().getCurrentUser() != null)
 
          Navigation.findNavController(this.getView()).navigate(R.id.action_signUpFragment_to_loginFragment);
